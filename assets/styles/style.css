@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+body {
+  background-color: #121212; /* Fondo oscuro */
+  color: #e0e0e0; /* Color de texto claro */
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+}
+
+/* PROFILE INFO */
+
+.left-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-section, .profile-media, .profile-info {
+  background-color: #1e1e1e; /* Fondo más oscuro */
+  border-radius: 10px;
+  padding: 12px;
+  width: 100%; /* Cambiado a 100% para móviles */
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+  margin-bottom: 14px;
+}
+
+.profile-image {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #111; /* Borde azul para el icono */
+}
+
+.profile-label h3 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.profile-label h4 {
+  margin: 4px 0 0;
+  font-weight: 400;
+}
+
+.profile-media-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-div-icon {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.media-div-icon:hover {
+  background-color: #2a2a2a; /* Color de fondo en hover */
+  color: #fff; /* Texto blanco al pasar el mouse */
+}
+
+.media-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #ccc; /* Color de enlace claro */
+}
+
+#profile-info-text {
+  color: #b0b0b0; /* Texto más claro */
+  text-align: center;
+  font-size: 16px;
+}
+
+/* GRID CONTAINER */
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; /* Espacio entre secciones */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas en escritorio */
+  gap: 20px; /* Espacio entre los grid items */
+  width: 100%;
+}
+
+.grid-container-div {
+  display: flex; /* Agregar flex para que los hijos sean flexibles */
+  flex-direction: column; /* Organizar hijos en columna */
+  background-color: #1e1e1e; /* Fondo más oscuro */
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+}
+
+.grid-miniature-image {
+  border-radius: 10px;
+  width: 100%;
+  height: auto; /* Mantener la relación de aspecto */
+}
+
+.grid-div-label {
+  flex-grow: 1;
+}
+
+.grid-div-label h3 {
+  margin: 6px 0; /* Espacio entre la imagen y el texto */
+  color: #e0e0e0; /* Color de texto claro */
+}
+
+.grid-div-label h {
+  margin: 12px 0; /* Espacio entre la imagen y el texto */
+}
+
+.grid-div-button {
+  margin-top: 4px;
+}
+
+.grid-view-button {
+  background-color: #5DADE2; /* Fondo azul */
+  border-radius: 14px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  padding: 12px;
+  width: 100%;
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+  transition: background-color 0.3s;
+}
+
+.grid-view-button:hover {
+  background-color: #5aa4c9; /* Color al pasar el mouse */
+}
+
+/* MEDIA QUERIES PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column; /* Asegurar que los elementos se apilen en móviles */
+  }
+
+  .left-div {
+    order: 1; /* Asegura que la sección de perfil esté en la parte superior */
+    width: 100%; /* Ancho total en móviles */
+  }
+
+  .right-section {
+    order: 2; /* La sección de grids aparecerá después del perfil */
+    margin-left: 0; /* Eliminar margen en móviles */
+  }
+
+  .profile-media {
+    order: 3; /* Mostrar después de los grids */
+    width: 100%; /* Ancho total en móviles */
+  }
+
+  .profile-info {
+    order: 4; /* Mostrar después de la sección media */
+    width: 100%; /* Ancho total en móviles */
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr; /* Cambiar a una columna en móviles */
+  }
+}
