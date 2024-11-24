@@ -18,15 +18,12 @@
             <a href="#project-section" data-translate="header-nav-projects">Proyectos</a>
             <a href="#about-section" data-translate="header-nav-about">Acerca de</a>
             <a href="#social-media" data-translate="header-nav-contact">Contacto</a>
-            <select class="language-selector" onchange="setLanguage(this.value)">
-                <option value="es">Español</option>
-                <option value="en">English</option>
-            </select>
-            <button class="dark-mode-toggle language-selector" id="darkModeToggle" aria-label="Cambiar modo oscuro">
-                <img src="assets/icons/dark-mode-ic.png" id="icon" alt="Icono de modo oscuro">
-            </button>
+            <div class="language-selector">
+                <button onclick="setLanguage('es')">Español</button>
+                <button onclick="setLanguage('en')">English</button>
+            </div>            
         </nav>
-    </header>    
+    </header>
 
     <main>
         <section class="left-section">
@@ -90,13 +87,31 @@
                     <div class="panel">
                         <img src="assets/img/preview-0.png" alt="Preview Image">
                         <div class="container-preview-info">
-                            <h id="tooltipTitle">Music Web Player</h>
-                            <h id="tooltipMessage">Reproductor de música web basado en html, css y javascript.</h>
+                            <h id="tooltipTitle">Proyecto Especial 1</h>
+                            <h id="tooltipMessage">Este proyecto fue creado por Usuario123 (Descripción).</h>
                         </div>
                     </div>
-                    <a href="https://github.com/AntonyPss/github-pages/tree/main/Music%20Web%20Player" target="_blank" id="seeMoreButton">
-                        <button class="normal-button">Ver más</button>
-                    </a>
+                    <button class="normal-button" data-translate="viewMore">Ver más</button>
+                </div>
+                <div class="container-preview">
+                    <div class="panel">
+                        <img src="assets/img/preview-1.png" alt="Preview Image">
+                        <div class="container-preview-info">
+                            <h id="tooltipTitle">Proyecto Especial 1</h>
+                            <h id="tooltipMessage">Este proyecto fue creado por Usuario123 (Descripción).</h>
+                        </div>
+                    </div>
+                    <button class="normal-button" data-translate="viewMore">Ver más</button>
+                </div>
+                <div class="container-preview">
+                    <div class="panel">
+                        <img src="assets/img/preview-2.jpeg" alt="Preview Image">
+                        <div class="container-preview-info">
+                            <h id="tooltipTitle">Proyecto Especial 1</h>
+                            <h id="tooltipMessage">Este proyecto fue creado por Usuario123 (Descripción).</h>
+                        </div>
+                    </div>
+                    <button class="normal-button" data-translate="viewMore">Ver más</button>
                 </div>
             </div>
         </section>
