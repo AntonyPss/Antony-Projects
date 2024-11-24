@@ -15,9 +15,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#000000" d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z"/></svg>
         </div>
         <nav class="header-nav">
-            <a href="#project-section">Proyectos</a>
-            <a href="#about-section">Acerca de</a>
-            <a href="#social-media">Contacto</a>
+            <a href="#project-section" data-translate="header-nav-projects">Proyectos</a>
+            <a href="#about-section" data-translate="header-nav-about">Acerca de</a>
+            <a href="#social-media" data-translate="header-nav-contact">Contacto</a>
+            <div class="language-selector">
+                <button onclick="setLanguage('es')">Español</button>
+                <button onclick="setLanguage('en')">English</button>
+            </div>            
         </nav>
     </header>
 
@@ -26,12 +30,12 @@
             <div class="personal-information panel">
                 <img src="assets/icons/me.png" alt="User">
                 <div class="information-label">
-                    <h id="infoTitle">¡Hola! Soy AntonyPss</h>
-                    <h id="infoMessage">Desarrollador Web - Apasionado por la tecnología y el diseño</h>
+                    <h id="infoTitle" data-translate="infoTitle">¡Hola! Soy AntonyPss</h>
+                    <h id="infoMessage" data-translate="infoMessage">Desarrollador Web - Apasionado por la tecnología y el diseño</h>
                 </div>
             </div>
 
-            <div class="title-divider panel" id="social-media">Redes sociales</div>
+            <div class="title-divider panel" id="social-media" data-translate="socialMediaTitle">Redes sociales</div>
 
             <div class="social-media-section">
                 <a href="https://github.com/AntonyPss" class="link-panel" target="_blank">
@@ -57,7 +61,7 @@
                 </a>
             </div>
 
-            <div class="title-divider panel">Lenguajes de programación</div>
+            <div class="title-divider panel" data-translate="languagesTitle">Lenguajes de programación</div>
 
             <div class="languages-section">
                 <div class="language-tag">
@@ -76,7 +80,7 @@
         </section>
 
         <section class="right-section" id="project-section">
-            <div class="title-divider panel">Proyectos actuales</div>
+            <div class="title-divider panel" data-translate="projectsTitle">Proyectos actuales</div>
 
             <div class="container-grid">
                 <div class="container-preview">
@@ -87,7 +91,7 @@
                             <h id="tooltipMessage">Este proyecto fue creado por Usuario123 (Descripción).</h>
                         </div>
                     </div>
-                    <button class="normal-button">Ver más</button>
+                    <button class="normal-button" data-translate="viewMore">Ver más</button>
                 </div>
                 <div class="container-preview">
                     <div class="panel">
@@ -97,7 +101,7 @@
                             <h id="tooltipMessage">Este proyecto fue creado por Usuario123 (Descripción).</h>
                         </div>
                     </div>
-                    <button class="normal-button">Ver más</button>
+                    <button class="normal-button" data-translate="viewMore">Ver más</button>
                 </div>
                 <div class="container-preview">
                     <div class="panel">
@@ -107,7 +111,7 @@
                             <h id="tooltipMessage">Este proyecto fue creado por Usuario123 (Descripción).</h>
                         </div>
                     </div>
-                    <button class="normal-button">Ver más</button>
+                    <button class="normal-button" data-translate="viewMore">Ver más</button>
                 </div>
             </div>
         </section>

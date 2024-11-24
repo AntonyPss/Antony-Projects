@@ -1,0 +1,36 @@
+{
+  "es": {
+    "header-nav-projects": "Proyectos",
+    "header-nav-about": "Acerca de",
+    "header-nav-contact": "Contacto",
+    "infoTitle": "¡Hola! Soy AntonyPss",
+    "infoMessage": "Desarrollador Web - Apasionado por la tecnología y el diseño",
+    "socialMediaTitle": "Redes sociales",
+    "github": "GitHub",
+    "youtube": "YouTube",
+    "discord": "Discord",
+    "languagesTitle": "Lenguajes de programación",
+    "html": "HTML",
+    "js": "JS",
+    "css": "CSS",
+    "projectsTitle": "Proyectos actuales",
+    "viewMore": "Ver más"
+  },
+  "en": {
+    "header-nav-projects": "Projects",
+    "header-nav-about": "About",
+    "header-nav-contact": "Contact",
+    "infoTitle": "Hello! I'm AntonyPss",
+    "infoMessage": "Web Developer - Passionate about technology and design",
+    "socialMediaTitle": "Social Media",
+    "github": "GitHub",
+    "youtube": "YouTube",
+    "discord": "Discord",
+    "languagesTitle": "Programming Languages",
+    "html": "HTML",
+    "js": "JS",
+    "css": "CSS",
+    "projectsTitle": "Current Projects",
+    "viewMore": "See more"
+  }
+}
