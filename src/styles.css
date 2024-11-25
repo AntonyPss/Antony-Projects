@@ -1,9 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+body.dark-mode {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .header {
+    background-color: #333;
+    border-bottom: #212121 solid 3px;
+}
+
+body.dark-mode .header-nav a {
+    color: #fff;
+}
+
+body.dark-mode .language-selector {
+    background-color: #4CA64F;
+    border-bottom: #326C34 solid 3px;
+    color: #fff;
+}
+
+body.dark-mode .language-selector:hover {
+    background-color: #00A5D9;
+    border-bottom: #006B8E solid 3px;
+    color: #fff;
+}
+
+body.dark-mode .language-tag {
+    background-color: #4e4e4e;
+    border-style: none;
+    border-top: #3a3a3a solid 3px;
+}
+
+body.dark-mode .language-tag span {
+    color: #fff;
+}
+
+body.dark-mode .panel {
+    background-color: #333;
+    border-bottom: #212121 solid 3px;
+}
+
+body.dark-mode .normal-button {
+    background-color: #333;
+    border-bottom: #212121 solid 3px;
+    color: #fff;
+}
+
+body.dark-mode .normal-button:hover {
+    background-color: #4CA64F;
+    border-bottom: #326C34 solid 3px;
+    color: #fff;
+}
+
+body.dark-mode .normal-button:active {
+    background-color: #333;
+    border-bottom: #4CA64F solid 3px;
+    color: #fff;
+}
+
+body.dark-mode .link-panel {
+    background-color: #333;
+    border-bottom: #212121 solid 3px;
+    color: #fff;
+}
+
+body.dark-mode .link-panel:hover {
+    background-color: #00A5D9;
+    border-bottom: #006B8E solid 3px;
+    color: #fff;
+}
+
+body.dark-mode #tooltipTitle {
+    color: #fff;
+}
+
+body.dark-mode #tooltipMessage {
+    color: #f1f1f1;
+}
+
+body.dark-mode #darkModeToggle {
+    color: #fff;
+}
+
 body {
     background-color: #e1e1e1;
     font-family: "Ubuntu", sans-serif;
+    color: #212121;
     margin: 0;
+}
+
+svg {
+    color: currentColor;
+}
+
+.dark-mode-toggle {
+    border-style: none;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 /* ----- Header ----- */
@@ -24,14 +118,37 @@ body {
     height: 32px;
 }
 
+.header-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .header-nav a {
-    margin: 0 10px;
     text-decoration: none;
     font-weight: bolder;
     color: #333;
+    padding: 12px;
 }
 
 .language-selector {
+    height: 40px;
+    padding: 0 8px;
+    border-style: none;
+    background-color: #cdcdcd;
+    border-bottom: #868686 solid 2px;
+    font-family: "Ubuntu", sans-serif;
+    padding: 8px;
+}
+
+.language-selector:hover {
+    background-color: #00A5D9;
+    border-bottom: #006B8E solid 2px;
+    color: #fff;
+}
+
+.language-selector img {
+    justify-content: center;
     width: 24px;
     height: 24px;
 }
@@ -164,10 +281,26 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 450px;
 }
 
 .container-preview img {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container-preview a {
+    width: 100%;
+}
+
+#seeMoreButton {
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -175,15 +308,6 @@ main {
     display: flex;
     flex-direction: column;
     margin: 10px 0;
-}
-
-.container-preview button {
-    width: 100%;
-    padding: 14px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    margin-top: 10px;
 }
 
 /* ----- Common Styles ----- */
@@ -203,6 +327,7 @@ main {
     color: #5B5C5C;
     padding: 10px;
     transition: background-color 0.2s ease;
+    width: 100%;
 }
 
 .normal-button:hover {
@@ -224,7 +349,7 @@ main {
 
 #tooltipTitle, #tooltipMessage {
     font-size: 16px;
-    color: #5B5C5C;
+    color: #222;
 }
 
 #tooltipTitle {
