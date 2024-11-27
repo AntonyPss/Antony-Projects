@@ -1,7 +1,8 @@
 const toggleButton = document.getElementById('darkModeToggle');
 const icon = document.getElementById('icon');
+const menuToggle = document.querySelector('.menu-toggle');
+const headerNav = document.querySelector('.header-nav');
 
-// Función para cargar las traducciones desde el archivo JSON
 function loadTranslations(language) {
     fetch('src/translations.json')
         .then(response => {
@@ -24,36 +25,36 @@ function loadTranslations(language) {
         .catch(error => console.error('Error al cargar traducciones:', error));
 }
 
-// Cambiar el idioma al hacer clic en el botón o seleccionar del dropdown
 function setLanguage(language) {
     loadTranslations(language);
-    localStorage.setItem('language', language); // Guardar el idioma seleccionado en localStorage
+    localStorage.setItem('language', language);
 }
 
-// Establecer el idioma por defecto o el guardado
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLanguage = localStorage.getItem('language') || 'es'; // Por defecto 'es'
+    const savedLanguage = localStorage.getItem('language') || 'es';
     setLanguage(savedLanguage);
 
-    // Vincular el cambio de idioma al dropdown
     const languageDropdown = document.querySelector('.language-selector select');
     if (languageDropdown) {
-        languageDropdown.value = savedLanguage; // Establecer el valor inicial del dropdown
+        languageDropdown.value = savedLanguage;
         languageDropdown.addEventListener('change', (event) => {
-            setLanguage(event.target.value); // Cambiar idioma al seleccionar del dropdown
+            setLanguage(event.target.value);
         });
     }
 });
 
 toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    
-    // Cambiar el icono de acuerdo al tema
+
     if (document.body.classList.contains('dark-mode')) {
-        icon.src = "assets/icons/light-mode-ic.png";  // Icono de modo claro
+        icon.src = "assets/icons/light-mode-ic.png";
         icon.alt = "Icono de modo claro";
     } else {
-        icon.src = "assets/icons/dark-mode-ic.png";  // Icono de modo oscuro
+        icon.src = "assets/icons/dark-mode-ic.png";
         icon.alt = "Icono de modo oscuro";
     }
+});
+
+menuToggle.addEventListener('click', () => {
+    headerNav.classList.toggle('active');
 });
