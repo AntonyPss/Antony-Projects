@@ -4,7 +4,7 @@ body {
     font-family: "Exo 2", serif;
     font-weight: 300;
     font-style: normal;
-    background-color: #000;
+    background-color: #000000;
     color: #fff;
     height: 100%;
 }
@@ -105,7 +105,7 @@ main .profile-img {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
     grid-gap: 20px;
     margin: 16px;
     padding: 10px;
@@ -140,6 +140,12 @@ main .profile-img {
     object-fit: cover;
     border-radius: 16px;
     margin-bottom: 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.item-grid img:hover {
+    opacity: 0.6;
 }
 
 .item-grid-header {
@@ -309,4 +315,50 @@ footer {
     #rightFooter {
         font-size: 0.6rem;
     }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    justify-content: center;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #111;
+}
+
+.modal-content img {
+    border-radius: 12px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
