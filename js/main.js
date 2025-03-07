@@ -1,6 +1,6 @@
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImage");
-const closeBtn = document.querySelector(".close");
+const closeBtn = document.getElementById("modalClose");
 
 function openModal(imgSrc) {
     modal.style.display = "block";
@@ -11,7 +11,7 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-document.querySelectorAll(".item-grid img").forEach((img) => {
+document.querySelectorAll(".preview-list-item img").forEach((img) => {
     img.addEventListener("click", () => {
         openModal(img.src);
     });
