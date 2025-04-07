@@ -1,0 +1,139 @@
+{
+  "projects": {
+    "thony-ui": {
+      "title": "Thony Ui v1.2.9",
+      "description": "Sleek and modern user interface designed to enhance your gaming experience with smooth animations and visually appealing design.",
+      "icon": "../assets/icons/Thony-Ui.png",
+      "iconAlt": "Thony Ui Icon",
+      "screenshots": [
+        {
+          "image": "../assets/img/Thony-Ui (3).png",
+          "title": "Start Screen",
+          "description": "You'll be greeted with smooth motions and elegant transitions."
+        },
+        {
+          "image": "../assets/img/Thony-Ui (1).png",
+          "title": "Play Screen",
+          "description": "The roster has been completely redesigned with a visual touch."
+        },
+        {
+          "image": "../assets/img/Thony-Ui (5).png",
+          "title": "Play Screen (Menu Options)",
+          "description": "The play screen has been redesigned to visually highlight each world."
+        },
+        {
+          "image": "../assets/img/Thony-Ui (6).png",
+          "title": "Play Screen (Servers List)",
+          "description": "The server list has been enhanced for easier navigation."
+        },
+        {
+          "image": "../assets/img/Thony-Ui (4).png",
+          "title": "Chat Screen",
+          "description": "The chat screen has been revamped to offer a cleaner interface."
+        },
+        {
+          "image": "../assets/img/Thony-Ui (2).png",
+          "title": "Pause Screen",
+          "description": "The pause menu now has a fresh, modern new look."
+        }
+      ],
+      "downloads": [
+        {
+          "name": "LinkVertise",
+          "image": "../assets/icons/linkvertise.png",
+          "url": "https://linkvertise.com/149403/thony-ui"
+        },
+        {
+          "name": "MCPEDL",
+          "image": "../assets/icons/mcpedl.png",
+          "url": "https://mcpedl.com/thony-ui/"
+        },
+        {
+          "name": "ModBay",
+          "image": "../assets/icons/modbay.png",
+          "url": "https://modbay.org/textures/3973-thony-ui.html"
+        }
+      ]
+    },
+    "music-ore-ui": {
+      "title": "Music Ore-Ui v1.0",
+      "description": "The Music Ore-Ui offers a sleek and modern interface that enhances the user experience with its intuitive design and easy-to-use controls.",
+      "icon": "../assets/icons/Music-Ore-Ui.png",
+      "iconAlt": "Music Ore-Ui Icon",
+      "screenshots": [
+        {
+          "image": "../assets/img/Music Ore-Ui (1).png",
+          "title": "Music Screen (Main)",
+          "description": "The music player includes a variety of elements such as playback controls, customizable playlists, and an intuitive interface."
+        },
+        {
+          "image": "../assets/img/Music Ore-Ui (2).png",
+          "title": "Music Screen (Tip)",
+          "description": "This screen provides a helpful tip for users, showcasing how to efficiently use the music player interface."
+        },
+        {
+          "image": "../assets/img/Music Ore-Ui (3).png",
+          "title": "Music Screen (About)",
+          "description": "This screen provides detailed information about the music player, including its features and usage instructions."
+        },
+        {
+          "image": "../assets/img/Music Ore-Ui (4).png",
+          "title": "Music Screen (Open Menu)",
+          "description": "The open menu button provides quick access to additional options and settings."
+        }
+      ],
+      "downloads": [
+        {
+          "name": "LinkVertise",
+          "image": "../assets/icons/linkvertise.png",
+          "url": "https://linkvertise.com/149403/music-ui"
+        },
+        {
+          "name": "MCPEDL",
+          "image": "../assets/icons/mcpedl.png",
+          "url": "#"
+        },
+        {
+          "name": "ModBay",
+          "image": "../assets/icons/modbay.png",
+          "url": "https://modbay.org/textures/3226-music-player-ui.html"
+        }
+      ]
+    },
+    "music-ui": {
+      "title": "Music Ui v2.9.2",
+      "description": "Custom music screen offering seamless integration and intuitive experience.",
+      "icon": "../assets/icons/Music-Ui.png",
+      "iconAlt": "Music Ui Icon",
+      "screenshots": [
+        {
+          "image": "../assets/img/Music-Ui (1).png",
+          "title": "Main Screen",
+          "description": "Elegant interface for music selection and playback."
+        },
+        {
+          "image": "../assets/img/Music-Ui (2).png",
+          "title": "Open Menu Button",
+          "description": "The open menu button provides quick access to additional options and settings, enhancing the user experience by making it easier to manage and enjoy the music library."
+        }
+      ],
+      "downloads": [
+        {
+          "name": "LinkVertise",
+          "image": "../assets/icons/linkvertise.png",
+          "url": "https://linkvertise.com/149403/music-ui"
+        },
+        {
+          "name": "MCPEDL",
+          "image": "../assets/icons/mcpedl.png",
+          "url": "#"
+        },
+        {
+          "name": "ModBay",
+          "image": "../assets/icons/modbay.png",
+          "url": "https://modbay.org/textures/3226-music-player-ui.html"
+        }
+      ]
+    }
+  }
+}
