@@ -1,19 +1,91 @@
-/* Estilos para la carga dinámica */
-.download-link {
-    text-decoration: none;
-    color: currentColor;
+.project-icon {
+    display: block;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 124px;
+    height: 124px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.4));
+}
+
+.project-icon:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+
+/* Error Container */
+.error-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .error-message {
-    background-color: var(--color-accent-light);
-    color: var(--color-accent-light-text);
-    padding: 1rem;
-    border-radius: var(--border-radius-medium);
-    margin: 1rem;
     text-align: center;
+    color: var(--color-text-light);
+    background-color: var(--color-background-dark);
+    padding: 10px 14px;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    gap: 10px;
 }
 
-/* Mejoras para el modal */
+.error-message h2 {
+    font-size: 14px;
+}
+
+.error-message p {
+    font-size: 12px;
+}
+
+/* Download Container */
+.download-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.download-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--color-background-dark);
+    border-radius: var(--border-radius-medium);
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 200px;
+}
+
+.download-card:hover {
+    transform: scale(1.05);
+}
+
+.download-card img {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--border-radius-medium);
+    margin-bottom: 10px;
+}
+
+.download-info h4 {
+    color: var(--color-text-light);
+    font-size: 16px;
+}
+
+.download-info p {
+    color: var(--color-text-light);
+    font-size: 14px;
+}
+
+/* Modal Container */
 .modal {
     display: none;
     position: fixed;
@@ -42,70 +114,49 @@
 }
 
 .modal-close-btn {
-    background-color: var(--color-accent-light);
-    color: var(--color-accent-light-text);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+    font-size: 16px;
     border: none;
-    padding: 8px 16px;
     border-radius: var(--border-radius-medium);
+    padding: 10px 15px;
     cursor: pointer;
-    margin: 10px;
-    font-family: inherit;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .modal-close-btn:hover {
-    background-color: var(--color-accent-light);
+    background-color: var(--color-accent-hover);
     opacity: 0.9;
 }
 
-.viewImage {
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.viewImage:hover {
-    transform: scale(1.02);
-}
-
-/* Estilos para las imágenes de vista previa */
-.preview-list-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--border-radius-high);
-    background: var(--color-background-dark);
-    transition: transform 0.3s ease;
-}
-
-.preview-list-item:hover {
-    transform: translateY(-5px);
-}
-
-.preview-list-item img.viewImage {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.preview-header {
-    padding: 20px;
-}
-
-.preview-header h3 {
-    color: var(--color-title);
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .preview-list-item img.viewImage {
-        height: 250px;
+/* Media Quires */
+@media (max-width: 1200px) {
+    .download-card {
+        width: 180px;
     }
+
+    .project-icon {
+        width: 110px;
+        height: 110px;
+    }
+    
 }
 
-@media (max-width: 480px) {
-    .preview-list-item img.viewImage {
-        height: 200px;
+@media (max-width: 768px) {
+    .download-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .download-card {
+        width: 100%;
+    }
+
+    .project-icon {
+        width: 100px;
+        height: 100px;
     }
 }
