@@ -12,7 +12,7 @@ I'm passionate about software development, always learning and building new thin
 
 ## 📫 Contact
 
-Feel free to connect with me via [GitHub](https://github.com/antonypss) or through my [portfolio site](https://antonypss.github.io/Antony-Projects).
+Feel free to connect with me via [GitHub](https://github.com/antonypss) or through my [portfolio site](https://antony-portafolio.vercel.app/).
 
 ---
 
