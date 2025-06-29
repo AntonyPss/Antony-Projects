@@ -61,7 +61,7 @@
     padding: 20px;
     transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 200px;
+    width: 240px;
 }
 
 .download-card:hover {
@@ -152,7 +152,13 @@
     }
 
     .download-card {
-        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 360px;
+    }
+
+    .download-info {
+        text-align: start;
     }
 
     .project-icon {

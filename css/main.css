@@ -155,7 +155,6 @@ header nav .button {
     justify-content: center;
     text-align: center;
     width: calc(100% - 340px);
-    gap: 1rem;
 }
 
 .profile img {
@@ -187,12 +186,74 @@ header nav .button {
     opacity: 0.8;
 }
 
+/* Details Styles */
+.details-container {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+}
+
+.details-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.details-item {
+    background-color: var(--color-background-dark);
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-background-light);
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-medium);
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.details-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.details-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.details-header {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 18px;
+    color: var(--color-accent-light-text);
+}
+
+.details-header span {
+    opacity: 0.8;
+}
+
+.details-info {
+    width: 100%;
+}
+
+.details-info p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
 /* Projects Grid */
 .projects-container {
     display: flex;
     align-items: center;
-    gap: 20px;
     padding: 20px 0;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(470px, 1fr));
+    gap: 20px;
+    width: 100%;
 }
 
 .card-item {
@@ -207,13 +268,6 @@ header nav .button {
 .card-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(470px, 1fr));
-    gap: 20px;
-    width: 100%;
 }
 
 .card-header {
@@ -303,11 +357,23 @@ header nav .button {
 }
 
 /* Users Sections */
+.users-container {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.users-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
 .card-user-item {
     background-color: var(--color-background-dark);
     border-radius: var(--border-radius-medium);
     border: 1px solid var(--color-background-light);
-    width: 300px;
     text-decoration: none;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -452,18 +518,6 @@ a {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
 @keyframes showOpacity {
     from {
         opacity: 0;
@@ -480,8 +534,12 @@ a {
         padding: 0 1rem;
     }
 
+    .details-list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
     .card-list {
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 
     .card-item {
@@ -500,8 +558,12 @@ a {
         height: 100px;
     }
 
+    .details-list {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+
     .card-list {
-        grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 
     .card-item {
@@ -543,6 +605,10 @@ a {
     .upper {
         width: 100%;
         padding: 0 1rem;
+    }
+
+    .details-list {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 
     .card-list {
