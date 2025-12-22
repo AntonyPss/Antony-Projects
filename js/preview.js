@@ -24,6 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
             page: "pages/music-ui.html",
             date: "April 15, 2025",
         },
+        {
+            cover: "images/covers/cover-notfound.webp",
+            title: "Nocturn UI v1.0",
+            message:
+                "Soon...",
+            page: "#",
+            date: "Undefined",
+        }
     ];
 
     const previewList = document.getElementById("projects-grid");
