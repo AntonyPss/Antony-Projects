@@ -2,131 +2,134 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portfolio of Antony's projects including Minecraft UI designs">
-    <title>Antony Projects - Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="assets/icons/x-icon.png">
-    <link href="css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Antony Community</title>
+    <meta name="description"
+        content="Welcome to Antony's Project Portfolio, showcasing innovative Minecraft UI designs and collaborations.">
+    <link rel="icon" href="../images/icons/favicon.webp" type="image/webp">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Header -->
-    <header role="banner">
-        <nav aria-label="Main navigation">
-            <a href="#home" class="item home">
-                <img src="assets/icons/logo.png" alt="Logo">
+    <header id="header" class="header" role="heading" aria-label="Header">
+        <div class="header-content container">
+            <!-- Logo -->
+            <a href="#" class="nav-logo" title="Home" role="banner">
+                <img src="images/icons/favicon.webp" alt="Logo" width="32" height="32">
                 <span>Antony Community</span>
             </a>
-            <div class="center">
-                <a href="#welcome" class="item"><i class="ri-home-4-fill"></i> Home</a>
-                <a href="#projects" class="item"><i class="ri-apps-2-fill"></i> Projects</a>
-                <a href="#contributions" class="item"><i class="ri-shake-hands-fill"></i> Contributions</a>
+
+            <!-- Navigation -->
+            <div id="navMenu" class="navigation-content">
+                <!-- Navigation Links -->
+                <nav class="nav-links" role="navigation">
+                    <a href="#home" class="nav-link" title="Home">Home</a>
+                    <a href="#projects" class="nav-link" title="Projects">Projects</a>
+                    <a href="#collaborations" class="nav-link" title="Collaborations">Collaborations</a>
+                    <a href="#contact" class="nav-link" title="Contact">Contact</a>
+                </nav>
+
+                <!-- Separator Line -->
+                <div class="separator-line"></div>
+
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons" role="menubar">
+                    <!-- GitHub -->
+                    <a href="https://github.com/AntonyPss" class="menu-item" title="GitHub" role="menuitem"
+                        target="_blank">
+                        <i class="ri-github-fill"></i>
+                    </a>
+
+                    <!-- Discord -->
+                    <a href="https://discord.com/users/antony_xd" class="menu-item" title="Discord" role="menuitem"
+                        target="_blank">
+                        <i class="ri-discord-fill"></i>
+                    </a>
+                </div>
             </div>
-            <a href="https://github.com/AntonyPss/Antony-Projects" target="_blank" class="item button"><i
-                    class="ri-github-fill"></i> GitHub</a>
-        </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-icon" id="menuToggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
     </header>
 
-    <!-- Main -->
-    <section id="welcome" class="section-div section-center">
-        <div class="upper">
-            <div class="profile">
-                <img src="assets/icons/profile.jpg" alt="Profile">
+    <!-- Main Content -->
+    <main id="home" class="main" role="main" aria-label="Main">
+        <!-- Hero Section -->
+        <div class="hero-content container">
+            <div class="hero-card-label">
+                <span>Redefining the Bedrock Experience</span>
             </div>
-            <div class="upper-label">
-                <h3>Hi, I'm Antony!</h3>
-                <p>Welcome to my portfolio. Here you'll find my projects, contributions, and Minecraft UI designs.</p>
+            <h1>Welcome to Antony's Project Portfolio</h1>
+            <p>Discover my latest Minecraft UI designs and collaborations.</p>
+            <a href="#projects" class="btn-primary" title="View Projects">View Projects</a>
+        </div>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section container" aria-label="Projects Section">
+            <h2 class="section-title">Featured Projects</h2>
+            <div id="projects-grid" class="projects-grid">
+                <!-- Project cards will be dynamically inserted here -->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section-div section-center">
-        <div class="section-label">
-            <h3 class="section-title">My Projects</h3>
-            <p class="section-subtitle">
-                Here you can explore some of my most recent projects, showcasing my work in Minecraft UI design, web
-                development, and other creative endeavors. Each project highlights my skills, creativity, and passion
-                for building unique digital experiences.
-            </p>
-        </div>
-        <div class="projects-container">
-            <div id="previewList" class="card-list"></div>
-        </div>
-    </section>
-
-    <!-- Contributions -->
-    <div id="contributions" class="section-div section-center">
-        <div class="section-label">
-            <h3 class="section-title">My Contributions</h3>
-            <p class="section-subtitle">
-                I have contributed to various projects, including custom UI designs for Minecraft Bedrock. Below are
-                some of the notable contributions.
-            </p>
-        </div>
-        <div class="users-container">
-            <div class="users-list">
-            <!-- Galaxybrine -->
-            <a href="#" class="card-user-item" target="_blank">
-                <div class="card-user">
-                    <img src="assets/icons/galaxite.jpg" alt="Galaxity logo" class="card-icon">
-                    <div class="card-info">
-                        <h3>Galaxity (@Galaxybrine_Playz)</h3>
-                        <p>Creator of BetterChat and other projects.</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Origin Lite -->
-            <a href="https://github.com/Origin-Client" class="card-user-item" target="_blank">
-                <div class="card-user">
-                    <img src="https://avatars.githubusercontent.com/u/213269799?s=200&v=4" alt="Origin logo" class="card-icon">
-                    <div class="card-info">
-                        <h3>Origin Client</h3>
-                        <p>Open source Lightweight Minecraft Bedrock Utility And Visuals Client For Mobile.</p>
-                    </div>
-                </div>
-            </a>
+        <!-- Collaborations Section -->
+        <section id="collaborations" class="collaborations-section container" aria-label="Collaborations Section">
+            <h2 class="section-title">Collaborations</h2>
+            <div id="collabs-list" class="collabs-grid">
+                <!-- Collaboration items will be dynamically inserted here -->
             </div>
-        </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section container" aria-label="Contact Section">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>Have a project in mind or want to collaborate? Feel free to reach out!</p>
+            <div class="contact-buttons">
+                <!-- Email Button -->
+                <a href="mailto:ROVALOSKI@gmail.com" class="btn-secondary" title="Email">
+                    <i class="ri-mail-fill"></i> Send Email
+                </a>
+
+                <!-- GitHub Button -->
+                <a href="https://github.com/AntonyPss/Antony-Projects" class="btn-secondary" title="GitHub Profile"
+                    target="_blank">
+                    <i class="ri-github-fill"></i> View GitHub
+                </a>
+
+                <!-- Discord Button -->
+                <a href="https://discord.gg/kYDf4gadKw" class="btn-secondary" title="Discord" target="_blank">
+                    <i class="ri-discord-fill"></i> Join Discord
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Neko Image Hover -->
+    <div class="neko-container">
+        <span class="neko-trigger">Neko Arc Here!</span>
+        <img src="images/icons/neko.jpg" alt="Neko" class="neko-float" id="neko-img">
     </div>
 
-    <!-- Closing -->
-    <section class="section-div">
-        <div class="closing-content">
-            <h3 class="closing-title">Thank You for Visiting!</h3>
-            <p class="closing-text">That's all for now! Stay tuned for more updates and exciting projects.</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="left">
-            <div class="disclaimer">
-                <div class="page">
-                    <img src="assets/icons/logo.png" alt="Logo">
-                    <span>Antony Community</span>
-                </div>
-                <div class="about">
-                    <p class="copyright">© 2025 Antony Community. All rights reserved.</p>
-                    <p class="made">Made with <i class="ri-heart-fill heart"></i> by Antony.</p>
-                </div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="contacts">
-                <span>Contact Me</span>
-                <a href="https://discord.gg/kYDf4gadKw" target="_blank" class="item"><i class="ri-discord-fill"></i>
-                    Discord</a>
-                <a href="https://github.com/AntonyPss" target="_blank" class="item"><i class="ri-github-fill"></i>
-                    GitHub</a>
-            </div>
+    <!-- Footer Section -->
+    <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
+        <div class="info">
+            <p>&copy; 2025 Antony Community. All rights reserved.</p>
+            <p>Made with ❤️ by Antony</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="js/preview.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
