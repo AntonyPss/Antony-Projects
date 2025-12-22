@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Xelo Client Collaboration",
         },
         {
-            href: "galaxite.net",
+            href: "https://galaxiteprojects.carrd.co/",
             img: "images/icons/galaxite.jpg",
             name: "Galaxity (@Galaxybrine_Playz)",
             description: "Creator of BetterChat and other projects.",
