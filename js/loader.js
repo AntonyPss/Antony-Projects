@@ -90,7 +90,7 @@ async function loadProjectData(projectId) {
 function getFallbackData(projectId) {
     const fallbacks = {
         thony_ui: {
-            title: "Thony Ui v1.2.9",
+            title: "Thony UI",
             description: "Modern UI with smooth animations",
             icon: "../assets/icons/Thony-Ui.png",
             versionSupport: "1.20+",

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const previewItems = [
         {
             cover: "images/covers/cover-music-oreui.webp",
-            title: "Music Ore-Ui v1.0",
+            title: "Music Ore-UI v1.0",
             message:
                 "Enhance your Minecraft experience with a brand-new screen featuring the elegant Ore-Ui Style, designed specifically for custom music integration.",
             page: "pages/music-oreui.html",
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             cover: "images/covers/cover-thony-ui.webp",
-            title: "Thony Ui v1.2.9",
+            title: "Thony UI v1.3.0",
             message:
                 "Transform the default Minecraft user interface into a sleek, modern design that elevates your gameplay experience to the next level.",
             page: "pages/thony-ui.html",
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             cover: "images/covers/cover-music-ui.webp",
-            title: "Music Ui v2.9.2",
+            title: "Music UI v2.9.2",
             message:
                 "Bring your favorite tunes to life with a custom music screen, offering seamless integration and an intuitive user experience.",
             page: "pages/music-ui.html",
