@@ -100,7 +100,7 @@
             "title": "Music UI",
             "description": "Custom music screen offering seamless integration and intuitive experience.",
             "icon": "../images/icons/music-ui.webp",
-            "version": "2.9.2",
+            "version": "2.9.0",
             "versionSupport": "1.21+",
             "screenshots": [
                 {
