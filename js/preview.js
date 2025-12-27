@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             cover: "images/covers/cover-music-ui.webp",
-            title: "Music UI v2.9.2",
+            title: "Music UI v2.9.0",
             message:
                 "Bring your favorite tunes to life with a custom music screen, offering seamless integration and an intuitive user experience.",
             page: "pages/music-ui.html",
