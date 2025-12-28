@@ -4,7 +4,7 @@ Welcome to my project portfolio! Here you'll find a collection of my work, inclu
 
 ## 🚀 Featured Projects
 
-- Explore my latest and most notable projects at [Antony Projects](https://antonypss.github.io/Antony-Projects).
+-   Explore my latest and most notable projects at [Antony Projects](https://antonypss.github.io/Antony-Projects).
 
 ## 📂 About Me
 

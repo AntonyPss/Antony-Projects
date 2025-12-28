@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     const previewItems = [
         {
+            cover: "images/covers/cover-notfound.webp",
+            title: "Nocturn UI v1.0",
+            message: "Soon...",
+            page: "#",
+            date: "Undefined",
+        },
+        {
             cover: "images/covers/cover-music-oreui.webp",
             title: "Music Ore-UI v1.0",
             message:
                 "Enhance your Minecraft experience with a brand-new screen featuring the elegant Ore-Ui Style, designed specifically for custom music integration.",
             page: "pages/music-oreui.html",
             date: "March 19, 2025",
+            tag: "Resources/UI",
         },
         {
             cover: "images/covers/cover-thony-ui.webp",
@@ -15,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Transform the default Minecraft user interface into a sleek, modern design that elevates your gameplay experience to the next level.",
             page: "pages/thony-ui.html",
             date: "June 7, 2025",
+            tag: "Resources/UI",
         },
         {
             cover: "images/covers/cover-music-ui.webp",
@@ -23,15 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Bring your favorite tunes to life with a custom music screen, offering seamless integration and an intuitive user experience.",
             page: "pages/music-ui.html",
             date: "April 15, 2025",
+            tag: "Resources/UI",
         },
-        {
-            cover: "images/covers/cover-notfound.webp",
-            title: "Nocturn UI v1.0",
-            message:
-                "Soon...",
-            page: "#",
-            date: "Undefined",
-        }
     ];
 
     const previewList = document.getElementById("projects-grid");
@@ -54,11 +56,24 @@ document.addEventListener("DOMContentLoaded", () => {
         img.className = "project-image";
         card.appendChild(img);
 
+        // Title and Tag Container
+        const titleTagContainer = document.createElement("div");
+        titleTagContainer.className = "title-tag-container";
+
         // Title
         const title = document.createElement("h3");
         title.className = "project-title";
         title.textContent = item.title;
-        card.appendChild(title);
+        titleTagContainer.appendChild(title);
+
+        // Tag
+        const tag = document.createElement("span");
+        tag.className = "project-tag";
+        tag.textContent = item.tag || "Undefined";
+        titleTagContainer.appendChild(tag);
+
+        // Append the container to the card
+        card.appendChild(titleTagContainer);
 
         // Description
         const description = document.createElement("p");

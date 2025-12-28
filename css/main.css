@@ -342,10 +342,33 @@ html {
     margin-bottom: 15px;
 }
 
+.project-card .title-tag-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
 .project-card .project-title {
     font-size: var(--fs-lg);
     font-weight: 700;
-    margin-bottom: 10px;
+}
+
+.project-card .project-tag {
+    display: inline-flex;
+    padding: 4px 12px;
+    background-color: var(--primary-brown);
+    border: 1px solid var(--primary-light);
+    color: var(--text-medium-contrast);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    border-radius: var(--radius-high);
+    transition: var(--transition-all);
+}
+
+.project-card .project-tag:hover {
+    opacity: 0.8;
 }
 
 .project-card .project-description {
@@ -606,4 +629,16 @@ html {
         grid-template-columns: 1fr;
         gap: 12px;
     }
+}
+
+/* CSS Animations */
+.fade-anim {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }

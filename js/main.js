@@ -57,4 +57,27 @@ document.addEventListener("DOMContentLoaded", () => {
     trigger.addEventListener("mouseleave", () => {
         nekoImg.classList.remove("is-visible");
     });
+
+    // HTML Anims
+    const observerOptions = {
+        threshold: 0.2,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+            }
+        });
+    }, observerOptions);
+
+    const sections = ["projects", "collaborations", "contact"];
+    sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
+
+    setTimeout(() => {
+        document.getElementById("hero-content").classList.add("is-visible");
+    }, 100);
 });

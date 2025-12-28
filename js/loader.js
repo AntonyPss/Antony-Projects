@@ -16,6 +16,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error:", error);
         showError();
     }
+
+    // HTML Anims
+    const observerOptions = {
+        threshold: 0.2,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+            }
+        });
+    }, observerOptions);
+
+    const sections = ["review", "download", "contact"];
+    sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
+
+    setTimeout(() => {
+        document.getElementById("hero-content").classList.add("is-visible");
+    }, 100);
 });
 
 // Helper functions
@@ -78,7 +101,8 @@ async function loadProjectData(projectId) {
         }
 
         return project;
-    } catch (error) {F
+    } catch (error) {
+        F;
         console.warn(
             "Failed to load project data from JSON, using fallback:",
             error

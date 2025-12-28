@@ -106,12 +106,12 @@
                 {
                     "image": "../images/projects/music-ui-1.webp",
                     "title": "Main Screen",
-                    "description": "Elegant interface for music selection and playback."
+                    "description": "Easily manage and customize your playlists with a user-friendly interface."
                 },
                 {
                     "image": "../images/projects/music-ui-2.webp",
                     "title": "Open Menu Button",
-                    "description": "The open menu button provides quick access to additional options and settings, enhancing the user experience by making it easier to manage and enjoy the music library."
+                    "description": "The open menu button provides quick access to options."
                 }
             ],
             "downloads": [
