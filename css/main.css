@@ -26,7 +26,7 @@
     /* --- General Colors --- */
     --color-bg: #1E1A17;
     --color-surface: #2C2622;
-    --color-text-beige: #D7D0CA;
+    --color-text-beige: #cec6c0;
 
     /* --- Transitions --- */
     --transition-all: 0.3s ease;
@@ -57,11 +57,17 @@ html {
     width: 100%;
 }
 
+.section-title {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 8px 20px;
     text-decoration: none;
     font-size: var(--fs-base);
     font-weight: 600;
@@ -81,7 +87,7 @@ html {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 8px 20px;
     text-decoration: none;
     font-size: var(--fs-base);
     font-weight: 600;
@@ -303,12 +309,6 @@ html {
     flex-direction: column;
     align-items: center;
     margin-top: 60px;
-}
-
-.section-title {
-    font-size: var(--fs-xl);
-    font-weight: 600;
-    line-height: 1.5;
 }
 
 .projects-grid {
