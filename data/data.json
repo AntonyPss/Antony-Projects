@@ -2,7 +2,7 @@
     "projects": {
         "thony-ui": {
             "title": "Thony UI",
-            "description": "Modern UI with smooth animations and appealing design.",
+            "description": "A sleek and modern interface overhaul for Minecraft Bedrock. Designed to provide a clean, professional, and clutter-free experience by completely redesigning every menu and HUD element for maximum clarity.",
             "icon": "../images/icons/thony-ui.webp",
             "version": "1.3.0",
             "versionSupport": "1.21+",

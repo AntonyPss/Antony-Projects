@@ -1,27 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const previewItems = [
         {
-            cover: "images/covers/cover-notfound.webp",
-            title: "Nocturn UI v1.0",
-            message: "Soon...",
-            page: "#",
-            date: "Undefined",
-        },
-        {
-            cover: "images/covers/cover-music-oreui.webp",
-            title: "Music Ore-UI v1.0",
-            message:
-                "Enhance your Minecraft experience with a brand-new screen featuring the elegant Ore-Ui Style, designed specifically for custom music integration.",
-            page: "pages/music-oreui.html",
-            date: "March 19, 2025",
-            tag: "Resources/UI",
-        },
-        {
             cover: "images/covers/cover-thony-ui.webp",
             title: "Thony UI v1.3.0",
             message:
-                "Transform the default Minecraft user interface into a sleek, modern design that elevates your gameplay experience to the next level.",
-            page: "pages/thony-ui.html",
+                "Transform the default Minecraft user interface into a sleek, modern design...",
+            page: "pages/project.html?id=thony-ui",
             date: "June 7, 2025",
             tag: "Resources/UI",
         },
@@ -29,9 +13,26 @@ document.addEventListener("DOMContentLoaded", () => {
             cover: "images/covers/cover-music-ui.webp",
             title: "Music UI v2.9.0",
             message:
-                "Bring your favorite tunes to life with a custom music screen, offering seamless integration and an intuitive user experience.",
-            page: "pages/music-ui.html",
+                "Bring your favorite tunes to life with a custom music screen...",
+            page: "pages/project.html?id=music-ui",
             date: "April 15, 2025",
+            tag: "Resources/UI",
+        },
+        {
+            cover: "images/covers/cover-music-oreui.webp",
+            title: "Music Ore-UI v1.0",
+            message:
+                "Enhance your Minecraft experience with a brand-new screen...",
+            page: "pages/project.html?id=music-oreui",
+            date: "March 19, 2025",
+            tag: "Resources/UI",
+        },
+        {
+            cover: "images/covers/cover-notfound.webp",
+            title: "Nocturn UI v1.0",
+            message: "Soon...",
+            page: "#",
+            date: "",
             tag: "Resources/UI",
         },
     ];
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Tag
         const tag = document.createElement("span");
         tag.className = "project-tag";
-        tag.textContent = item.tag || "Undefined";
+        tag.textContent = item.tag || "Other";
         titleTagContainer.appendChild(tag);
 
         // Append the container to the card
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dateIcon.className = "ri-calendar-fill";
 
         const dateSpan = document.createElement("span");
-        dateSpan.textContent = item.date;
+        dateSpan.textContent = item.date || "Soon";
 
         dateTag.appendChild(dateIcon);
         dateTag.appendChild(dateSpan);
@@ -167,4 +168,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     collaborationList.appendChild(collFragment);
+
+    // Neko Image Cursor
+    const trigger = document.querySelector(".neko-trigger");
+    const nekoImg = document.getElementById("neko-img");
+
+    trigger.addEventListener("mouseenter", () => {
+        nekoImg.classList.add("is-visible");
+    });
+
+    trigger.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        nekoImg.style.left = `${x - 40}px`;
+        nekoImg.style.top = `${y - 90}px`;
+    });
+
+    trigger.addEventListener("mouseleave", () => {
+        nekoImg.classList.remove("is-visible");
+    });
+
+    // HTML Anims
+    const observerOptions = {
+        threshold: 0.2,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+            }
+        });
+    }, observerOptions);
+
+    const sections = ["projects", "collaborations", "contact"];
+    sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
+
+    setTimeout(() => {
+        document.getElementById("hero-content").classList.add("is-visible");
+    }, 100);
 });

@@ -5,27 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Antony Community</title>
-
-    <meta name="description"
-        content="Welcome to Antony's Project Portfolio, showcasing innovative Minecraft UI designs and collaborations.">
-    <meta name="keywords" content="portfolio, web, projects, JSON, Minecraft">
-    <meta property="og:title" content="Antony Community - Website">
+    <title>Antony Community - Project UI</title>
+    <link rel="icon" href="../images/icons/favicon.webp" type="image/webp">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" href="images/icons/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/secondary.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Header -->
-    <header id="header" class="header">
+    <header id="header" class="header" role="heading" aria-label="Header">
         <div class="header-content container">
             <!-- Logo -->
-            <a href="#" class="nav-logo" title="Home" role="banner">
-                <img src="images/icons/favicon.webp" alt="Logo" width="32" height="32">
+            <a href="../index.html" class="nav-logo" title="Home" role="banner">
+                <img src="../images/icons/favicon.webp" alt="Logo" width="32" height="32">
                 <span>Antony Community</span>
             </a>
 
@@ -34,8 +29,8 @@
                 <!-- Navigation Links -->
                 <nav class="nav-links" role="navigation">
                     <a href="#home" class="nav-link" title="Home">Home</a>
-                    <a href="#projects" class="nav-link" title="Projects">Projects</a>
-                    <a href="#collaborations" class="nav-link" title="Collaborations">Collaborations</a>
+                    <a href="#review" class="nav-link" title="Review">Review</a>
+                    <a href="#download" class="nav-link" title="Download">Download</a>
                     <a href="#contact" class="nav-link" title="Contact">Contact</a>
                 </nav>
 
@@ -56,17 +51,6 @@
                         <i class="ri-discord-fill"></i>
                     </a>
                 </div>
-
-                <!-- Separator Line -->
-                <div class="separator-line"></div>
-
-                <!-- Global Website -->
-                <div class="nav-buttons" role="menubar">
-                    <a href="https://antony-portafolio.vercel.app/" class="menu-item" title="Global Website"
-                        role="menuitem" target="_blank">
-                        <i class="ri-global-line"></i>
-                    </a>
-                </div>
             </div>
 
             <!-- Mobile Menu Toggle -->
@@ -76,41 +60,49 @@
         </div>
     </header>
 
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message" role="alert" aria-live="assertive" style="display: none;">
+        <!-- Error content will be dynamically inserted here -->
+    </div>
+
     <!-- Main Content -->
     <main id="home" class="main" role="main" aria-label="Main">
         <!-- Hero Section -->
         <div id="hero-content" class="hero-content container fade-anim">
-            <div class="hero-card-label">
-                <span>Redefining the Bedrock Experience</span>
+            <div class="hero-image">
+                <img alt="${project.title}" id="projectIcon">
             </div>
-            <h1>Welcome to Antony's Project Portfolio</h1>
-            <p>Discover my latest Minecraft UI designs and collaborations.</p>
-            <a href="#projects" class="btn-primary" title="View Projects">View Projects</a>
+            <h1 id="projectTitle">Title</h1>
+            <p id="projectDescription">Description</p>
+            <div class="hero-buttons">
+                <div id="detailsList" class="details-list">
+                    <!-- Details will be dynamically inserted here -->
+                </div>
+            </div>
         </div>
 
         <!-- Projects Section -->
-        <section id="projects" class="projects-section container fade-anim" aria-label="Projects Section">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-description">A collection of my best work, blending minimalism and functionality to redefine your Minecraft interface.</p><p class="section-description"></p>
-            <div id="projects-grid" class="projects-grid">
+        <section id="review" class="projects-section container fade-anim" aria-label="Review Section">
+            <h2 class="section-title">Review Screenshots</h2>
+            <p class="section-description">Explore every detail. See how modern textures and clean typography come together in a sleek UI experience.</p>
+            <div id="projects-list" class="projects-grid">
                 <!-- Project cards will be dynamically inserted here -->
             </div>
         </section>
 
-        <!-- Collaborations Section -->
-        <section id="collaborations" class="collaborations-section container fade-anim"
-            aria-label="Collaborations Section">
-            <h2 class="section-title">Collaborations</h2>
-            <p class="section-description">Joint projects created with fellow developers to push the visual and technical limits of Bedrock Edition.</p>
-            <div id="collabs-list" class="collabs-grid">
-                <!-- Collaboration items will be dynamically inserted here -->
+        <!-- Download Section -->
+        <section id="download" class="download-section container fade-anim" aria-label="Download Section">
+            <h2 class="section-title">Download Now</h2>
+            <p class="section-description">Get the latest version quickly and safely. Fully compatible with the most recent Minecraft releases.</p>
+            <div id="download-list" class="download-buttons">
+                <!-- Download buttons will be dynamically inserted here -->
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact-section container fade-anim" aria-label="Contact Section">
             <h2 class="section-title">Get in Touch</h2>
-            <p class="section-description">Have a project in mind or want to collaborate? Feel free to reach out!</p>
+            <p>Have a project in mind or want to collaborate? Feel free to reach out!</p>
             <div class="contact-buttons">
                 <!-- Email Button -->
                 <a href="mailto:ROVALOSKI@gmail.com" class="btn-secondary" title="Email">
@@ -131,12 +123,6 @@
         </section>
     </main>
 
-    <!-- Neko Image Hover -->
-    <div class="neko-container">
-        <span class="neko-trigger">Neko Arc Here!</span>
-        <img src="images/icons/neko.jpg" alt="Neko" class="neko-float" id="neko-img">
-    </div>
-
     <!-- Footer Section -->
     <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
         <div class="info">
@@ -145,9 +131,31 @@
         </div>
     </footer>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <button class="modal-close-btn" id="modalClose" aria-label="Close modal">
+            <i class="ri-close-large-line"></i>
+        </button>
+
+        <button class="modal-nav prev" id="modalPrev">
+            <i class="ri-arrow-left-s-line"></i>
+        </button>
+
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" src="" alt="Project Preview">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+
+        <button class="modal-nav next" id="modalNext">
+            <i class="ri-arrow-right-s-line"></i>
+        </button>
+    </div>
+
     <!-- Scripts -->
-    <script src="js/preview.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../js/loader.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

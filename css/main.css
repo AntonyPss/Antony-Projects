@@ -42,7 +42,6 @@ body {
     font-family: 'Bricolage Grotesque', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text-beige);
-    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -61,6 +60,14 @@ html {
     font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.5;
+}
+
+.section-description {
+    font-size: var(--fs-base);
+    font-weight: 400;
+    color: var(--text-medium-contrast);
+    margin-top: 10px;
+    opacity: 0.7;
 }
 
 .btn-primary {
@@ -171,6 +178,7 @@ html {
     font-size: var(--fs-sm);
     text-decoration: none;
     transition: var(--transition-all);
+    padding: 0 10px;
 }
 
 .nav-link:hover {
@@ -294,6 +302,7 @@ html {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--text-high-contrast);
+    line-height: 2;
 }
 
 .hero-content p {
@@ -337,9 +346,12 @@ html {
 }
 
 .project-card .project-image {
+    display: block;
     width: 100%;
     border-radius: var(--radius-small);
     margin-bottom: 15px;
+    min-height: 164px;
+    transition: var(--transition-all);
 }
 
 .project-card .title-tag-container {
@@ -365,16 +377,26 @@ html {
     font-weight: 600;
     border-radius: var(--radius-high);
     transition: var(--transition-all);
+    opacity: 0.7;
 }
 
 .project-card .project-tag:hover {
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .project-card .project-description {
     font-size: var(--fs-sm);
     font-weight: 400;
     color: var(--text-low-contrast);
+    line-height: 1.5;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    min-height: 42px;
+    height: auto;
 }
 
 .project-card .card-footer {
@@ -431,6 +453,7 @@ html {
     text-align: left;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
 }
 
 .collaboration-card:hover {
@@ -491,16 +514,10 @@ html {
     margin-top: 20px;
 }
 
-.contact-section p {
-    font-size: var(--fs-base);
-    font-weight: 400;
-    color: var(--text-medium-contrast);
-    margin-bottom: 20px;
-}
-
 .contact-buttons {
     display: flex;
     gap: 15px;
+    margin-top: 20px;
 }
 
 @media (max-width: 480px) {

@@ -90,14 +90,6 @@ async function loadProjectData(projectId) {
             }, {});
 
             project = normalizedMap[normalizedTarget];
-
-            // Still not found: try fallback definitions
-            if (!project) {
-                project =
-                    getFallbackData(projectId) ||
-                    getFallbackData(projectId.replace(/-/g, "_")) ||
-                    getFallbackData(projectId.replace(/_/g, "-"));
-            }
         }
 
         return project;
@@ -107,77 +99,7 @@ async function loadProjectData(projectId) {
             "Failed to load project data from JSON, using fallback:",
             error
         );
-        return getFallbackData(projectId);
     }
-}
-
-function getFallbackData(projectId) {
-    const fallbacks = {
-        thony_ui: {
-            title: "Thony UI",
-            description: "Modern UI with smooth animations",
-            icon: "../assets/icons/Thony-Ui.png",
-            versionSupport: "1.20+",
-            screenshots: [
-                {
-                    image: "../assets/img/Thony-Ui (1).png",
-                    title: "Fallback Image",
-                    description: "Default description",
-                },
-            ],
-            downloads: [
-                {
-                    name: "MediaFire",
-                    url: "#",
-                    image: "../assets/icons/MediaFire.png",
-                },
-            ],
-        },
-        music_ore_ui: {
-            title: "Music Ore UI",
-            description: "Music-themed UI pack",
-            icon: "../assets/icons/Music-Ore-UI.png",
-            versionSupport: "1.20+",
-            screenshots: [
-                {
-                    image: "../assets/img/Music-Ore-UI (1).png",
-                    title: "Fallback Image",
-                    description: "Default description",
-                },
-            ],
-            downloads: [
-                {
-                    name: "MediaFire",
-                    url: "#",
-                    image: "../assets/icons/MediaFire.png",
-                },
-            ],
-        },
-        music_ui: {
-            title: "Music UI",
-            description: "Another music UI pack",
-            icon: "../assets/icons/Music-UI.png",
-            versionSupport: "1.20+",
-            screenshots: [
-                {
-                    image: "../assets/img/Music-UI (1).png",
-                    title: "Fallback Image",
-                    description: "Default description",
-                },
-            ],
-            downloads: [
-                {
-                    name: "MediaFire",
-                    url: "#",
-                    image: "../assets/icons/MediaFire.png",
-                },
-            ],
-        },
-    };
-
-    // También buscar por ID con guiones
-    const alternativeId = projectId.replace(/_/g, "-");
-    return fallbacks[projectId] || fallbacks[alternativeId];
 }
 
 function setupProject(project) {
