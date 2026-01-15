@@ -13,7 +13,7 @@
     --fs-xl: 1.75rem;
 
     /* --- Text Colors --- */
-    --text-high-contrast: #FFFFFF;
+    --text-high-contrast: #cacaca;
     --text-medium-contrast: #D7D0CA;
     --text-low-contrast: #A0958E;
     --text-accent: #614b3d;
@@ -78,7 +78,7 @@ html {
     text-decoration: none;
     font-size: var(--fs-base);
     font-weight: 600;
-    color: var(--text-medium-contrast);
+    color: var(--text-high-contrast);
     background-color: var(--primary-dark);
     border-radius: var(--radius-high);
     border: 1px solid var(--primary-brown);
@@ -107,6 +107,12 @@ html {
 
 .btn-secondary:hover {
     background-color: var(--primary-dark);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Header Content */
@@ -312,6 +318,14 @@ html {
     margin-bottom: 20px;
 }
 
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 10px;
+}
+
 /* Project Section */
 .projects-section {
     display: flex;
@@ -339,6 +353,9 @@ html {
     transition: var(--transition-all);
     text-align: left;
     align-items: flex-start;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .project-card:hover {
@@ -347,11 +364,12 @@ html {
 
 .project-card .project-image {
     display: block;
+    object-fit: cover;
     width: 100%;
     border-radius: var(--radius-small);
-    margin-bottom: 15px;
-    min-height: 164px;
     transition: var(--transition-all);
+    margin-bottom: 15px;
+    aspect-ratio: 16 / 9;
 }
 
 .project-card .title-tag-container {
@@ -569,6 +587,10 @@ html {
     margin: 5px 0;
 }
 
+.footer .hearth {
+    color: #ff4d4d;
+}
+
 /* Neko Image */
 .neko-container {
     position: relative;
@@ -617,14 +639,16 @@ html {
         font-size: var(--fs-lg);
     }
 
+    .section-description {
+        font-size: var(--fs-md);
+    }
+
     .projects-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 15px;
     }
 
     .collabs-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 15px;
     }
 }
 

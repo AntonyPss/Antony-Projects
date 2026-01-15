@@ -1,4 +1,4 @@
-// Menu Hide Header
+// Menu toggle
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 const menuIcon = menuToggle.querySelector("i");
@@ -20,7 +20,7 @@ document.querySelectorAll(".nav-link").forEach((link) => {
     });
 });
 
-// Header Scroll Effect
+// Header shadow effect scrolled
 window.addEventListener("scroll", function () {
     const header = document.getElementById("header");
 

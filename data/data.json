@@ -98,7 +98,7 @@
         },
         "music-ui": {
             "title": "Music UI",
-            "description": "Custom music screen offering seamless integration and intuitive experience.",
+            "description": "Elevate your Minecraft interface to the next level with Music UI! This pack is more than just a visual change; it’s a complete overhaul of the game's audio-visual experience. Designed to provide fluid, minimalist navigation with a unique musical aesthetic.",
             "icon": "../images/icons/music-ui.webp",
             "version": "2.9.0",
             "versionSupport": "1.21+",

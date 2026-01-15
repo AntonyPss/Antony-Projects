@@ -88,9 +88,37 @@
 .download-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
     margin: 20px 0;
+}
+
+/* 1. Linkvertise */
+.download-btn:nth-child(1):hover {
+    background-color: #FF8C00;
+    border-color: #ffb55a;
+    color: #fff;
+}
+
+/* 2. MCPEDL */
+.download-btn:nth-child(2):hover {
+    background-color: #388E3C;
+    border-color: #4aa74e;
+    color: #fff;
+}
+
+/* 3. ModBay */
+.download-btn:nth-child(3):hover {
+    background-color: #7B1FA2;
+    border-color: #902bbb;
+    color: #fff;
+}
+
+/* 4. MediaFire */
+.download-btn:nth-child(4):hover {
+    background-color: #007BFF;
+    border-color: #007BFF;
+    color: #fff;
 }
 
 @media (max-width: 600px) {
@@ -199,7 +227,6 @@
 
 .modal-caption {
     text-align: center;
-    color: var(--text-light-contrast);
     margin-top: 10px;
     font-size: 0.9rem;
     font-family: inherit;
@@ -214,7 +241,7 @@
     border: 2px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: var(--fs-md);
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,9 +250,7 @@
 
 .modal-close-btn:hover,
 .modal-nav:hover {
-    background: var(--mc-accent-blue);
     border-color: white;
-    transform: scale(1.1);
 }
 
 .modal-close-btn {

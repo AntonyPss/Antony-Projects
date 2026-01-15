@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Helper functions
 function getProjectIdFromUrl() {
-    // Priorizar el parámetro ?id= en la URL (p. ej. pages/project.html?id=thony-ui)
+    // ?id= Parameter in the URL (e.g. pages/project.html?id=thony-ui)
     const params = new URLSearchParams(window.location.search);
     let projectId = params.get("id");
     if (projectId) {
@@ -67,8 +67,7 @@ async function loadProjectData(projectId) {
         }
         const data = await response.json();
 
-        // Intentar encontrar el proyecto con diferentes variaciones
-        // Buscar distintas variantes: tal cual, con underscores y con guiones
+        // Find project with different variables
         const projects = data.projects || {};
         let project =
             projects[projectId] ||
@@ -202,15 +201,15 @@ function setupProject(project) {
         project.downloads.forEach((download) => {
             const a = document.createElement("a");
             a.href = download.url || "#";
-            a.className = "btn-secondary";
-            a.title = "Download " + (download.name || "File");
+            a.className = "download-btn btn-secondary";
+            a.title = "Download with " + (download.name || "File");
             a.target = "_blank";
 
             const icon = document.createElement("i");
             icon.className = "ri-download-line";
 
             const span = document.createElement("span");
-            span.textContent = `Download with ${download.name || ""}`;
+            span.textContent = `${download.name || "Unnamed"}`;
 
             a.appendChild(icon);
             a.appendChild(span);
@@ -238,13 +237,13 @@ function setupImageModal() {
     let currentImages = [];
     let currentIndex = 0;
 
-    // Abrir modal al hacer clic en cualquier imagen de proyecto
+    // Open modal when pressed a screenshot
     document.addEventListener("click", (e) => {
         if (
             e.target.classList &&
             e.target.classList.contains("project-image")
         ) {
-            // Obtenemos todas las imágenes del mismo contenedor para crear la galería
+            // Get all images for the same div
             const parentGrid =
                 e.target.closest(".gallery-grid") ||
                 e.target.closest(".projects-grid");
@@ -254,14 +253,14 @@ function setupImageModal() {
             currentIndex = currentImages.indexOf(e.target.src);
 
             updateModal();
-            modal.classList.add("active"); // Usamos clases en lugar de .style.display
+            modal.classList.add("active"); // Class style
         }
     });
 
-    // Función para actualizar contenido del modal
+    // Function to update the modal content
     const updateModal = () => {
         modalImg.src = currentImages[currentIndex];
-        // Opcional: añadir contador (ej: 1 / 5)
+        // Add count (eg: 1 / 5)
         const caption = document.getElementById("modalCaption");
         if (caption)
             caption.textContent = `${currentIndex + 1} / ${
@@ -269,7 +268,7 @@ function setupImageModal() {
             }`;
     };
 
-    // Navegación
+    // Navigation
     const showNext = () => {
         currentIndex = (currentIndex + 1) % currentImages.length;
         updateModal();
@@ -281,7 +280,7 @@ function setupImageModal() {
         updateModal();
     };
 
-    // Eventos de botones
+    // Event Buttons
     if (nextBtn)
         nextBtn.onclick = (e) => {
             e.stopPropagation();
@@ -293,11 +292,11 @@ function setupImageModal() {
             showPrev();
         };
 
-    // Cerrar modal
+    // Close modal
     const closeModal = () => modal.classList.remove("active");
     closeBtn.onclick = closeModal;
 
-    // Cerrar al hacer clic en el fondo (overlay)
+    // Close modal in overlay
     modal.onclick = (e) => {
         if (
             e.target === modal ||
@@ -307,7 +306,7 @@ function setupImageModal() {
         }
     };
 
-    // Control por teclado (Esc y Flechas)
+    // Control with keyboard
     document.addEventListener("keydown", (e) => {
         if (!modal.classList.contains("active")) return;
 
@@ -317,7 +316,7 @@ function setupImageModal() {
     });
 }
 
-// Show Error Message if Project Data Fails to Load
+// Error in case the no found the ID project
 function showError() {
     const errorElement = document.getElementById("errorMessage");
     if (!errorElement) return;
