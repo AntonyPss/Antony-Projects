@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Antony Community - Project UI</title>
+    <title>Antony Labs - Project UI</title>
     <link rel="icon" href="../images/icons/favicon.webp" type="image/webp">
 
     <!-- Stylesheets -->
@@ -18,42 +18,28 @@
     <!-- Header -->
     <header id="header" class="header" role="heading" aria-label="Header">
         <div class="header-content container">
-            <!-- Logo -->
             <a href="../index.html" class="nav-logo" title="Home" role="banner">
-                <img src="../images/icons/favicon.webp" alt="Logo" width="32" height="32">
-                <span>Antony Community</span>
+                <img src="../images/icons/logo.webp" alt="Logo">
             </a>
-
-            <!-- Navigation -->
             <div id="navMenu" class="navigation-content">
-                <!-- Navigation Links -->
                 <nav class="nav-links" role="navigation">
                     <a href="#home" class="nav-link" title="Home">Home</a>
                     <a href="#review" class="nav-link" title="Review">Review</a>
                     <a href="#download" class="nav-link" title="Download">Download</a>
                     <a href="#contact" class="nav-link" title="Contact">Contact</a>
                 </nav>
-
-                <!-- Separator Line -->
                 <div class="separator-line"></div>
-
-                <!-- Navigation Buttons -->
                 <div class="nav-buttons" role="menubar">
-                    <!-- GitHub -->
-                    <a href="https://github.com/AntonyPss" class="menu-item" title="GitHub" role="menuitem"
-                        target="_blank">
+                    <a href="https://github.com/AntonyPss/Antony-Projects" class="menu-item" title="GitHub"
+                        role="menuitem" target="_blank">
                         <i class="ri-github-fill"></i>
                     </a>
-
-                    <!-- Discord -->
                     <a href="https://discord.com/users/antony_xd" class="menu-item" title="Discord" role="menuitem"
                         target="_blank">
                         <i class="ri-discord-fill"></i>
                     </a>
                 </div>
             </div>
-
-            <!-- Mobile Menu Toggle -->
             <div class="menu-icon" id="menuToggle">
                 <i class="ri-menu-line"></i>
             </div>
@@ -61,42 +47,43 @@
     </header>
 
     <!-- Error Message -->
-    <div id="errorMessage" class="error-message" role="alert" aria-live="assertive" style="display: none;">
-        <!-- Error content will be dynamically inserted here -->
-    </div>
+    <div id="errorMessage" class="error-message" role="alert" aria-live="assertive" style="display: none;"></div>
 
     <!-- Main Content -->
     <main id="home" class="main" role="main" aria-label="Main">
         <!-- Hero Section -->
-        <div id="hero-content" class="hero-content container fade-anim">
-            <div class="hero-image">
-                <img alt="${project.title}" id="projectIcon">
-            </div>
-            <h1 id="projectTitle">Title</h1>
-            <p id="projectDescription">Description</p>
-            <div class="hero-buttons">
-                <div id="detailsList" class="details-list">
-                    <!-- Details will be dynamically inserted here -->
+        <section id="heroSection" class="hero-section container">
+            <div id="hero-content" class="hero-content">
+                <div class="hero-image">
+                    <img src="../images/icons/favicon.webp" id="projectIcon" alt="Project icon">
+                </div>
+                <div class="hero-text">
+                    <h1 id="projectTitle">Project title</h1>
+                    <p id="projectDescription">Project description</p>
+                    <div id="detailsList" class="details-list"></div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-primary">
+                        <i class="ri-download-line"></i> Download
+                    </a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Projects Section -->
         <section id="review" class="projects-section container fade-anim" aria-label="Review Section">
             <h2 class="section-title">Review Screenshots</h2>
-            <p class="section-description">Explore every detail. See how modern textures and clean typography come together in a sleek UI experience.</p>
-            <div id="projects-list" class="projects-grid">
-                <!-- Project cards will be dynamically inserted here -->
-            </div>
+            <p class="section-description">Explore every detail. See how modern textures and clean typography come
+                together in a sleek UI experience.</p>
+            <div id="projects-list" class="projects-grid"></div>
         </section>
 
         <!-- Download Section -->
         <section id="download" class="download-section container fade-anim" aria-label="Download Section">
             <h2 class="section-title">Download Now</h2>
-            <p class="section-description">Get the latest version quickly and safely. Fully compatible with the most recent Minecraft releases.</p>
-            <div id="download-list" class="download-buttons">
-                <!-- Download buttons will be dynamically inserted here -->
-            </div>
+            <p class="section-description">Get the latest version quickly and safely. Fully compatible with the most
+                recent Minecraft releases.</p>
+            <div id="download-list" class="download-buttons"></div>
         </section>
 
         <!-- Contact Section -->
@@ -104,29 +91,25 @@
             <h2 class="section-title">Get in Touch</h2>
             <p class="section-description">Have a project in mind or want to collaborate? Feel free to reach out!</p>
             <div class="contact-buttons">
-                <!-- Email Button -->
-                <a href="mailto:ROVALOSKI@gmail.com" class="btn-secondary" title="Email">
-                    <i class="ri-mail-fill"></i> Send Email
+                <a href="mailto:ROVALOSKI@gmail.com" class="btn-secondary" title="Send me an email">
+                    <i class="ri-mail-fill"></i> Email
                 </a>
-
-                <!-- GitHub Button -->
-                <a href="https://github.com/AntonyPss/Antony-Projects" class="btn-secondary" title="GitHub Profile"
+                <a href="https://github.com/AntonyPss" class="btn-secondary" title="View my GitHub profile"
                     target="_blank">
-                    <i class="ri-github-fill"></i> View GitHub
+                    <i class="ri-github-fill"></i> GitHub
                 </a>
-
-                <!-- Discord Button -->
-                <a href="https://discord.gg/kYDf4gadKw" class="btn-secondary" title="Discord" target="_blank">
-                    <i class="ri-discord-fill"></i> Join Discord
+                <a href="https://discord.gg/users/antony_xd" class="btn-secondary" title="Contact me on Discord"
+                    target="_blank">
+                    <i class="ri-discord-fill"></i> Discord
                 </a>
             </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
         <div class="info">
-            <p>&copy; 2026 Antony Community. All rights reserved.</p>
+            <p>&copy; 2026 Antony Labs - All rights reserved - Not affiliated with Mojang</p>
             <p>Made with <i class="ri-heart-3-fill hearth"></i> by AntonyPss</p>
         </div>
     </footer>
@@ -134,20 +117,16 @@
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
         <div class="modal-overlay" id="modalOverlay"></div>
-
         <button class="modal-close-btn" id="modalClose" aria-label="Close modal">
             <i class="ri-close-line"></i>
         </button>
-
         <button class="modal-nav prev" id="modalPrev">
             <i class="ri-arrow-left-s-line"></i>
         </button>
-
         <div class="modal-content">
             <img class="modal-image" id="modalImage" src="" alt="Project Preview">
             <div class="modal-caption" id="modalCaption"></div>
         </div>
-
         <button class="modal-nav next" id="modalNext">
             <i class="ri-arrow-right-s-line"></i>
         </button>

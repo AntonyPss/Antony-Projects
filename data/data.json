@@ -2,10 +2,13 @@
     "projects": {
         "thony-ui": {
             "title": "Thony UI",
-            "description": "A sleek and modern interface overhaul for Minecraft Bedrock. Designed to provide a clean, professional, and clutter-free experience by completely redesigning every menu and HUD element for maximum clarity.",
+            "description": "A sleek and modern interface overhaul. Designed to provide a clean, professional, and clutter-free experience by completely redesigning every menu and HUD element for maximum clarity.",
             "icon": "../images/icons/thony-ui.webp",
             "version": "1.3.0",
             "versionSupport": "1.21+",
+            "platform": "Bedrock",
+            "status": "stable",
+            "openSource": true,
             "screenshots": [
                 {
                     "image": "../images/projects/thony-ui-1.webp",
@@ -57,8 +60,11 @@
             "title": "Music Ore-UI",
             "description": "The Music Ore-Ui offers a sleek and modern interface that enhances the user experience with its intuitive design and easy-to-use controls.",
             "icon": "../images/icons/music-oreui.webp",
-            "version": "1.0",
+            "version": "2.9.0",
             "versionSupport": "1.21+",
+            "platform": "Bedrock",
+            "status": "stable",
+            "openSource": false,
             "screenshots": [
                 {
                     "image": "../images/projects/music-oreui-1.webp",
@@ -98,10 +104,13 @@
         },
         "music-ui": {
             "title": "Music UI",
-            "description": "Elevate your Minecraft interface to the next level with Music UI! This pack is more than just a visual change; it’s a complete overhaul of the game's audio-visual experience. Designed to provide fluid, minimalist navigation with a unique musical aesthetic.",
+            "description": "Elevate your Minecraft interface to the next level with Music UI! Designed to provide fluid, minimalist navigation with a unique musical aesthetic.",
             "icon": "../images/icons/music-ui.webp",
-            "version": "2.9.0",
+            "version": "1.0.0",
             "versionSupport": "1.21+",
+            "platform": "Bedrock",
+            "openSource": true,
+            "experimental": false,
             "screenshots": [
                 {
                     "image": "../images/projects/music-ui-1.webp",

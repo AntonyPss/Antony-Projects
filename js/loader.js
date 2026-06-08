@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        // Check if the project ID is valid
         const projectId = getProjectIdFromUrl();
         const project = await loadProjectData(projectId);
 
@@ -17,11 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         showError();
     }
 
-    // HTML Anims
-    const observerOptions = {
-        threshold: 0.2,
-    };
-
+    // Animaciones
+    const observerOptions = { threshold: 0.2 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -35,252 +31,295 @@ document.addEventListener("DOMContentLoaded", async () => {
         const el = document.getElementById(id);
         if (el) observer.observe(el);
     });
-
-    setTimeout(() => {
-        document.getElementById("hero-content").classList.add("is-visible");
-    }, 100);
 });
 
-// Helper functions
 function getProjectIdFromUrl() {
-    // ?id= Parameter in the URL (e.g. pages/project.html?id=thony-ui)
     const params = new URLSearchParams(window.location.search);
     let projectId = params.get("id");
-    if (projectId) {
-        console.log("Extracted project ID from query:", projectId);
-        return projectId;
-    }
+    if (projectId) return projectId;
 
-    // Fallback: inferir desde el nombre del archivo
     const path = window.location.pathname;
     const fileName = path.split("/").pop().replace(".html", "");
-    projectId = fileName;
-    console.log("Extracted project ID from filename:", projectId);
-    return projectId;
+    return fileName;
 }
 
 async function loadProjectData(projectId) {
     try {
         const response = await fetch(`../data/data.json?${Date.now()}`);
-        if (!response.ok) {
+        if (!response.ok)
             throw new Error(`HTTP error! status: ${response.status}`);
-        }
         const data = await response.json();
-
-        // Find project with different variables
         const projects = data.projects || {};
+
         let project =
             projects[projectId] ||
             projects[projectId.replace(/-/g, "_")] ||
             projects[projectId.replace(/_/g, "-")];
 
-        // If exact/variant keys didn't match, try a normalized lookup
         if (!project) {
             const normalizeId = (id) =>
                 (id || "")
                     .toString()
                     .toLowerCase()
                     .replace(/[^a-z0-9]/g, "");
-
             const normalizedTarget = normalizeId(projectId);
             const normalizedMap = Object.keys(projects).reduce((map, key) => {
                 map[normalizeId(key)] = projects[key];
                 return map;
             }, {});
-
             project = normalizedMap[normalizedTarget];
         }
-
         return project;
     } catch (error) {
-        F;
-        console.warn(
-            "Failed to load project data from JSON, using fallback:",
-            error
-        );
+        console.warn("Failed to load project data:", error);
+        return null;
     }
+}
+
+function createBadge(iconClass, text, badgeType) {
+    const badge = document.createElement("span");
+    badge.className = `badge badge-${badgeType}`;
+    const icon = document.createElement("i");
+    icon.className = iconClass;
+    const textSpan = document.createElement("span");
+    textSpan.textContent = text;
+    badge.appendChild(icon);
+    badge.appendChild(textSpan);
+    return badge;
 }
 
 function setupProject(project) {
-    const detailsContainer = document.getElementById("detailsList");
-    const fragment = document.createDocumentFragment();
-
-    const createDetailItem = (labelText, valueId, valueText) => {
-        const item = document.createElement("div");
-        item.className = "detail-item";
-
-        const label = document.createElement("span");
-        label.className = "detail-label";
-        label.textContent = labelText;
-
-        const value = document.createElement("span");
-        value.className = "detail-value";
-        value.id = valueId;
-        value.textContent = valueText;
-
-        item.appendChild(label);
-        item.appendChild(value);
-        return item;
-    };
-
-    fragment.appendChild(
-        createDetailItem(
-            "Version:",
-            "projectVersion",
-            project.version || "1.0.0"
-        )
-    );
-    fragment.appendChild(
-        createDetailItem(
-            "Version Support:",
-            "projectVersionSupport",
-            project.versionSupport || "1.20+"
-        )
-    );
-
-    detailsContainer.innerHTML = "";
-    detailsContainer.appendChild(fragment);
-
-    // Set Document Title and Project Details
-    document.title = `${project.title} - Preview`;
-    document.getElementById("projectTitle").textContent = project.title;
-    document.getElementById("projectDescription").textContent =
-        project.description;
-
-    // Show Project Icon
-    const icon = document.getElementById("projectIcon");
-    icon.src = project.icon;
-    icon.alt = project.title;
-
-    // Use a DocumentFragment for better performance when appending multiple nodes
-    const container = document.getElementById("projects-list");
-    container.innerHTML = "";
-
-    if (project.screenshots && project.screenshots.length > 0) {
-        const frag = document.createDocumentFragment();
-
-        project.screenshots.forEach((screenshot) => {
-            const card = document.createElement("div");
-            card.className = "project-card";
-
-            const img = document.createElement("img");
-            img.src = screenshot.image || "";
-            img.alt = screenshot.title || project.title || "";
-            img.className = "project-image";
-
-            const content = document.createElement("div");
-            content.className = "project-card-content";
-
-            const titleEl = document.createElement("h3");
-            titleEl.className = "project-title";
-            titleEl.textContent = screenshot.title || "Screenshot";
-
-            const descEl = document.createElement("p");
-            descEl.className = "project-description";
-            descEl.textContent = screenshot.description || "";
-
-            content.appendChild(titleEl);
-            content.appendChild(descEl);
-            card.appendChild(img);
-            card.appendChild(content);
-            frag.appendChild(card);
-        });
-
-        container.appendChild(frag);
+    // ============================================
+    // FONDO DINÁMICO (background-image directo)
+    // ============================================
+    const heroSection = document.getElementById("heroSection");
+    if (heroSection) {
+        if (project.backgroundImage || project.banner) {
+            const bgImage = project.backgroundImage || project.banner;
+            heroSection.style.backgroundImage = `url('${bgImage}')`;
+            heroSection.style.backgroundSize = "cover";
+            heroSection.style.backgroundPosition = "center";
+            heroSection.style.backgroundRepeat = "no-repeat";
+            heroSection.classList.add("dynamic-bg");
+        } else {
+            // Fondo por defecto si no hay definido
+            heroSection.style.backgroundImage =
+                "url('../images/banners/banner-empty.webp')";
+            heroSection.classList.add("dynamic-bg");
+        }
     } else {
-        container.innerHTML =
-            '<p class="no-screenshots">No screenshots available</p>';
+        console.warn("Elemento #heroSection no encontrado en el DOM");
     }
 
-    // Load Downloads Items
-    const downloads =
-        document.getElementById("download-list") ||
-        document.getElementById("downloadsList");
-    if (project.downloads && project.downloads.length > 0) {
-        const fragment = document.createDocumentFragment();
-        project.downloads.forEach((download) => {
-            const a = document.createElement("a");
-            a.href = download.url || "#";
-            a.className = "download-btn btn-secondary";
-            a.title = "Download with " + (download.name || "File");
-            a.target = "_blank";
+    // ============================================
+    // 2. BADGES (solo badges, sin texto extra)
+    // ============================================
+    const detailsContainer = document.getElementById("detailsList");
+    if (detailsContainer) {
+        const badgesWrapper = document.createElement("div");
+        badgesWrapper.className = "project-badges";
 
-            const icon = document.createElement("i");
-            icon.className = "ri-download-line";
+        // Badge versión
+        badgesWrapper.appendChild(
+            createBadge(
+                "ri-code-box-line",
+                `v${project.version || "1.0.0"}`,
+                "version",
+            ),
+        );
+        // Badge soporte
+        badgesWrapper.appendChild(
+            createBadge(
+                "ri-smartphone-line",
+                project.versionSupport || "1.20+",
+                "support",
+            ),
+        );
+        // Badge plataforma
+        if (project.platform) {
+            badgesWrapper.appendChild(
+                createBadge("ri-smartphone-line", project.platform, "platform"),
+            );
+        }
+        // Badge estado
+        if (project.status) {
+            let icon =
+                project.status.toLowerCase() === "stable"
+                    ? "ri-checkbox-circle-line"
+                    : "ri-flask-line";
+            badgesWrapper.appendChild(
+                createBadge(icon, project.status, "status"),
+            );
+        }
+        // Badge open source
+        if (project.openSource) {
+            badgesWrapper.appendChild(
+                createBadge("ri-github-fill", "Open Source", "opensource"),
+            );
+        }
+        // Badge experimental
+        if (project.experimental) {
+            badgesWrapper.appendChild(
+                createBadge("ri-alert-line", "Experimental", "experimental"),
+            );
+        }
 
-            const span = document.createElement("span");
-            span.textContent = `${download.name || "Unnamed"}`;
+        detailsContainer.innerHTML = "";
+        detailsContainer.appendChild(badgesWrapper);
+    }
 
-            a.appendChild(icon);
-            a.appendChild(span);
-            fragment.appendChild(a);
-        });
+    // ============================================
+    // 3. Título, descripción e icono
+    // ============================================
+    document.title = `${project.title} - Preview`;
+    const titleElement = document.getElementById("projectTitle");
+    const descElement = document.getElementById("projectDescription");
+    if (titleElement) titleElement.textContent = project.title;
+    if (descElement) descElement.textContent = project.description;
 
-        downloads.innerHTML = "";
-        downloads.appendChild(fragment);
-    } else {
-        downloads.innerHTML =
-            '<p class="no-downloads">No downloads available</p>';
+    const icon = document.getElementById("projectIcon");
+    if (icon) {
+        icon.src =
+            project.icon ||
+            "https://via.placeholder.com/150?text=Image+not+found";
+        icon.alt = project.title;
+        icon.onerror = () => {
+            icon.onerror = null;
+            icon.src = "https://via.placeholder.com/150?text=Image+not+found";
+        };
+    }
+
+    // ============================================
+    // 4. Screenshots
+    // ============================================
+    const container = document.getElementById("projects-list");
+    if (container) {
+        container.innerHTML = "";
+        if (project.screenshots && project.screenshots.length > 0) {
+            const frag = document.createDocumentFragment();
+            project.screenshots.forEach((screenshot, index) => {
+                const card = document.createElement("div");
+                card.className = "project-card";
+                const img = document.createElement("img");
+                img.src = screenshot.image || "";
+                img.alt = screenshot.title || project.title || "";
+                img.className = "project-image";
+                img.loading = "lazy";
+                const content = document.createElement("div");
+                content.className = "project-card-content";
+                const titleEl = document.createElement("h3");
+                titleEl.className = "project-title";
+                titleEl.textContent = screenshot.title || "Screenshot";
+                const descEl = document.createElement("p");
+                descEl.className = "project-description";
+                descEl.textContent = screenshot.description || "";
+                content.appendChild(titleEl);
+                content.appendChild(descEl);
+                card.appendChild(img);
+                card.appendChild(content);
+                frag.appendChild(card);
+            });
+            container.appendChild(frag);
+        } else {
+            container.innerHTML =
+                '<p class="no-screenshots">No screenshots available</p>';
+        }
+    }
+
+    // ============================================
+    // 5. Downloads
+    // ============================================
+    const downloads = document.getElementById("download-list");
+    if (downloads) {
+        if (project.downloads && project.downloads.length > 0) {
+            const fragmentDownloads = document.createDocumentFragment();
+            project.downloads.forEach((download) => {
+                const a = document.createElement("a");
+                a.href = download.url || "#";
+                a.className = "download-btn btn-secondary";
+                a.title = "Download with " + (download.name || "File");
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                const icon = document.createElement("i");
+                icon.className = "ri-download-line";
+                const span = document.createElement("span");
+                span.textContent = `${download.name || "Unnamed"}`;
+                a.appendChild(icon);
+                a.appendChild(span);
+                fragmentDownloads.appendChild(a);
+            });
+            downloads.innerHTML = "";
+            downloads.appendChild(fragmentDownloads);
+        } else {
+            downloads.innerHTML =
+                '<p class="no-downloads">No downloads available</p>';
+        }
     }
 }
 
-// Setup Image Modal for Screenshots
+// Setup Image Modal (sin cambios importantes)
 function setupImageModal() {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     const closeBtn = document.getElementById("modalClose");
-    const prevBtn = document.getElementById("modalPrev"); // Botones nuevos del rediseño
+    const prevBtn = document.getElementById("modalPrev");
     const nextBtn = document.getElementById("modalNext");
-
     if (!modal || !modalImg || !closeBtn) return;
-
     let currentImages = [];
     let currentIndex = 0;
 
-    // Open modal when pressed a screenshot
     document.addEventListener("click", (e) => {
         if (
             e.target.classList &&
             e.target.classList.contains("project-image")
         ) {
-            // Get all images for the same div
             const parentGrid =
-                e.target.closest(".gallery-grid") ||
-                e.target.closest(".projects-grid");
-            currentImages = Array.from(
-                parentGrid.querySelectorAll(".project-image")
-            ).map((img) => img.src);
-            currentIndex = currentImages.indexOf(e.target.src);
-
+                e.target.closest(".projects-grid") ||
+                e.target.closest("#projects-list");
+            if (parentGrid) {
+                currentImages = Array.from(
+                    parentGrid.querySelectorAll(".project-image"),
+                ).map((img) => img.src);
+                currentIndex = currentImages.indexOf(e.target.src);
+                if (currentIndex === -1 && currentImages.length > 0)
+                    currentIndex = 0;
+            } else {
+                currentImages = [e.target.src];
+                currentIndex = 0;
+            }
             updateModal();
-            modal.classList.add("active"); // Class style
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
         }
     });
 
-    // Function to update the modal content
     const updateModal = () => {
+        if (currentImages.length === 0) return;
         modalImg.src = currentImages[currentIndex];
-        // Add count (eg: 1 / 5)
         const caption = document.getElementById("modalCaption");
         if (caption)
-            caption.textContent = `${currentIndex + 1} / ${
-                currentImages.length
-            }`;
+            caption.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        if (prevBtn)
+            prevBtn.style.opacity = currentImages.length <= 1 ? "0.3" : "1";
+        if (nextBtn)
+            nextBtn.style.opacity = currentImages.length <= 1 ? "0.3" : "1";
     };
 
-    // Navigation
     const showNext = () => {
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateModal();
+        if (currentImages.length > 1) {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateModal();
+        }
     };
-
     const showPrev = () => {
-        currentIndex =
-            (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateModal();
+        if (currentImages.length > 1) {
+            currentIndex =
+                (currentIndex - 1 + currentImages.length) %
+                currentImages.length;
+            updateModal();
+        }
     };
 
-    // Event Buttons
     if (nextBtn)
         nextBtn.onclick = (e) => {
             e.stopPropagation();
@@ -292,53 +331,27 @@ function setupImageModal() {
             showPrev();
         };
 
-    // Close modal
-    const closeModal = () => modal.classList.remove("active");
-    closeBtn.onclick = closeModal;
-
-    // Close modal in overlay
-    modal.onclick = (e) => {
-        if (
-            e.target === modal ||
-            e.target.classList.contains("modal-overlay")
-        ) {
-            closeModal();
-        }
+    const closeModal = () => {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
     };
-
-    // Control with keyboard
+    closeBtn.onclick = closeModal;
+    modal.onclick = (e) => {
+        if (e.target === modal || e.target.classList.contains("modal-overlay"))
+            closeModal();
+    };
     document.addEventListener("keydown", (e) => {
         if (!modal.classList.contains("active")) return;
-
         if (e.key === "Escape") closeModal();
         if (e.key === "ArrowRight") showNext();
         if (e.key === "ArrowLeft") showPrev();
     });
 }
 
-// Error in case the no found the ID project
 function showError() {
     const errorElement = document.getElementById("errorMessage");
     if (!errorElement) return;
-
     errorElement.style.display = "block";
-    errorElement.innerHTML = "";
-
-    const frag = document.createDocumentFragment();
-
-    const wrapper = document.createElement("div");
-    wrapper.className = "error-message";
-
-    const title = document.createElement("h2");
-    title.textContent = "Error loading project data";
-
-    const msg = document.createElement("p");
-    msg.textContent =
-        "Please try again later or check your internet connection.";
-
-    wrapper.appendChild(title);
-    wrapper.appendChild(msg);
-    frag.appendChild(wrapper);
-
-    errorElement.appendChild(frag);
+    errorElement.innerHTML =
+        '<div class="error-message"><h3>Error loading project data</h3><p>Please try again later or check your internet connection.</p></div>';
 }

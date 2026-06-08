@@ -1,175 +1,393 @@
-/* Error Container */
-.error-message {
-    background-color: var(--color-error-background);
-    color: var(--color-error-text);
-    border: 1px solid var(--color-error-border);
-    padding: 15px 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-radius: var(--border-radius-medium);
-    font-size: var(--fs-md);
-    text-align: center;
+/* ============================================
+   VARIABLES GLOBALES
+   ============================================ */
+:root {
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+
+    /* Radius */
+    --radius-xs: 4px;
+    --radius-small: 12px;
+    --radius-medium: 16px;
+    --radius-high: 24px;
+    --border-radius-medium: 16px;
+
+    /* Font Sizes */
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.25rem;
+    --fs-xl: 1.5rem;
+    --fs-2xl: 2rem;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+    /* Colors */
+    --text-high-contrast: #cacaca;
+    --text-medium-contrast: #D7D0CA;
+    --text-low-contrast: #A0958E;
+    --color-surface: #2C2622;
+    --primary-dark: #312722;
+    --primary-brown: #44362F;
+    --primary-light: #5A493F;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-all: 0.3s ease;
 }
 
-/* Hero Section */
+/* ============================================
+   HERO SECTION CON FONDO DINÁMICO
+   ============================================ */
+.hero-section {
+    position: relative;
+    max-width: 1320px;
+    width: 100%;
+    border-radius: var(--radius-medium);
+    margin: var(--spacing-lg) 0;
+    overflow: hidden;
+    transition: background-image 0.5s ease;
+}
+
+/* Fondo dinámico que se aplica por JS */
+.hero-section.dynamic-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Overlay para oscurecer el fondo y que el texto sea legible */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(135deg,
+            rgba(30, 26, 23, 0.75) 0%,
+            rgba(30, 26, 23, 0.6) 50%,
+            rgba(30, 26, 23, 0.75) 100%); */
+    z-index: 1;
+    pointer-events: none;
+    border-radius: var(--radius-medium);
+}
+
+.hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   HERO CONTENT (Centrado)
+   ============================================ */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
 .hero-image {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
 }
 
 .hero-image img {
-    width: 140px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-md);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: var(--transition-all);
 }
 
 .hero-image img:hover {
     transform: scale(1.05);
+    border-color: rgba(15, 74, 117, 0.5);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Details Section */
-.details-list {
+.hero-text {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-text h1 {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-high-contrast);
+}
+
+.hero-text p {
+    font-size: var(--fs-base);
+    color: var(--text-medium-contrast);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-sm);
+}
+
+/* ============================================
+   PROJECT BADGES (Tags visuales)
+   ============================================ */
+.details-list,
+.project-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: var(--spacing-sm);
     justify-content: center;
 }
 
-.detail-item {
+.details-list {
+    margin: var(--spacing-md) 0;
+}
+
+.project-badges {
+    margin: var(--spacing-sm) 0;
+}
+
+.badge {
     display: inline-flex;
-    padding: 6px 12px;
-    background-color: var(--primary-brown);
-    border: 1px solid var(--primary-light);
-    color: var(--text-medium-contrast);
-    font-size: var(--fs-sm);
-    font-weight: 400;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
     border-radius: var(--radius-high);
-    gap: 8px;
-    transition: all 0.2s ease;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    background-color: rgba(44, 38, 34, 0.9);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: var(--transition-fast);
+    cursor: default;
 }
 
-.detail-item:hover {
-    opacity: 0.7;
+.badge i {
+    font-size: 14px;
+}
+
+/* Tipos de badges */
+.badge-version {
+    background: linear-gradient(135deg, #3a2a24, #2c1e1a);
+    color: var(--text-high-contrast);
+    border-left: 3px solid #a67c52;
+}
+
+.badge-support {
+    background-color: rgba(68, 54, 47, 0.8);
+    color: var(--text-medium-contrast);
+}
+
+.badge-platform {
+    background-color: rgba(15, 74, 117, 0.4);
+    color: #7fb4d6;
+    border-color: rgba(15, 74, 117, 0.5);
+}
+
+.badge-status {
+    background-color: rgba(68, 54, 47, 0.8);
+    color: #e8c9a0;
+}
+
+.badge-status i {
+    color: #e8c9a0;
+}
+
+.badge-opensource {
+    background-color: rgba(36, 41, 46, 0.9);
+    color: #f0f6fc;
+}
+
+.badge-experimental {
+    background-color: rgba(200, 100, 50, 0.25);
+    color: #ffaa66;
+    border-color: rgba(200, 100, 50, 0.5);
+}
+
+.badge-premium {
+    background: linear-gradient(135deg, #c9a03d, #8b6914);
+    color: #1a1a1a;
+}
+
+/* Badge hover effect */
+.badge:hover {
     transform: translateY(-2px);
+    filter: brightness(1.05);
 }
 
-.detail-label {
-    font-weight: bold;
-    color: var(--color-text-light);
+/* ============================================
+   PROJECTS GRID (Screenshots)
+   ============================================ */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    width: 100%;
 }
 
-.detail-value {
-    color: var(--color-text-medium);
-}
-
-/* Projects Section */
-.project-image {
+.project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-md);
+    transition: var(--transition-all);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--shadow-sm);
     cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(15, 74, 117, 0.3);
+}
+
+.project-image {
+    width: 100%;
+    border-radius: var(--radius-small);
+    transition: var(--transition-all);
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    max-height: 196px;
+    cursor: pointer;
 }
 
 .project-image:hover {
-    opacity: 0.7;
+    opacity: 0.85;
+    transform: scale(1.02);
 }
 
-/* Download Section */
+.project-card-content {
+    margin-top: var(--spacing-md);
+}
+
+.project-title {
+    font-size: var(--fs-base);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-high-contrast);
+}
+
+.project-description {
+    font-size: var(--fs-sm);
+    color: var(--text-low-contrast);
+    line-height: 1.5;
+}
+
+.no-screenshots {
+    text-align: center;
+    color: var(--text-low-contrast);
+    padding: var(--spacing-2xl);
+}
+
+/* ============================================
+   DOWNLOAD SECTION
+   ============================================ */
 .download-section {
-    margin-top: 30px;
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.download-section h2 {
+    margin-bottom: var(--spacing-lg);
 }
 
 .download-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: var(--spacing-lg);
     justify-content: center;
-    margin: 20px 0;
+    margin: var(--spacing-lg) 0;
 }
 
-/* 1. Linkvertise */
-.download-btn:nth-child(1):hover {
+.download-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--primary-dark);
+    border: 1px solid var(--primary-brown);
+    color: var(--text-high-contrast);
+    border-radius: var(--radius-high);
+    font-weight: 600;
+    transition: var(--transition-all);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.download-btn i {
+    font-size: var(--fs-lg);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Plataforma específica - Linkvertise */
+.download-btn[data-platform="linkvertise"]:hover {
     background-color: #FF8C00;
     border-color: #ffb55a;
     color: #fff;
 }
 
-/* 2. MCPEDL */
-.download-btn:nth-child(2):hover {
+/* Plataforma específica - MCPEDL */
+.download-btn[data-platform="mcpedl"]:hover {
     background-color: #388E3C;
     border-color: #4aa74e;
     color: #fff;
 }
 
-/* 3. ModBay */
-.download-btn:nth-child(3):hover {
+/* Plataforma específica - ModBay */
+.download-btn[data-platform="modbay"]:hover {
     background-color: #7B1FA2;
     border-color: #902bbb;
     color: #fff;
 }
 
-/* 4. MediaFire */
-.download-btn:nth-child(4):hover {
+/* Plataforma específica - MediaFire */
+.download-btn[data-platform="mediafire"]:hover {
     background-color: #007BFF;
-    border-color: #007BFF;
+    border-color: #3395ff;
     color: #fff;
 }
 
-@media (max-width: 600px) {
-    .download-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .download-button {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .hero-image img {
-        width: 100px;
-    }
-
-    .detail-item {
-        font-size: var(--fs-xs);
-    }
-
-    .error-message {
-        font-size: var(--fs-sm);
-        padding: 10px 15px;
-    }
-
-    .modal-close-btn {
-        top: 10px;
-        right: 10px;
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    .modal-image {
-        max-height: calc(80vh - 50px);
-    }
+.no-downloads {
+    text-align: center;
+    color: var(--text-low-contrast);
+    padding: var(--spacing-lg);
 }
 
-/* Modal Container */
-#imageModal {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-#imageModal.active {
-    opacity: 1;
-    visibility: visible;
-}
-
+/* ============================================
+   MODAL (Imagen ampliada)
+   ============================================ */
 .modal {
     position: fixed;
     top: 0;
@@ -178,12 +396,11 @@
     height: 100%;
     z-index: 10000;
     display: flex;
-    /* Centrado perfecto */
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: var(--transition-all);
 }
 
 .modal.active {
@@ -197,7 +414,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(20, 16, 14, 0.85);
+    background: rgba(20, 16, 14, 0.9);
     backdrop-filter: blur(8px);
 }
 
@@ -207,7 +424,7 @@
     max-width: 90%;
     max-height: 85vh;
     border-radius: var(--radius-small);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-lg);
     transform: scale(0.9);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -220,45 +437,49 @@
     display: block;
     max-width: 100%;
     max-height: 85vh;
-    border: 2px solid #585858;
-    border-radius: 4px;
+    border: 2px solid var(--primary-light);
+    border-radius: var(--radius-xs);
     object-fit: contain;
 }
 
 .modal-caption {
     text-align: center;
-    margin-top: 10px;
-    font-size: 0.9rem;
-    font-family: inherit;
+    margin-top: var(--spacing-sm);
+    font-size: var(--fs-sm);
+    color: var(--text-medium-contrast);
 }
 
+/* Modal Navigation */
 .modal-close-btn,
 .modal-nav {
     position: absolute;
     z-index: 20;
-    background: rgba(30, 30, 30, 0.6);
+    background: rgba(30, 30, 30, 0.7);
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 24px;
+    transition: var(--transition-all);
+    font-size: var(--fs-xl);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
+    backdrop-filter: blur(4px);
 }
 
 .modal-close-btn:hover,
 .modal-nav:hover {
     border-color: white;
+    background: rgba(30, 30, 30, 0.9);
+    transform: scale(1.05);
 }
 
 .modal-close-btn {
-    top: 20px;
-    right: 20px;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
     width: 45px;
     height: 45px;
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
 }
 
 .modal-nav {
@@ -270,25 +491,160 @@
 }
 
 .modal-nav.prev {
-    left: 20px;
+    left: var(--spacing-lg);
 }
 
 .modal-nav.next {
-    right: 20px;
+    right: var(--spacing-lg);
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+.error-message {
+    background-color: rgba(68, 54, 47, 0.9);
+    color: #ff9e8f;
+    border: 1px solid #8B4513;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin: var(--spacing-lg) auto;
+    max-width: 600px;
+    border-radius: var(--radius-medium);
+    font-size: var(--fs-base);
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+.error-message h3 {
+    margin-bottom: var(--spacing-sm);
+    color: #ff9e8f;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .hero-content {
+        gap: var(--spacing-lg);
+    }
+
+    .hero-image img {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 @media (max-width: 768px) {
+    .hero-content {
+        gap: var(--spacing-md);
+        padding: var(--spacing-xl);
+    }
+
+    .hero-image img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .hero-text h1 {
+        font-size: var(--fs-xl);
+    }
+
+    .hero-text p {
+        font-size: var(--fs-sm);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
     .modal-nav {
         top: auto;
-        bottom: 20px;
+        bottom: var(--spacing-lg);
         transform: none;
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
     }
 
     .modal-nav.prev {
-        left: 30%;
+        left: calc(50% - 50px);
     }
 
     .modal-nav.next {
-        right: 30%;
+        right: calc(50% - 50px);
+    }
+
+    .modal-close-btn {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        width: 40px;
+        height: 40px;
+        font-size: var(--fs-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .badge {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    .badge i {
+        font-size: 11px;
+    }
+
+    .hero-image img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .hero-text h1 {
+        font-size: var(--fs-lg);
+    }
+
+    .hero-text p {
+        font-size: var(--fs-sm);
+    }
+
+    .download-buttons,
+    .download-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .download-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    .modal-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1.25rem;
+    }
+
+    .modal-nav.prev {
+        left: calc(50% - 40px);
+    }
+
+    .modal-nav.next {
+        right: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 380px) {
+    .project-badges {
+        gap: 6px;
+    }
+
+    .badge {
+        font-size: 9px;
+        padding: 3px 8px;
+    }
+
+    .hero-image img {
+        width: 60px;
+        height: 60px;
     }
 }

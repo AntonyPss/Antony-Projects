@@ -30,3 +30,23 @@ window.addEventListener("scroll", function () {
         header.classList.remove("header-scrolled");
     }
 });
+
+// Scroll to top button
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+if (scrollTopBtn) {
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    });
+
+    scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+}
