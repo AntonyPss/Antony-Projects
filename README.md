@@ -1,19 +1,46 @@
-# Antony Projects - Web
+# Antony Labs 🚀
 
-Welcome to my project portfolio! Here you'll find a collection of my work, including web applications, tools, and experiments.
+Welcome to **Antony Labs**, a place where I share my Minecraft Bedrock Edition projects, including UI packs, scripts, tools, and experimental concepts.
 
-## 🚀 Featured Projects
+## 🎨 Featured Project
 
--   Explore my latest and most notable projects at [Antony Projects](https://antonypss.github.io/Antony-Projects).
+### Thony UI
 
-## 📂 About Me
+A modern and customizable user interface for Minecraft Bedrock Edition.
 
-I'm passionate about software development, always learning and building new things. Check out my portfolio to see what I've been working on!
+Features include:
 
-## 📫 Contact
+- Modern dark mode design
+- Redesigned menus
+- Improved chat interface
+- Custom notifications
+- Enhanced accessibility
+- PC & Mobile support
+- Continuous updates
 
-Feel free to connect with me via [GitHub](https://github.com/antonypss) or through my [portfolio site](https://antony-portafolio.vercel.app/).
+## 📦 Available Content
+
+- UI Packs
+- JSON UI Projects
+- Scripts
+- Experimental Features
+- Design Concepts
+- Community Resources
+
+## ❤️ Support Development
+
+If you enjoy my projects and would like to support future updates, you can support me on Ko-fi:
+
+☕ **Ko-fi:** https://ko-fi.com/ImAntonyCalv
+
+Your support helps fund development, testing, and future releases.
+
+## 📫 Links
+
+- GitHub: https://github.com/antonypss
+- Portfolio: https://antony-portafolio.vercel.app/
+- Antony Labs: https://antonypss.github.io/Antony-Projects
 
 ---
 
-Thank you for visiting!
+© Antony Labs. This project is not affiliated with Mojang Studios.
