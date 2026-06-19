@@ -1,8 +1,8 @@
 // ============================================
-// CONFIGURACIÓN CENTRAL (Fácil de modificar)
+// CONFIGURATION
 // ============================================
 const CONFIG = {
-    // Selectores DOM
+    // DOM ELEMENTS
     selectors: {
         projectsGrid: "#projects-grid",
         collabsList: "#collabs-list",
@@ -10,10 +10,10 @@ const CONFIG = {
         nekoTrigger: ".neko-trigger",
         nekoImg: "#neko-img",
         heroContent: "#hero-content",
-        sections: ["skills", "projects", "collaborations", "contact"],
+        animatedElements: ".fade-anim",
     },
 
-    // Configuración de animaciones
+    // ANIMS
     animations: {
         observerThreshold: 0.2,
         heroDelay: 100,
@@ -21,7 +21,7 @@ const CONFIG = {
         nekoOffsetY: -90,
     },
 
-    // Textos y mensajes
+    // MESSAGES
     messages: {
         emptyProjects: "No projects found in this category.",
         placeholderAlt: "(Image not found)",
@@ -29,12 +29,12 @@ const CONFIG = {
         soon: "Soon",
     },
 
-    // Imagen por defecto
+    // COVER PLACEHOLDER
     defaultImage: "images/covers/placeholder.webp",
 };
 
 // ============================================
-// DATOS (Fáciles de añadir/modificar)
+// DATA
 // ============================================
 const DATA = {
     projects: [
@@ -48,8 +48,17 @@ const DATA = {
             tag: "UI",
         },
         {
+            cover: "images/covers/cover-music-oreui.webp",
+            title: "Music Ore-UI v1.0.0",
+            description:
+                "Enhance your Minecraft experience with a brand-new screen...",
+            link: "pages/project.html?id=music-ore-ui",
+            date: "March 19, 2025",
+            tag: "UI",
+        },
+        {
             cover: "images/covers/cover-music-ui.webp",
-            title: "Music UI v2.9.0",
+            title: "Music UI v2.9.2",
             description:
                 "Bring your favorite tunes to life with a custom music screen...",
             link: "pages/project.html?id=music-ui",
@@ -57,19 +66,10 @@ const DATA = {
             tag: "UI",
         },
         {
-            cover: "images/covers/cover-music-oreui.webp",
-            title: "Music Ore-UI v1.0",
-            description:
-                "Enhance your Minecraft experience with a brand-new screen...",
-            link: "pages/project.html?id=music-oreui",
-            date: "March 19, 2025",
-            tag: "UI",
-        },
-        {
             cover: "images/covers/cover-notfound.webp",
-            title: "Nocturn UI v1.0",
+            title: "Soon",
             description: "Soon...",
-            link: "#",
+            link: "",
             date: "",
             tag: "Other",
         },
@@ -95,10 +95,9 @@ const DATA = {
 };
 
 // ============================================
-// UTILITIES (Funciones reutilizables)
+// UTILITIES
 // ============================================
 const Utils = {
-    // Debounce para eventos que se disparan muchas veces
     debounce(fn, delay = 16) {
         let timeoutId;
         return function (...args) {
@@ -107,7 +106,6 @@ const Utils = {
         };
     },
 
-    // Throttle con requestAnimationFrame
     throttleRAF(fn) {
         let rafId = null;
         return function (...args) {
@@ -119,7 +117,7 @@ const Utils = {
         };
     },
 
-    // Guardar en localStorage
+    // Save to localStorage
     saveToStorage(key, value) {
         try {
             localStorage.setItem(`thonyui_${key}`, JSON.stringify(value));
@@ -128,7 +126,7 @@ const Utils = {
         }
     },
 
-    // Leer de localStorage
+    // Read localStorage
     loadFromStorage(key, defaultValue = null) {
         try {
             const item = localStorage.getItem(`thonyui_${key}`);
@@ -138,7 +136,7 @@ const Utils = {
         }
     },
 
-    // Crear elemento con atributos
+    // Create elements with atributes
     createElement(tag, className, attributes = {}) {
         const element = document.createElement(tag);
         if (className) element.className = className;
@@ -152,10 +150,10 @@ const Utils = {
 };
 
 // ============================================
-// COMPONENTES (Módulos independientes)
+// COMPONENTS
 // ============================================
 
-// 1. RENDERIZADOR DE PROYECTOS
+// Render projects
 const ProjectsRenderer = {
     container: null,
 
@@ -173,19 +171,24 @@ const ProjectsRenderer = {
         const card = Utils.createElement("div", "project-card");
         card.dataset.tag = (project.tag || "other").toLowerCase();
 
-        // Image with lazy loading and error fallback
+        // ===== Image container and Badges =====
+        const imageContainer = Utils.createElement("div", "image-container");
+
         const img = Utils.createElement("img", "project-image", {
-            src: project.cover,
+            src: project.cover || CONFIG.defaultImage,
             alt: project.title,
             loading: "lazy",
         });
+
         img.onerror = () => {
             img.src = CONFIG.defaultImage;
             img.alt = `${project.title} ${CONFIG.messages.placeholderAlt}`;
         };
-        card.appendChild(img);
 
-        // Title + Tag container
+        imageContainer.appendChild(img);
+        card.appendChild(imageContainer);
+
+        // ===== Titles and Tags =====
         const titleTagContainer = Utils.createElement(
             "div",
             "title-tag-container",
@@ -199,24 +202,48 @@ const ProjectsRenderer = {
         const tag = Utils.createElement("span", "project-tag", {
             text: project.tag || "Other",
         });
-        titleTagContainer.appendChild(tag);
 
+        // Set class to lowerCase
+        if (project.tag) {
+            const tagClass = project.tag.toLowerCase().replace(/\s+/g, "-");
+            tag.classList.add(tagClass);
+        }
+
+        titleTagContainer.appendChild(tag);
         card.appendChild(titleTagContainer);
 
-        // Description
+        // ===== DESCRIPTION =====
         const description = Utils.createElement("p", "project-description", {
             text: project.description,
         });
         card.appendChild(description);
 
-        // Footer
+        // ===== FOOTER =====
         const footer = Utils.createElement("div", "card-footer");
 
+        const hasProjectLink = Boolean(project.link);
         const link = Utils.createElement("a", "project-link btn-secondary", {
-            href: project.link,
-            text: CONFIG.messages.viewProject,
-            title: `View ${project.title}`,
+            href: hasProjectLink ? project.link : "#",
+            text: hasProjectLink
+                ? project.linkText || CONFIG.messages.viewProject
+                : CONFIG.messages.soon,
+            title: hasProjectLink
+                ? `Ver ${project.title}`
+                : `${project.title} ${CONFIG.messages.soon}`,
         });
+        if (!hasProjectLink) {
+            link.classList.add("project-link-disabled");
+            link.setAttribute("aria-disabled", "true");
+            link.addEventListener("click", (e) => e.preventDefault());
+        }
+
+        // Add icons types
+        const linkIcon =
+            project.tag === "UI"
+                ? Utils.createElement("i", "ri-layout-grid-line")
+                : Utils.createElement("i", "ri-download-line");
+
+        link.prepend(linkIcon);
         footer.appendChild(link);
 
         const dateTag = Utils.createElement("div", "card-date-tag");
@@ -242,7 +269,7 @@ const ProjectsRenderer = {
     },
 };
 
-// 2. FILTRO DE TAGS
+// TAGS FILTERS
 const TagFilter = {
     buttons: [],
     container: null,
@@ -254,7 +281,7 @@ const TagFilter = {
 
         if (!this.buttons.length || !this.container) return false;
 
-        // Cargar tag guardado
+        // Load tag saved
         const savedTag = Utils.loadFromStorage("selectedTag", "all");
         this.currentTag = savedTag;
 
@@ -308,7 +335,9 @@ const TagFilter = {
             if (!emptyState) {
                 emptyState = Utils.createElement("div", "empty-state");
                 emptyState.innerHTML = `
-                    <i class="ri-folder-open-line"></i>
+                    <span class="empty-state-icon">
+                        <i class="ri-folder-open-line"></i>
+                    </span>
                     <p>${CONFIG.messages.emptyProjects}</p>
                 `;
                 this.container.appendChild(emptyState);
@@ -319,7 +348,7 @@ const TagFilter = {
     },
 };
 
-// 3. RENDERIZADOR DE COLABORACIONES
+// Render collaborations
 const CollaborationsRenderer = {
     container: null,
 
@@ -365,7 +394,7 @@ const CollaborationsRenderer = {
     },
 };
 
-// 4. NEKO CURSOR (con optimización de rendimiento)
+// NEKO Cursos (Lol)
 const NekoCursor = {
     trigger: null,
     image: null,
@@ -385,7 +414,6 @@ const NekoCursor = {
             this.image.classList.add("is-visible");
         });
 
-        // Throttle con requestAnimationFrame para mejor rendimiento
         const throttledMove = Utils.throttleRAF((e) => {
             const x = e.clientX;
             const y = e.clientY;
@@ -401,11 +429,21 @@ const NekoCursor = {
     },
 };
 
-// 5. SCROLL ANIMATIONS (Intersection Observer)
+// SCROLL ANIMATIONS
 const ScrollAnimations = {
     observer: null,
 
     init() {
+        const elements = document.querySelectorAll(
+            CONFIG.selectors.animatedElements,
+        );
+        if (!elements.length) return false;
+
+        if (!("IntersectionObserver" in window)) {
+            elements.forEach((element) => element.classList.add("is-visible"));
+            return true;
+        }
+
         const options = {
             threshold: CONFIG.animations.observerThreshold,
             rootMargin: "0px 0px -50px 0px",
@@ -420,14 +458,12 @@ const ScrollAnimations = {
             });
         }, options);
 
-        CONFIG.selectors.sections.forEach((id) => {
-            const element = document.getElementById(id);
-            if (element) this.observer.observe(element);
-        });
+        elements.forEach((element) => this.observer.observe(element));
+        return true;
     },
 };
 
-// 6. HERO ANIMATION
+// HERO ANIMATION
 const HeroAnimation = {
     init() {
         const heroContent = document.querySelector(
@@ -442,10 +478,9 @@ const HeroAnimation = {
 };
 
 // ============================================
-// INICIALIZACIÓN (Un solo punto de entrada)
+// INITIALIZATION
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
-    // Inicializar todos los módulos
     ProjectsRenderer.init();
     TagFilter.init();
     CollaborationsRenderer.init();

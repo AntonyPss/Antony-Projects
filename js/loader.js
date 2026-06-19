@@ -16,22 +16,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         showError();
     }
 
-    // Animaciones
-    const observerOptions = { threshold: 0.2 };
+    setupScrollAnimations();
+});
+
+function setupScrollAnimations() {
+    const elements = document.querySelectorAll(".fade-anim");
+    if (!elements.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+        elements.forEach((element) => element.classList.add("is-visible"));
+        return;
+    }
+
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+    };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const sections = ["review", "download", "contact"];
-    sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) observer.observe(el);
-    });
-});
+    elements.forEach((element) => observer.observe(element));
+}
 
 function getProjectIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -90,7 +101,7 @@ function createBadge(iconClass, text, badgeType) {
 
 function setupProject(project) {
     // ============================================
-    // FONDO DINÁMICO (background-image directo)
+    // DYNAMIC BACKGROUND
     // ============================================
     const heroSection = document.getElementById("heroSection");
     if (heroSection) {
@@ -102,7 +113,6 @@ function setupProject(project) {
             heroSection.style.backgroundRepeat = "no-repeat";
             heroSection.classList.add("dynamic-bg");
         } else {
-            // Fondo por defecto si no hay definido
             heroSection.style.backgroundImage =
                 "url('../images/banners/banner-empty.webp')";
             heroSection.classList.add("dynamic-bg");
@@ -112,14 +122,14 @@ function setupProject(project) {
     }
 
     // ============================================
-    // 2. BADGES (solo badges, sin texto extra)
+    // BADGES
     // ============================================
     const detailsContainer = document.getElementById("detailsList");
     if (detailsContainer) {
         const badgesWrapper = document.createElement("div");
         badgesWrapper.className = "project-badges";
 
-        // Badge versión
+        // Badge version
         badgesWrapper.appendChild(
             createBadge(
                 "ri-code-box-line",
@@ -127,7 +137,7 @@ function setupProject(project) {
                 "version",
             ),
         );
-        // Badge soporte
+        // Badge support
         badgesWrapper.appendChild(
             createBadge(
                 "ri-smartphone-line",
@@ -135,13 +145,13 @@ function setupProject(project) {
                 "support",
             ),
         );
-        // Badge plataforma
+        // Badge platform
         if (project.platform) {
             badgesWrapper.appendChild(
                 createBadge("ri-smartphone-line", project.platform, "platform"),
             );
         }
-        // Badge estado
+        // Badge status
         if (project.status) {
             let icon =
                 project.status.toLowerCase() === "stable"
@@ -169,7 +179,7 @@ function setupProject(project) {
     }
 
     // ============================================
-    // 3. Título, descripción e icono
+    // CARD ELEMENT
     // ============================================
     document.title = `${project.title} - Preview`;
     const titleElement = document.getElementById("projectTitle");
@@ -190,7 +200,7 @@ function setupProject(project) {
     }
 
     // ============================================
-    // 4. Screenshots
+    // Screenshots
     // ============================================
     const container = document.getElementById("projects-list");
     if (container) {
@@ -227,15 +237,20 @@ function setupProject(project) {
     }
 
     // ============================================
-    // 5. Downloads
+    // Downloads
     // ============================================
     const downloads = document.getElementById("download-list");
     if (downloads) {
-        if (project.downloads && project.downloads.length > 0) {
+        const validDownloads = (project.downloads || []).filter(
+            (download) =>
+                download.url && download.url !== "#none" && download.url !== "#",
+        );
+
+        if (validDownloads.length > 0) {
             const fragmentDownloads = document.createDocumentFragment();
-            project.downloads.forEach((download) => {
+            validDownloads.forEach((download) => {
                 const a = document.createElement("a");
-                a.href = download.url || "#";
+                a.href = download.url;
                 a.className = "download-btn btn-secondary";
                 a.title = "Download with " + (download.name || "File");
                 a.target = "_blank";
@@ -257,7 +272,7 @@ function setupProject(project) {
     }
 }
 
-// Setup Image Modal (sin cambios importantes)
+// Setup Image Modal
 function setupImageModal() {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");

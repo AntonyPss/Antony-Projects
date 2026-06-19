@@ -7,7 +7,7 @@
             "version": "1.3.0",
             "versionSupport": "1.21+",
             "platform": "Bedrock",
-            "status": "stable",
+            "status": "Stable",
             "openSource": true,
             "screenshots": [
                 {
@@ -60,10 +60,10 @@
             "title": "Music Ore-UI",
             "description": "The Music Ore-Ui offers a sleek and modern interface that enhances the user experience with its intuitive design and easy-to-use controls.",
             "icon": "../images/icons/music-oreui.webp",
-            "version": "2.9.0",
+            "version": "1.0.0",
             "versionSupport": "1.21+",
             "platform": "Bedrock",
-            "status": "stable",
+            "status": "Stable",
             "openSource": false,
             "screenshots": [
                 {
@@ -93,10 +93,6 @@
                     "url": "https://link-target.net/149403/music-ore-ui-v11"
                 },
                 {
-                    "name": "MCPEDL",
-                    "url": "#none"
-                },
-                {
                     "name": "ModBay",
                     "url": "https://modbay.org/textures/4062-music-ore-ui.html"
                 }
@@ -106,7 +102,7 @@
             "title": "Music UI",
             "description": "Elevate your Minecraft interface to the next level with Music UI! Designed to provide fluid, minimalist navigation with a unique musical aesthetic.",
             "icon": "../images/icons/music-ui.webp",
-            "version": "1.0.0",
+            "version": "2.9.2",
             "versionSupport": "1.21+",
             "platform": "Bedrock",
             "openSource": true,
@@ -127,10 +123,6 @@
                 {
                     "name": "LinkVertise",
                     "url": "https://direct-link.net/149403/music-ui"
-                },
-                {
-                    "name": "MCPEDL",
-                    "url": "#none"
                 },
                 {
                     "name": "ModBay",

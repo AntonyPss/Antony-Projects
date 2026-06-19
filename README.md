@@ -22,7 +22,6 @@ Features include:
 
 - UI Packs
 - JSON UI Projects
-- Scripts
 - Experimental Features
 - Design Concepts
 - Community Resources
