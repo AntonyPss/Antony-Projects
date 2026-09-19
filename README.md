@@ -2,22 +2,6 @@
 
 Welcome to **Antony Labs**, a place where I share my Minecraft Bedrock Edition projects, including UI packs, scripts, tools, and experimental concepts.
 
-## 🎨 Featured Project
-
-### Thony UI
-
-A modern and customizable user interface for Minecraft Bedrock Edition.
-
-Features include:
-
-- Modern dark mode design
-- Redesigned menus
-- Improved chat interface
-- Custom notifications
-- Enhanced accessibility
-- PC & Mobile support
-- Continuous updates
-
 ## 📦 Available Content
 
 - UI Packs

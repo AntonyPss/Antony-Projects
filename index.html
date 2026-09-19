@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,39 @@
     <title>Antony Labs - Portfolio</title>
 
     <meta name="description"
-        content="Welcome to Antony's Project Portfolio, showcasing innovative Minecraft UI designs and collaborations.">
-    <meta name="keywords" content="portfolio, web, projects, JSON, Minecraft, UI design">
+        content="Antony Labs creates polished Minecraft Bedrock UI designs, add-ons, and immersive interfaces built with clean UX, JSON customization, and community-focused creativity.">
+    <meta name="keywords"
+        content="Minecraft Bedrock UI, Minecraft UI design, Bedrock add-ons, Antony Labs, JSON UI, UI/UX design">
     <meta name="author" content="Antony Calvo">
+    <meta name="robots" content="index,follow">
     <meta property="og:title" content="Antony Labs - Portfolio">
+    <meta property="og:description"
+        content="Explore polished Bedrock UI concepts, community collaborations, and projects shaped by modern design and accessible interaction.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="images/icons/logo.webp">
+    <meta property="og:url" content="https://antony-portafolio.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Antony Labs - Portfolio">
+    <meta name="twitter:description"
+        content="Polished Minecraft Bedrock UI projects designed for readability, clarity, and immersive player experience.">
+    <meta name="twitter:image" content="images/icons/logo.webp">
     <meta name="theme-color" content="#44362F">
+    <link rel="canonical" href="https://antony-portafolio.vercel.app/">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Antony Calvo",
+            "alternateName": "Antony Labs",
+            "jobTitle": "Minecraft UI Designer",
+            "description": "Designer focused on Minecraft Bedrock interfaces, JSON customization, and immersive user experience.",
+            "url": "https://antony-portafolio.vercel.app/",
+            "sameAs": [
+                "https://github.com/AntonyPss",
+                "https://discord.gg/kYDf4gadKw"
+            ]
+        }
+    </script>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
@@ -25,28 +52,29 @@
 
 <body>
     <!-- Skip to content link (Accessibility) -->
-    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Saltar al contenido principal</a>
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Header -->
     <header id="header" class="header" role="banner">
         <div class="header-content container">
             <!-- Logo -->
-            <a href="#" class="nav-logo" title="Antony Labs - Inicio" aria-label="Home">
+            <a href="#" class="nav-logo" title="Antony Labs - Home" aria-label="Home">
                 <img src="images/icons/logo.webp" alt="Antony Labs Logo" />
             </a>
 
             <!-- Navigation - Desktop -->
-            <nav class="nav-links-desktop" aria-label="Navegación principal">
-                <a href="#home" class="nav-link" aria-label="Ir a Inicio">Home</a>
-                <a href="#about" class="nav-link" aria-label="Ir a Sobre mí">About</a>
-                <a href="#skills" class="nav-link" aria-label="Ir a Habilidades">Skills</a>
-                <a href="#projects" class="nav-link" aria-label="Ir a Proyectos">Projects</a>
-                <a href="#collaborations" class="nav-link" aria-label="Ir a Colaboraciones">Collaborations</a>
-                <a href="#contact" class="nav-link" aria-label="Ir a Contacto">Contact</a>
+            <nav class="nav-links-desktop" aria-label="Main navigation">
+                <a href="#home" class="nav-link" aria-label="Go to Home">Home</a>
+                <a href="#about" class="nav-link" aria-label="Go to About">About</a>
+                <a href="#skills" class="nav-link" aria-label="Go to Skills">Skills</a>
+                <a href="#projects" class="nav-link" aria-label="Go to Projects">Projects</a>
+                <a href="#collaborations" class="nav-link" aria-label="Go to Collaborations">Collaborations</a>
+                <a href="#contact" class="nav-link" aria-label="Go to Contact">Contact</a>
+                <a href="#support-me" class="nav-link" aria-label="Go to Ko-fi">Support Me</a>
             </nav>
 
             <!-- Social Links Desktop -->
-            <div class="social-links-desktop" aria-label="Enlaces a redes sociales">
+            <div class="social-links-desktop" aria-label="Social media links">
                 <a href="https://github.com/AntonyPss/Antony-Projects" class="social-link" target="_blank"
                     rel="noopener noreferrer" aria-label="GitHub">
                     <i class="ri-github-fill" aria-hidden="true"></i>
@@ -56,56 +84,75 @@
                     <i class="ri-discord-fill" aria-hidden="true"></i>
                 </a>
                 <a href="https://antony-portafolio.vercel.app/" class="social-link" target="_blank"
-                    rel="noopener noreferrer" aria-label="Portafolio Global">
+                    rel="noopener noreferrer" aria-label="Global Portfolio">
                     <i class="ri-global-line" aria-hidden="true"></i>
                 </a>
             </div>
 
             <!-- Mobile menu button -->
-            <button class="menu-icon btn-primary" id="menuToggle" aria-label="Menú de navegación" aria-expanded="false">
+            <button class="menu-icon" id="menuToggle" type="button" aria-label="Navigation menu" aria-expanded="false"
+                aria-controls="mobileMenu" aria-haspopup="true">
                 <i class="ri-menu-line" aria-hidden="true"></i>
             </button>
         </div>
 
         <!-- Mobile Navigation (hidden by default) -->
-        <div id="mobileMenu" class="mobile-menu" aria-label="Menú móvil">
-            <a href="#home" class="mobile-nav-link" aria-label="Ir a Inicio">
+        <div id="mobileMenu" class="mobile-menu" aria-label="Mobile menu" hidden>
+            <a href="#home" class="mobile-nav-link" aria-label="Go to Home">
                 <i class="ri-home-line" aria-hidden="true"></i> Home
             </a>
-            <a href="#about" class="mobile-nav-link" aria-label="Ir a Sobre mí">
+            <a href="#about" class="mobile-nav-link" aria-label="Go to About">
                 <i class="ri-user-line" aria-hidden="true"></i> About
             </a>
-            <a href="#skills" class="mobile-nav-link" aria-label="Ir a Habilidades">
+            <a href="#skills" class="mobile-nav-link" aria-label="Go to Skills">
                 <i class="ri-code-line" aria-hidden="true"></i> Skills
             </a>
-            <a href="#projects" class="mobile-nav-link" aria-label="Ir a Proyectos">
+            <a href="#projects" class="mobile-nav-link" aria-label="Go to Projects">
                 <i class="ri-folder-line" aria-hidden="true"></i> Projects
             </a>
-            <a href="#collaborations" class="mobile-nav-link" aria-label="Ir a Colaboraciones">
-                <i class="ri-handshake-line" aria-hidden="true"></i> Collaborations
+            <a href="#collaborations" class="mobile-nav-link" aria-label="Go to Collaborations">
+                <i class="ri-shake-hands-line" aria-hidden="true"></i> Collaborations
             </a>
-            <a href="#contact" class="mobile-nav-link" aria-label="Ir a Contacto">
+            <a href="#contact" class="mobile-nav-link" aria-label="Go to Contact">
                 <i class="ri-mail-line" aria-hidden="true"></i> Contact
             </a>
-            <div class="mobile-social" aria-label="Redes sociales móvil">
+            <a href="#support-me" class="mobile-nav-link">
+                <i class="ri-heart-3-line" aria-hidden="true"></i> Support Me
+            </a>
+            <div class="mobile-social" aria-label="Mobile social media">
                 <a href="https://github.com/AntonyPss/Antony-Projects" target="_blank"
                     rel="noopener noreferrer">GitHub</a>
                 <a href="https://discord.gg/kYDf4gadKw" target="_blank" rel="noopener noreferrer">Discord</a>
-                <a href="https://antony-portafolio.vercel.app/" target="_blank" rel="noopener noreferrer">Portafolio</a>
+                <a href="https://antony-portafolio.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" class="main" role="main" aria-label="Contenido principal">
+    <main id="main-content" class="main" role="main" aria-label="Main content">
         <!-- Hero Section -->
-        <section id="home" class="hero-section background-overlay" aria-label="Sección principal">
+        <section id="home" class="hero-section background-overlay" aria-label="Hero section">
             <div id="hero-content" class="hero-content fade-anim">
                 <div class="hero-card-label">
                     <span>Redefining the Bedrock Experience</span>
                 </div>
                 <h1 class="hero-title">Welcome to Antony's Labs Portfolio</h1>
-                <p class="hero-paragraph">Discover my latest Minecraft UI designs and collaborations.</p>
+                <p class="hero-paragraph">Discover polished Minecraft Bedrock UI concepts, collaborative projects, and
+                    immersive experiences built around clarity and visual storytelling.</p>
+                <div class="hero-highlights" aria-label="Core specialties">
+                    <div class="hero-highlight">
+                        <i class="ri-layout-grid-line" aria-hidden="true"></i>
+                        <span>Bedrock UI systems</span>
+                    </div>
+                    <div class="hero-highlight">
+                        <i class="ri-brush-line" aria-hidden="true"></i>
+                        <span>Clean visual direction</span>
+                    </div>
+                    <div class="hero-highlight">
+                        <i class="ri-chat-smile-2-line" aria-hidden="true"></i>
+                        <span>Community-focused design</span>
+                    </div>
+                </div>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn-primary" title="View Projects">View Projects</a>
                     <a href="#contact" class="btn-secondary" title="Contact me">Contact me</a>
@@ -115,11 +162,43 @@
 
         <!-- About Section -->
         <section id="about" class="about-section container fade-anim" aria-labelledby="about-title">
-            <h2 id="about-title" class="section-title">About me</h2>
-            <p class="section-description">My name is Antony. I am 16 years old and have over two years of experience
-                working with Minecraft Bedrock, specializing in user interfaces and JSON customization. Passionate about
-                creating intuitive and engaging designs, I enjoy contributing to the Minecraft community through
-                innovative UI projects.</p>
+            <div class="about-copy">
+                <h2 id="about-title" class="section-title">About me</h2>
+                <p class="section-description">My name is Antony. I am 17 years old and have over two years of
+                    experience working with Minecraft Bedrock, specializing in user interfaces and JSON
+                    customization. I focus on creating intuitive, visually polished experiences that feel natural
+                    for players and easy to maintain for creators.</p>
+            </div>
+        </section>
+
+        <section id="approach" class="approach-section container fade-anim" aria-labelledby="approach-title">
+            <div class="section-heading">
+                <span class="section-pill">How I work</span>
+                <h2 id="approach-title" class="section-title">A practical workflow for clearer, more immersive
+                    experiences</h2>
+                <p class="section-description">Every project is shaped with a balance of visual clarity, usability, and
+                    technical reliability so the final product feels polished on any screen.</p>
+            </div>
+            <div class="approach-grid">
+                <article class="approach-card">
+                    <i class="ri-search-eye-line" aria-hidden="true"></i>
+                    <h3>Research</h3>
+                    <p>I study the flow of each interface and identify where a cleaner experience can make a real
+                        difference.</p>
+                </article>
+                <article class="approach-card">
+                    <i class="ri-palette-line" aria-hidden="true"></i>
+                    <h3>Design</h3>
+                    <p>I turn those ideas into visual systems that feel modern, readable, and adapted to the Minecraft
+                        style.</p>
+                </article>
+                <article class="approach-card">
+                    <i class="ri-test-tube-line" aria-hidden="true"></i>
+                    <h3>Refine</h3>
+                    <p>I iterate for performance and clarity so the experience stays smooth and enjoyable across
+                        devices.</p>
+                </article>
+            </div>
         </section>
 
         <!-- Skills Section -->
@@ -161,7 +240,7 @@
                 redefine your Minecraft interface.</p>
 
             <!-- Tag Selector -->
-            <div class="project-tag-selector" role="tablist" aria-label="Filtrar proyectos por categoría">
+            <div class="project-tag-selector" role="tablist" aria-label="Filter projects by category">
                 <button class="tag-btn active" data-tag="all" role="tab" aria-selected="true">
                     <i class="ri-global-line" aria-hidden="true"></i>
                     <span>All</span>
@@ -174,12 +253,16 @@
                     <i class="ri-puzzle-line" aria-hidden="true"></i>
                     <span>Add-On</span>
                 </button>
+                <button class="tag-btn no-projects" data-tag="textures" role="tab" aria-selected="false">
+                    <i class="ri-paint-fill" aria-hidden="true"></i>
+                    <span>Textures</span>
+                </button>
                 <button class="tag-btn" data-tag="other" role="tab" aria-selected="false">
                     <i class="ri-more-line" aria-hidden="true"></i>
                     <span>Other</span>
                 </button>
             </div>
-            <div id="projects-grid" class="projects-grid" aria-label="Lista de proyectos">
+            <div id="projects-grid" class="projects-grid" aria-label="Project list">
                 <!-- Project cards will be dynamically inserted here -->
             </div>
         </section>
@@ -189,7 +272,7 @@
             <h2 id="collabs-title" class="section-title">Collaborations</h2>
             <p class="section-description">Joint projects created with fellow developers to push the visual and
                 technical limits of Bedrock Edition.</p>
-            <div id="collabs-list" class="collabs-grid" aria-label="Lista de colaboraciones">
+            <div id="collabs-list" class="collabs-grid" aria-label="Collaborations list">
                 <!-- Collaboration items will be dynamically inserted here -->
             </div>
         </section>
@@ -198,7 +281,7 @@
         <section id="contact" class="contact-section container fade-anim" aria-labelledby="contact-title">
             <h2 id="contact-title" class="section-title">Get in Touch</h2>
             <p class="section-description">Have a project in mind or want to collaborate? Feel free to reach out!</p>
-            <div class="contact-buttons" aria-label="Formas de contacto">
+            <div class="contact-buttons" aria-label="Contact methods">
                 <!-- Email Button -->
                 <a href="mailto:ROVALOSKI@gmail.com" class="btn-secondary" title="Send me an email">
                     <i class="ri-mail-fill" aria-hidden="true"></i> Email
@@ -217,31 +300,81 @@
                 </a>
             </div>
         </section>
+
+        <!-- Support Section -->
+        <section id="support-me" class="support-section container fade-anim" aria-labelledby="support-title">
+            <h2 class="section-title">Support Me</h2>
+            <p class="section-description">If you like my work, support me on Ko-fi so I can keep creating more
+                projects.</p>
+            <div class="support-buttons" aria-label="Support me on Ko-fi">
+                <a href="https://ko-fi.com/imantonycalv" class="support-btn" target="_blank" rel="noopener noreferrer"
+                    title="Support me on Ko-fi">
+                    Donate on Ko-fi <i class="ri-arrow-right-line"></i>
+                </a>
+            </div>
+        </section>
     </main>
 
-    <!-- Support on Ko-Fi -->
-    <div id="donate" class="donate-section" aria-label="Apoyar en Ko-fi">
-        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-        <script
-            type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#4f433b', 'S8M0212A0A', '24px'); kofiwidget2.draw();</script>
-    </div>
-
     <!-- Neko Image Hover -->
-    <div class="neko-container" aria-label="Mascota interactiva">
-        <span class="neko-trigger" role="button" tabindex="0">Neko Arc Here!</span>
-        <img src="images/icons/neko.jpg" alt="Neko mascota" class="neko-float" id="neko-img">
+    <div class="neko-container" aria-label="Interactive mascot">
+        <span class="neko-trigger" role="button" tabindex="0">Neko Arc is lurking!</span>
+        <img src="images/icons/neko.jpg" alt="Neko mascot" class="neko-float" id="neko-img">
     </div>
 
     <!-- Footer Section -->
-    <footer id="footer" class="footer" role="contentinfo" aria-label="Pie de página">
+    <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
+        <div class="navigation">
+            <section class="image-logo">
+                <a href="#home" class="nav-logo" title="Antony Labs - Home" aria-label="Home">
+                    <img src="images/icons/logo.webp" alt="Antony Labs Logo" />
+                </a>
+                <p>Crafted texture packs with a unique style for an improved user experience.</p>
+                <div class="social-media-btns">
+                    <a href="https://github.com/AntonyPss/Antony-Projects" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="ri-github-fill" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://discord.gg/kYDf4gadKw" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="Discord">
+                        <i class="ri-discord-fill" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://antony-portafolio.vercel.app/" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="Portfolio">
+                        <i class="ri-global-line" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section class="links" aria-labelledby="nav-links">
+                <h4 id="nav-links">Navigation</h4>
+                <nav>
+                    <a href="#home" class="nav-link" aria-label="Go to Home">Home</a>
+                    <a href="#about" class="nav-link" aria-label="Go to About">About</a>
+                    <a href="#projects" class="nav-link" aria-label="Go to Projects">Projects</a>
+                </nav>
+            </section>
+
+            <section class="legal" aria-labelledby="legal-info">
+                <h4 id="legal-info">Legal</h4>
+                <nav>
+                    <a href="pages/legal.html#privacy" class="nav-link" aria-label="Privacy Policy">Privacy Policy</a>
+                    <a href="pages/legal.html#terms" class="nav-link" aria-label="Terms and Conditions">Terms and
+                        Conditions</a>
+                    <a href="#contact" class="nav-link" aria-label="Contact Us">Contact Us</a>
+                </nav>
+            </section>
+        </div>
+
+        <div class="separator-line divider"></div>
+
         <div class="info">
-            <p>&copy; 2026 Antony Labs - All rights reserved - Not affiliated with Mojang</p>
+            <p>&copy; 2026 Antony Labs - All rights reserved - Not affiliated with Mojang AB.</p>
             <p>Made with <i class="ri-heart-3-fill hearth" aria-hidden="true"></i> by AntonyPss</p>
         </div>
     </footer>
 
     <!-- Jump to up button -->
-    <button id="scrollTopBtn" class="jump-to-top" title="Jump to top" aria-label="Volver arriba">
+    <button id="scrollTopBtn" class="jump-to-top" title="Jump to top" aria-label="Back to top">
         <i class="ri-arrow-up-s-line" aria-hidden="true"></i>
     </button>
 

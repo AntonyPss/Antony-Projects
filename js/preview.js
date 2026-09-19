@@ -39,10 +39,19 @@ const CONFIG = {
 const DATA = {
     projects: [
         {
+            cover: "images/covers/cover-better-chat.webp",
+            title: "BetterChat+++ v1.0.0",
+            description:
+                "A revamped system featuring Ore-UI, exciting new features, and a sleek, modern design for Minecraft Bedrock Edition.",
+            link: "pages/project.html?id=better-chat",
+            date: "July 10, 2026",
+            tag: "UI",
+        },
+        {
             cover: "images/covers/cover-thony-ui.webp",
             title: "Thony UI v1.3.0",
             description:
-                "Transform the default Minecraft user interface into a sleek, modern design...",
+                "Transform the default Minecraft user interface into a sleek, modern design.",
             link: "pages/project.html?id=thony-ui",
             date: "June 7, 2025",
             tag: "UI",
@@ -51,7 +60,7 @@ const DATA = {
             cover: "images/covers/cover-music-oreui.webp",
             title: "Music Ore-UI v1.0.0",
             description:
-                "Enhance your Minecraft experience with a brand-new screen...",
+                "Enhance your Minecraft experience with a brand-new screen designed for immersion.",
             link: "pages/project.html?id=music-ore-ui",
             date: "March 19, 2025",
             tag: "UI",
@@ -60,7 +69,7 @@ const DATA = {
             cover: "images/covers/cover-music-ui.webp",
             title: "Music UI v2.9.2",
             description:
-                "Bring your favorite tunes to life with a custom music screen...",
+                "Bring your favorite tunes to lifewith a custom music screen, tailored for you.",
             link: "pages/project.html?id=music-ui",
             date: "April 15, 2025",
             tag: "UI",
@@ -91,6 +100,13 @@ const DATA = {
             description: "Creator of BetterChat and other projects.",
             title: "Galaxybrine Collaboration",
         },
+        {
+            href: "https://github.com/OlcanoDev",
+            img: "https://avatars.githubusercontent.com/u/321031975?s=200&v=4",
+            name: "OlcanoDev",
+            description: "Official GitHub organization for the Olcano Minecraft Bedrock server",
+            title: "OlcanoDev Collaboration",
+        }
     ],
 };
 
@@ -281,6 +297,8 @@ const TagFilter = {
 
         if (!this.buttons.length || !this.container) return false;
 
+        this.container.setAttribute("aria-live", "polite");
+
         // Load tag saved
         const savedTag = Utils.loadFromStorage("selectedTag", "all");
         this.currentTag = savedTag;
@@ -294,7 +312,8 @@ const TagFilter = {
 
     setupEventListeners() {
         this.buttons.forEach((btn) => {
-            btn.addEventListener("click", (e) => {
+            btn.setAttribute("aria-controls", "projects-grid");
+            btn.addEventListener("click", () => {
                 const tag = btn.dataset.tag;
                 if (!tag) return;
 
@@ -310,6 +329,7 @@ const TagFilter = {
         this.buttons.forEach((btn) => {
             const isActive = btn.dataset.tag === this.currentTag;
             btn.classList.toggle("active", isActive);
+            btn.setAttribute("aria-selected", String(isActive));
         });
     },
 

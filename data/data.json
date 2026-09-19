@@ -1,5 +1,28 @@
 {
     "projects": {
+        "better-chat": {
+            "title": "BetterChat+++",
+            "description": "A complete overhaul of the chat interface, providing a more intuitive and user-friendly experience with improved readability and customizable options.",
+            "icon": "../images/icons/better-chat.webp",
+            "version": "1.0.0",
+            "versionSupport": "1.21+",
+            "platform": "Bedrock",
+            "status": "Stable",
+            "openSource": true,
+            "screenshots": [
+                {
+                    "image": "../images/projects/better-chat-1.webp",
+                    "title": "Chat Screen (Main)",
+                    "description": "The main chat screen has been redesigned for improved readability and ease of use."
+                },
+                {
+                    "image": "../images/projects/better-chat-2.webp",
+                    "title": "Chat Screen (Settings)",
+                    "description": "The settings menu allows for customization of chat appearance and behavior."
+                }
+            ],
+            "downloads": []
+        },
         "thony-ui": {
             "title": "Thony UI",
             "description": "A sleek and modern interface overhaul. Designed to provide a clean, professional, and clutter-free experience by completely redesigning every menu and HUD element for maximum clarity.",
@@ -102,7 +125,7 @@
             "title": "Music UI",
             "description": "Elevate your Minecraft interface to the next level with Music UI! Designed to provide fluid, minimalist navigation with a unique musical aesthetic.",
             "icon": "../images/icons/music-ui.webp",
-            "version": "2.9.2",
+            "version": "2.9.0",
             "versionSupport": "1.21+",
             "platform": "Bedrock",
             "openSource": true,

@@ -97,7 +97,50 @@
     justify-content: center;
     margin-top: var(--spacing-sm);
 }
-
+ 
+.overview-section {
+    margin-top: var(--spacing-lg);
+}
+ 
+.overview-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--spacing-xl);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent), var(--color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+ 
+.overview-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+ 
+.overview-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin: 0;
+    padding: 0;
+}
+ 
+.overview-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text-medium-contrast);
+    line-height: 1.55;
+}
+ 
+.overview-list i {
+    color: var(--accent-color);
+    margin-top: 3px;
+}
+ 
 /* ============================================
    PROJECT BADGES
    ============================================ */
@@ -189,9 +232,9 @@
    ============================================ */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-lg) 0;
     width: 100%;
 }
 
@@ -202,7 +245,7 @@
         linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent),
         var(--color-surface);
     border-radius: var(--radius-medium);
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg);
     transition: var(--transition-all);
     border: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: var(--shadow-sm);
@@ -225,7 +268,6 @@
 }
 
 .project-image:hover {
-    opacity: 0.85;
     transform: scale(1.02);
 }
 
@@ -484,6 +526,12 @@
     .hero-content {
         gap: var(--spacing-md);
         padding: var(--spacing-xl);
+    }
+
+    .overview-card {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding: var(--spacing-lg);
     }
 
     .hero-image img {

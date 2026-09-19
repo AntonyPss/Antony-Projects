@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
-        setupProject(project);
+        setupProject(project, projectId);
         setupImageModal();
     } catch (error) {
         console.error("Error:", error);
@@ -99,7 +99,60 @@ function createBadge(iconClass, text, badgeType) {
     return badge;
 }
 
-function setupProject(project) {
+function setMetaContent(selector, content) {
+    const element = document.querySelector(selector);
+    if (element) {
+        element.setAttribute("content", content);
+    }
+}
+
+function updateMetaTags(project, projectId) {
+    const title = project?.title || "Antony Labs Project";
+    const description =
+        project?.description ||
+        "Explore Antony Labs project previews with screenshots, version details, and direct download links for polished Minecraft Bedrock UI concepts.";
+    const shortDescription =
+        description.length > 160 ? `${description.slice(0, 157)}...` : description;
+    const currentUrl = projectId
+        ? `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(projectId)}`
+        : `${window.location.origin}${window.location.pathname}`;
+
+    document.title = `${title} - Antony Labs`;
+    setMetaContent('meta[name="description"]', shortDescription);
+    setMetaContent('meta[property="og:title"]', `${title} - Antony Labs`);
+    setMetaContent('meta[property="og:description"]', shortDescription);
+    setMetaContent('meta[property="og:image"]', project?.icon || "../images/icons/logo.webp");
+    setMetaContent('meta[property="og:url"]', currentUrl);
+    setMetaContent('meta[name="twitter:title"]', `${title} - Antony Labs`);
+    setMetaContent('meta[name="twitter:description"]', shortDescription);
+    setMetaContent('meta[name="twitter:image"]', project?.icon || "../images/icons/logo.webp");
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+        canonicalLink.setAttribute("href", currentUrl);
+    }
+
+    const schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (schemaScript) {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: title,
+            description: shortDescription,
+            image: project?.icon || "../images/icons/logo.webp",
+            url: currentUrl,
+            author: {
+                "@type": "Person",
+                name: "Antony Calvo",
+            },
+        };
+        schemaScript.textContent = JSON.stringify(schema);
+    }
+}
+
+function setupProject(project, projectId) {
+    updateMetaTags(project, projectId);
+
     // ============================================
     // DYNAMIC BACKGROUND
     // ============================================
@@ -181,11 +234,48 @@ function setupProject(project) {
     // ============================================
     // CARD ELEMENT
     // ============================================
-    document.title = `${project.title} - Preview`;
     const titleElement = document.getElementById("projectTitle");
     const descElement = document.getElementById("projectDescription");
     if (titleElement) titleElement.textContent = project.title;
     if (descElement) descElement.textContent = project.description;
+
+    const overviewDescription = document.getElementById("overviewDescription");
+    if (overviewDescription) {
+        overviewDescription.textContent = project.description || "This project combines a refined Bedrock interface with clear structure and modern visual styling.";
+    }
+
+    const overviewHighlights = document.getElementById("overviewHighlights");
+    if (overviewHighlights) {
+        const highlights = [
+            {
+                icon: "ri-code-box-line",
+                text: `Version ${project.version || "1.0.0"}`,
+            },
+            {
+                icon: "ri-smartphone-line",
+                text: `Compatibility ${project.versionSupport || "1.20+"}`,
+            },
+            {
+                icon: "ri-cpu-line",
+                text: project.platform ? `${project.platform} build` : "Bedrock experience",
+            },
+            {
+                icon: project.openSource ? "ri-github-fill" : "ri-community-line",
+                text: project.openSource ? "Open source project" : "Community-focused project",
+            },
+        ];
+
+        overviewHighlights.innerHTML = highlights
+            .map(
+                (item) => `
+                    <li>
+                        <i class="${item.icon}" aria-hidden="true"></i>
+                        <span>${item.text}</span>
+                    </li>
+                `,
+            )
+            .join("");
+    }
 
     const icon = document.getElementById("projectIcon");
     if (icon) {
@@ -243,7 +333,9 @@ function setupProject(project) {
     if (downloads) {
         const validDownloads = (project.downloads || []).filter(
             (download) =>
-                download.url && download.url !== "#none" && download.url !== "#",
+                download.url &&
+                download.url !== "#none" &&
+                download.url !== "#",
         );
 
         if (validDownloads.length > 0) {

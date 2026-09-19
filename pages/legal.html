@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Legal - Antony Labs</title>
+
+    <meta name="description" content="Privacy Policy and Terms of Service for Antony Labs.">
+    <meta name="author" content="Antony Calvo">
+    <meta name="theme-color" content="#44362F">
+
+    <link rel="icon" href="../images/icons/favicon.webp" type="image/webp">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/secondary.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           LEGAL PAGE
+           ============================================ */
+
+        /* Hero */
+        .legal-hero {
+            padding: 80px 40px;
+            text-align: center;
+            background: var(--color-surface);
+            border-radius: var(--radius-medium);
+            margin: 100px 20px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .legal-hero-badge {
+            display: inline-block;
+            padding: 4px 16px;
+            background: var(--primary-brown);
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: var(--text-medium-contrast);
+            margin-bottom: 12px;
+        }
+
+        .legal-hero h1 {
+            font-size: 2rem;
+            color: var(--text-high-contrast);
+            margin-bottom: 8px;
+        }
+
+        .legal-hero p {
+            color: var(--text-low-contrast);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Layout */
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        /* Sidebar */
+        .legal-sidebar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            position: sticky;
+            top: 100px;
+            background-color: var(--color-surface);
+            border-radius: var(--radius-medium);
+            padding: var(--spacing-lg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .legal-sidebar a {
+            color: var(--text-medium-contrast);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .legal-sidebar a:hover {
+            background: var(--primary-dark);
+            color: var(--text-high-contrast);
+        }
+
+        .legal-sidebar a.active {
+            background: var(--primary-brown);
+            color: var(--text-high-contrast);
+        }
+
+        /* Articles */
+        .legal-article {
+            background: var(--color-surface);
+            border-radius: var(--radius-medium);
+            padding: 30px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .legal-article h2 {
+            font-size: 1.5rem;
+            color: var(--text-high-contrast);
+            margin-bottom: 4px;
+        }
+
+        .legal-article .date {
+            font-size: 0.8rem;
+            color: var(--text-low-contrast);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .legal-article h3 {
+            font-size: 1.1rem;
+            color: var(--text-high-contrast);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .legal-article p {
+            color: var(--text-medium-contrast);
+            line-height: 1.6;
+        }
+
+        .legal-article .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: var(--text-medium-contrast);
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 1px solid var(--primary-brown);
+            border-radius: 40px;
+            transition: 0.3s;
+        }
+
+        .legal-article .back-home:hover {
+            background: var(--primary-brown);
+            color: var(--text-high-contrast);
+        }
+
+        @media (max-width: 768px) {
+            .legal-hero {
+                margin: 70px 10px 20px;
+                padding: 40px 16px;
+            }
+
+            .legal-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .legal-article {
+                padding: 20px;
+            }
+
+            .legal-sidebar {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header" class="header" role="banner">
+        <div class="header-content container">
+            <a href="../index.html" class="nav-logo" aria-label="Home">
+                <img src="../images/icons/logo.webp" alt="Antony Labs Logo" />
+            </a>
+
+            <nav class="nav-links-desktop" aria-label="Main navigation">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#privacy" class="nav-link active">Privacy</a>
+                <a href="#terms" class="nav-link">Terms</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="social-links-desktop">
+                <a href="https://github.com/AntonyPss/Antony-Projects" class="social-link" target="_blank"
+                    rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="ri-github-fill" aria-hidden="true"></i>
+                </a>
+                <a href="https://discord.gg/kYDf4gadKw" class="social-link" target="_blank" rel="noopener noreferrer"
+                    aria-label="Discord">
+                    <i class="ri-discord-fill" aria-hidden="true"></i>
+                </a>
+                <a href="https://antony-portafolio.vercel.app/" class="social-link" target="_blank"
+                    rel="noopener noreferrer" aria-label="Global Portfolio">
+                    <i class="ri-global-line" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <button class="menu-icon" id="menuToggle" type="button" aria-label="Navigation menu" aria-expanded="false">
+                <i class="ri-menu-line" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu" hidden>
+            <a href="../index.html#home" class="mobile-nav-link"><i class="ri-home-line"></i> Home</a>
+            <a href="../legal.html#privacy" class="mobile-nav-link"><i class="ri-shield-check-line"></i> Privacy</a>
+            <a href="../legal.html#terms" class="mobile-nav-link"><i class="ri-file-text-line"></i> Terms</a>
+            <a href="../index.html#contact" class="mobile-nav-link"><i class="ri-mail-line"></i> Contact</a>
+            <div class="mobile-social">
+                <a href="https://github.com/AntonyPss/Antony-Projects" target="_blank">GitHub</a>
+                <a href="https://discord.gg/kYDf4gadKw" target="_blank">Discord</a>
+                <a href="https://antony-portafolio.vercel.app/" target="_blank">Portfolio</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero -->
+        <section id="home" class="legal-hero">
+            <span class="legal-hero-badge">
+                <i class="ri-shield-check-line" aria-hidden="true"></i>
+                Legal Information
+            </span>
+            <h1>Privacy Policy &amp; Terms</h1>
+            <p>This page explains how Antony Labs handles personal information and the terms that apply when using this
+                site.</p>
+        </section>
+
+        <!-- Content -->
+        <div class="legal-content">
+
+            <!-- Sidebar -->
+            <nav class="legal-sidebar" aria-label="Table of contents">
+                <a href="#privacy" class="active">Privacy Policy</a>
+                <a href="#terms">Terms &amp; Conditions</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- Privacy -->
+            <article class="legal-article" id="privacy">
+                <h2>Privacy Policy</h2>
+                <span class="date">Last updated: July 2026</span>
+
+                <h3>Information We Collect</h3>
+                <p>Antony Labs may collect anonymous usage statistics, browser information, and contact information when
+                    you communicate through available channels.</p>
+
+                <h3>How Information Is Used</h3>
+                <p>The information collected is used to improve the website, respond to your inquiries, and provide a
+                    better user experience.</p>
+
+                <h3>Cookies</h3>
+                <p>This website may use cookies to remember your preferences and collect anonymous usage statistics.</p>
+
+                <h3>Third-Party Services</h3>
+                <p>Some pages may include links to GitHub, ModBay, Discord, or other external services. Their own
+                    privacy policies apply.</p>
+            </article>
+
+            <!-- Terms -->
+            <article class="legal-article" id="terms">
+                <h2>Terms &amp; Conditions</h2>
+                <span class="date">Last updated: July 2026</span>
+
+                <h3>Website Usage</h3>
+                <p>You may browse, download, and share publicly available content as long as you respect copyright and
+                    applicable laws.</p>
+
+                <h3>Intellectual Property</h3>
+                <p>Unless otherwise stated, all original projects, graphics, and source code belong to Antony Labs.</p>
+
+                <h3>External Links</h3>
+                <p>Antony Labs is not responsible for the content available on third-party websites.</p>
+
+                <h3>Changes to Terms</h3>
+                <p>These terms may be updated at any time without prior notice.</p>
+            </article>
+
+            <!-- Contact -->
+            <article class="legal-article" id="contact">
+                <h2>Contact</h2>
+                <p>If you have questions about this Privacy Policy or the Terms &amp; Conditions, please contact through
+                    the links available on the homepage.</p>
+                <a href="../index.html#contact" class="back-home">
+                    <i class="ri-arrow-left-line" aria-hidden="true"></i>
+                    Go to Contact
+                </a>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer" role="contentinfo">
+        <div class="navigation">
+            <section class="image-logo">
+                <a href="../index.html" class="nav-logo">
+                    <img src="../images/icons/logo.webp" alt="Antony Labs Logo" />
+                </a>
+                <p>Crafted texture packs with a unique style for an improved user experience.</p>
+                <div class="social-media-btns">
+                    <a href="https://github.com/AntonyPss/Antony-Projects" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                    <a href="https://discord.gg/kYDf4gadKw" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="ri-discord-fill"></i>
+                    </a>
+                    <a href="https://antony-portafolio.vercel.app/" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="ri-global-line"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section class="links">
+                <h4>Navigation</h4>
+                <nav>
+                    <a href="../index.html#home" class="nav-link">Home</a>
+                    <a href="../index.html#about" class="nav-link">About</a>
+                    <a href="../index.html#projects" class="nav-link">Projects</a>
+                </nav>
+            </section>
+
+            <section class="legal">
+                <h4>Legal</h4>
+                <nav>
+                    <a href="#privacy" class="nav-link">Privacy Policy</a>
+                    <a href="#terms" class="nav-link">Terms and Conditions</a>
+                    <a href="#contact" class="nav-link">Contact Us</a>
+                </nav>
+            </section>
+        </div>
+
+        <div class="info">
+            <p>&copy; 2026 Antony Labs - All rights reserved - Not affiliated with Mojang AB.</p>
+            <p>Made with <i class="ri-heart-3-fill hearth"></i> by AntonyPss</p>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" class="jump-to-top" aria-label="Back to top">
+        <i class="ri-arrow-up-s-line"></i>
+    </button>
+
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>
