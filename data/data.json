@@ -4,7 +4,7 @@
             "title": "BetterChat+++",
             "description": "A complete overhaul of the chat interface, providing a more intuitive and user-friendly experience with improved readability and customizable options.",
             "icon": "../images/icons/better-chat.webp",
-            "version": "1.0.0",
+            "version": "1.3.0",
             "versionSupport": "1.21+",
             "platform": "Bedrock",
             "status": "Stable",
@@ -14,6 +14,11 @@
                     "image": "../images/projects/better-chat-1.webp",
                     "title": "Chat Screen (Main)",
                     "description": "The main chat screen has been redesigned for improved readability and ease of use."
+                },
+                {
+                    "image": "../images/projects/better-chat-3.webp",
+                    "title": "Chat Screen (Sidebar)",
+                    "description": "Here is a preview of the new custom chat sidebar UI with coordinates, quick notes, and a built-in calculator!"
                 },
                 {
                     "image": "../images/projects/better-chat-2.webp",

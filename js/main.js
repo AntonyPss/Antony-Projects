@@ -2,6 +2,35 @@
 // MENU TOGGLE
 // ============================================
 document.addEventListener("DOMContentLoaded", function () {
+    const navigationLinks = document.querySelectorAll(
+        '.nav-links-desktop a[href^="#"], .mobile-menu a[href^="#"]',
+    );
+
+    const updateActiveNavigation = (hash) => {
+        const activeHash = hash || "#home";
+
+        navigationLinks.forEach((link) => {
+            const isActive = link.getAttribute("href") === activeHash;
+            link.classList.toggle("active", isActive);
+
+            if (isActive) {
+                link.setAttribute("aria-current", "location");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
+    };
+
+    updateActiveNavigation(window.location.hash);
+    navigationLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            updateActiveNavigation(link.getAttribute("href"));
+        });
+    });
+    window.addEventListener("hashchange", () => {
+        updateActiveNavigation(window.location.hash);
+    });
+
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
 

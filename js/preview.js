@@ -40,7 +40,7 @@ const DATA = {
     projects: [
         {
             cover: "images/covers/cover-better-chat.webp",
-            title: "BetterChat+++ v1.0.0",
+            title: "BetterChat+++ v1.3.0",
             description:
                 "A revamped system featuring Ore-UI, exciting new features, and a sleek, modern design for Minecraft Bedrock Edition.",
             link: "pages/project.html?id=better-chat",
@@ -301,11 +301,14 @@ const TagFilter = {
 
         // Load tag saved
         const savedTag = Utils.loadFromStorage("selectedTag", "all");
-        this.currentTag = savedTag;
+        const hasSavedTag = Array.from(this.buttons).some(
+            (button) => button.dataset.tag === savedTag,
+        );
+        this.currentTag = hasSavedTag ? savedTag : "all";
 
         this.setupEventListeners();
         this.updateActiveButton();
-        this.filter(savedTag);
+        this.filter(this.currentTag);
 
         return true;
     },
@@ -329,7 +332,7 @@ const TagFilter = {
         this.buttons.forEach((btn) => {
             const isActive = btn.dataset.tag === this.currentTag;
             btn.classList.toggle("active", isActive);
-            btn.setAttribute("aria-selected", String(isActive));
+            btn.setAttribute("aria-pressed", String(isActive));
         });
     },
 
