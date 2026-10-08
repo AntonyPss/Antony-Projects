@@ -26,7 +26,16 @@
                     "description": "The settings menu allows for customization of chat appearance and behavior."
                 }
             ],
-            "downloads": []
+            "downloads": [
+                {
+                    "name": "LinkVertise",
+                    "url": "https://direct-link.net/3691109/DWTe5FLmfBpy"
+                },
+                {
+                    "name": "ModBay",
+                    "url": "https://modbay.org/textures/7676-betterchat.html"
+                }
+            ]
         },
         "thony-ui": {
             "title": "Thony UI",
