@@ -1061,7 +1061,7 @@ button:focus-visible {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 370px), 1fr));
     gap: var(--spacing-xl);
     margin: var(--spacing-lg) 0;
     width: 100%;
@@ -1277,7 +1277,7 @@ button:focus-visible {
 
 .collabs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
     gap: var(--spacing-xl);
     /* ← CORREGIDO de lg a xl */
     margin: var(--spacing-xl) 0;
@@ -1635,12 +1635,15 @@ button:focus-visible {
    ANIMACIONES
    ============================================ */
 .fade-anim {
-    opacity: 0;
-    transform: translateY(var(--spacing-lg));
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-anim.is-visible {
+.js .fade-anim {
+    opacity: 0;
+    transform: translateY(var(--spacing-lg));
+}
+
+.js .fade-anim.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1666,7 +1669,7 @@ button:focus-visible {
     }
 
     .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
     }
 }
 

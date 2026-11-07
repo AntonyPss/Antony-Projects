@@ -232,7 +232,7 @@
    ============================================ */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 370px), 1fr));
     gap: var(--spacing-xl);
     margin: var(--spacing-lg) 0;
     width: 100%;
