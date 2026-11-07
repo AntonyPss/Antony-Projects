@@ -31,6 +31,43 @@ document.addEventListener("DOMContentLoaded", function () {
         updateActiveNavigation(window.location.hash);
     });
 
+    const mobileBottomNav = document.querySelector(".mobile-bottom-nav");
+    if (mobileBottomNav) {
+        const updateBottomNavAlignment = () => {
+            const fits = mobileBottomNav.scrollWidth <= mobileBottomNav.clientWidth + 1;
+            mobileBottomNav.classList.toggle("is-centered", fits);
+        };
+
+        updateBottomNavAlignment();
+        window.addEventListener("resize", updateBottomNavAlignment, { passive: true });
+        if ("ResizeObserver" in window) {
+            new ResizeObserver(updateBottomNavAlignment).observe(mobileBottomNav);
+        }
+    }
+
+    // Scrollspy: marca como activo el enlace de la sección visible
+    const spyTargets = new Map();
+    navigationLinks.forEach((link) => {
+        const hash = link.getAttribute("href");
+        if (!hash || !hash.startsWith("#") || spyTargets.has(hash)) return;
+        const target = document.getElementById(hash.slice(1));
+        if (target) spyTargets.set(hash, target);
+    });
+
+    if (spyTargets.size && "IntersectionObserver" in window) {
+        const spy = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        updateActiveNavigation(`#${entry.target.id}`);
+                    }
+                });
+            },
+            { rootMargin: "-72px 0px -65% 0px" },
+        );
+        spyTargets.forEach((target) => spy.observe(target));
+    }
+
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
 
@@ -63,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape" && mobileMenu.classList.contains("active")) {
                 closeMenu();
+                menuToggle.focus();
             }
         });
     }

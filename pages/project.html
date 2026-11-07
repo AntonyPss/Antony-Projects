@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Antony Labs - Review</title>
-    <meta name="description" content="Explore Antony Labs project previews with screenshots, version details, and direct download links for polished Minecraft Bedrock UI concepts.">
+    <meta name="description"
+        content="Explore Antony Labs project previews with screenshots, version details, and direct download links for polished Minecraft Bedrock UI concepts.">
     <meta name="keywords" content="Minecraft Bedrock UI, project preview, Antony Labs, UI screenshots, download links">
     <meta name="author" content="Antony Calvo">
     <meta name="robots" content="index,follow">
     <meta property="og:title" content="Antony Labs Project Preview">
-    <meta property="og:description" content="See screenshots, version notes, and download links for Antony Labs Minecraft UI projects.">
+    <meta property="og:description"
+        content="See screenshots, version notes, and download links for Antony Labs Minecraft UI projects.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="../images/icons/logo.webp">
+    <meta property="og:image" content="https://antony-portafolio.vercel.app/images/hero-bg.jpg">
     <meta property="og:url" content="https://antony-portafolio.vercel.app/pages/project.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Antony Labs Project Preview">
-    <meta name="twitter:description" content="Explore Antony Labs Minecraft UI projects with screenshots and download links.">
-    <meta name="twitter:image" content="../images/icons/logo.webp">
+    <meta name="twitter:description"
+        content="Explore Antony Labs Minecraft UI projects with screenshots and download links.">
+    <meta name="twitter:image" content="https://antony-portafolio.vercel.app/images/hero-bg.jpg">
     <meta name="theme-color" content="#44362F">
     <link rel="canonical" href="https://antony-portafolio.vercel.app/pages/project.html">
     <script type="application/ld+json">
@@ -27,7 +30,7 @@
             "@type": "CreativeWork",
             "name": "Antony Labs Project Preview",
             "description": "Project preview for Antony Labs Minecraft UI designs.",
-            "image": "../images/icons/logo.webp",
+            "image": "https://antony-portafolio.vercel.app/images/hero-bg.jpg",
             "author": {
                 "@type": "Person",
                 "name": "Antony Calvo"
@@ -37,18 +40,28 @@
     <link rel="icon" href="../images/icons/favicon.webp" type="image/webp">
 
     <!-- Stylesheets -->
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/secondary.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
+    <a href="#home" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
     <!-- Header -->
     <header id="header" class="header">
         <div class="header-content container">
             <!-- Logo -->
             <a href="../index.html" class="nav-logo" title="Home">
-                <img src="../images/icons/logo.webp" alt="Logo" />
+                <img src="../images/icons/logo.webp" alt="Antony Labs Logo" width="700" height="320"
+                    decoding="async" />
             </a>
 
             <!-- Navigation - Desktop -->
@@ -60,73 +73,61 @@
                 <a href="#support-me" class="nav-link" aria-label="Go to Ko-fi">Support Me</a>
             </nav>
 
-            <!-- Social Links Desktop -->
-            <div class="social-links-desktop" aria-label="Social media links">
-                <a href="https://github.com/AntonyPss/Antony-Projects" class="social-link" target="_blank"
-                    rel="noopener noreferrer" aria-label="GitHub">
-                    <i class="ri-github-fill" aria-hidden="true"></i>
-                </a>
-                <a href="https://discord.gg/kYDf4gadKw" class="social-link" target="_blank" rel="noopener noreferrer"
-                    aria-label="Discord">
-                    <i class="ri-discord-fill" aria-hidden="true"></i>
-                </a>
-                <a href="https://antony-portafolio.vercel.app/" class="social-link" target="_blank"
-                    rel="noopener noreferrer" aria-label="Global Portfolio">
-                    <i class="ri-global-line" aria-hidden="true"></i>
-                </a>
-            </div>
+            <a href="https://discord.gg/kYDf4gadKw" class="nav-link discord-btn" target="_blank"
+                rel="noopener noreferrer" aria-label="Discord">
+                <i class="ri-discord-fill icon" aria-hidden="true"></i>
+                Discord
+                <i class="ri-arrow-right-up-fill arrow" aria-hidden="true"></i>
+            </a>
 
-            <!-- Mobile menu button -->
-            <button class="menu-icon btn-primary" id="menuToggle" aria-label="Navigation menu" aria-expanded="false">
-                <i class="ri-menu-line" aria-hidden="true"></i>
-            </button>
         </div>
 
-        <!-- Mobile Navigation (hidden by default) -->
-        <div id="mobileMenu" class="mobile-menu">
-            <a href="#home" class="mobile-nav-link">
-                <i class="ri-home-line"></i> Home
-            </a>
-            <a href="#review" class="mobile-nav-link">
-                <i class="ri-image-line"></i> Review
-            </a>
-            <a href="#download" class="mobile-nav-link">
-                <i class="ri-download-line"></i> Download
-            </a>
-            <a href="#contact" class="mobile-nav-link">
-                <i class="ri-mail-line"></i> Contact
-            </a>
-            <a href="#support-me" class="mobile-nav-link">
-                <i class="ri-heart-3-line" aria-hidden="true"></i> Support Me
-            </a>
-            <div class="mobile-social" aria-label="Mobile social media">
-                <a href="https://github.com/AntonyPss/Antony-Projects" target="_blank"
-                    rel="noopener noreferrer">GitHub</a>
-                <a href="https://discord.gg/kYDf4gadKw" target="_blank" rel="noopener noreferrer">Discord</a>
-                <a href="https://antony-portafolio.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-            </div>
-        </div>
     </header>
+
+    <!-- Mobile bottom navigation -->
+    <nav id="mobileMenu" class="mobile-menu mobile-bottom-nav" aria-label="Mobile navigation">
+        <a href="#home" class="mobile-nav-link" aria-label="Home">
+            <i class="ri-home-line" aria-hidden="true"></i><span>Home</span>
+        </a>
+        <a href="#review" class="mobile-nav-link" aria-label="Screenshots">
+            <i class="ri-image-line" aria-hidden="true"></i><span>Review</span>
+        </a>
+        <a href="#download" class="mobile-nav-link" aria-label="Downloads">
+            <i class="ri-download-line" aria-hidden="true"></i><span>Download</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link" aria-label="Contact">
+            <i class="ri-mail-line" aria-hidden="true"></i><span>Contact</span>
+        </a>
+        <a href="#support-me" class="mobile-nav-link" aria-label="Support me">
+            <i class="ri-heart-3-line" aria-hidden="true"></i><span>Support</span>
+        </a>
+    </nav>
 
     <!-- Error Message -->
     <div id="errorMessage" class="error-message" role="alert" aria-live="assertive" style="display: none;"></div>
 
     <!-- Main Content -->
-    <main id="home" class="main" role="main" aria-label="Main">
+    <main id="home" class="main" role="main" aria-label="Main" tabindex="-1">
         <!-- Hero Section -->
-        <section id="heroSection" class="hero-section container">
+        <section id="heroSection" class="hero-section section container">
             <div id="hero-content" class="hero-content fade-anim">
+                <div class="project-hero-topline">
+                    <a href="../index.html" id="backButton" class="hero-back-link">
+                        <i class="ri-arrow-left-line" aria-hidden="true"></i> Back to previous page
+                    </a>
+                </div>
                 <div class="hero-image">
-                    <img src="../images/icons/favicon.webp" id="projectIcon" alt="Project icon">
+                    <img src="../images/covers/cover-notfound.webp" alt="Project cover" id="projectCover" width="1280"
+                        height="720" fetchpriority="high" decoding="async">
                 </div>
                 <div class="hero-text">
                     <h1 id="projectTitle">Project title</h1>
-                    <p id="projectDescription">Project description</p>
                     <div id="detailsList" class="details-list"></div>
+                    <p id="projectDescription">Project description</p>
                 </div>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn-primary">
-                        <i class="ri-download-line"></i> Download
+                    <a href="#download" class="btn-primary press-button">
+                        <i class="ri-download-line" aria-hidden="true"></i> Download
                     </a>
 
                     <a href="#review" class="btn-secondary">
@@ -137,18 +138,20 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="review" class="projects-section container fade-anim" aria-label="Review Section">
-            <h2 class="section-title">Review Screenshots</h2>
-            <p class="section-description">Explore every detail. See how modern textures and clean typography come
-                together in a sleek UI experience.</p>
+        <section id="review" class="projects-section container fade-anim" aria-labelledby="review-title">
+
+            <h2 id="review-title" class="section-title">Screenshots</h2>
+            <p id="reviewDescription" class="section-description project-section-intro">A closer look at the project,
+                screen by screen.</p>
             <div id="projects-list" class="projects-grid"></div>
         </section>
 
         <!-- Download Section -->
-        <section id="download" class="download-section container fade-anim" aria-label="Download Section">
-            <h2 class="section-title">Download Now</h2>
-            <p class="section-description">Get the latest version quickly and safely. Fully compatible with the most
-                recent Minecraft releases.</p>
+        <section id="download" class="download-section container fade-anim" aria-labelledby="download-title">
+
+            <h2 id="download-title" class="section-title">Download options</h2>
+            <p id="downloadDescription" class="section-description project-section-intro">Choose a source below to get
+                this project.</p>
             <div id="download-list" class="download-buttons"></div>
         </section>
 
@@ -157,7 +160,7 @@
             <h2 class="section-title">Get in Touch</h2>
             <p class="section-description">Have a project in mind or want to collaborate? Feel free to reach out!</p>
             <div class="contact-buttons">
-                <a href="mailto:ROVALOSKI@gmail.com" class="btn-secondary" title="Send me an email">
+                <a href="mailto:ROVALOSKI@hotmail.com" class="btn-secondary" title="Send me an email">
                     <i class="ri-mail-fill"></i> Email
                 </a>
                 <a href="https://github.com/AntonyPss" class="btn-secondary" title="View my GitHub profile"
@@ -174,12 +177,18 @@
         <!-- Support Section -->
         <section id="support-me" class="support-section container fade-anim" aria-labelledby="support-title">
             <h2 class="section-title">Support Me</h2>
-            <p class="section-description">If you like my work, support me on Ko-fi so I can keep creating more
-                projects.</p>
-            <div class="support-buttons" aria-label="Support me on Ko-fi">
-                <a href="https://ko-fi.com/imantonycalv" class="support-btn" target="_blank" rel="noopener noreferrer"
-                    title="Support me on Ko-fi">
-                    Donate on Ko-fi <i class="ri-arrow-right-line"></i>
+            <p class="section-description">If you like my work, support me on Ko-fi or PayPal so I can keep creating
+                more projects.</p>
+            <div class="support-buttons" aria-label="Support options">
+                <a href="https://ko-fi.com/imantonycalv" class="press-button kofi-btn" target="_blank"
+                    rel="noopener noreferrer" title="Support me on Ko-fi">
+                    <i class="ri-cup-fill" aria-hidden="true"></i> Donate on Ko-fi
+                    <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.paypal.com/donate/?hosted_button_id=G6YTUVADEKDFE" class="press-button paypal-btn"
+                    target="_blank" rel="noopener noreferrer" title="Donate with PayPal">
+                    <i class="ri-paypal-fill" aria-hidden="true"></i> Donate with PayPal
+                    <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
                 </a>
             </div>
         </section>
@@ -190,7 +199,8 @@
         <div class="navigation">
             <section class="image-logo">
                 <a href="#home" class="nav-logo" title="Antony Labs - Home" aria-label="Home">
-                    <img src="../images/icons/logo.webp" alt="Antony Labs Logo" />
+                    <img src="../images/icons/logo.webp" alt="Antony Labs Logo" width="700" height="320"
+                        decoding="async" />
                 </a>
                 <p>Crafted texture packs with a unique style for an improved user experience.</p>
                 <div class="social-media-btns">
@@ -237,26 +247,27 @@
     </footer>
 
     <!-- Image Modal -->
-    <div id="imageModal" class="modal">
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-label="Project screenshots">
         <div class="modal-overlay" id="modalOverlay"></div>
         <button class="modal-close-btn" id="modalClose" aria-label="Close modal">
             <i class="ri-close-line"></i>
         </button>
-        <button class="modal-nav prev" id="modalPrev">
-            <i class="ri-arrow-left-s-line"></i>
+        <button class="modal-nav prev" id="modalPrev" aria-label="Previous screenshot">
+            <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
         </button>
         <div class="modal-content">
             <img class="modal-image" id="modalImage" src="" alt="Project Preview">
             <div class="modal-caption" id="modalCaption"></div>
         </div>
-        <button class="modal-nav next" id="modalNext">
-            <i class="ri-arrow-right-s-line"></i>
+        <button class="modal-nav next" id="modalNext" aria-label="Next screenshot">
+            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
         </button>
     </div>
 
     <!-- Scripts -->
-    <script src="../js/loader.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/loader.js" defer></script>
+    <script src="../js/main.js" defer></script>
 </body>
 
 </html>

@@ -1,4 +1,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    const backButton = document.getElementById("backButton");
+    backButton?.addEventListener("click", (event) => {
+        const plainClick =
+            event.button === 0 &&
+            !event.metaKey &&
+            !event.ctrlKey &&
+            !event.shiftKey &&
+            !event.altKey;
+        if (plainClick && window.history.length > 1) {
+            event.preventDefault();
+            window.history.back();
+        }
+    });
+
     try {
         const projectId = getProjectIdFromUrl();
         const project = await loadProjectData(projectId);
@@ -56,7 +70,7 @@ function getProjectIdFromUrl() {
 
 async function loadProjectData(projectId) {
     try {
-        const response = await fetch(`../data/data.json?${Date.now()}`);
+        const response = await fetch("../data/data.json");
         if (!response.ok)
             throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
@@ -106,13 +120,28 @@ function setMetaContent(selector, content) {
     }
 }
 
+const DEFAULT_OG_IMAGE =
+    "https://antony-portafolio.vercel.app/images/hero-bg.jpg";
+
+function toAbsoluteUrl(url) {
+    if (!url) return DEFAULT_OG_IMAGE;
+    try {
+        return new URL(url, window.location.origin).href;
+    } catch {
+        return DEFAULT_OG_IMAGE;
+    }
+}
+
 function updateMetaTags(project, projectId) {
     const title = project?.title || "Antony Labs Project";
+    const shareImage = project?.cover || project?.icon;
     const description =
         project?.description ||
         "Explore Antony Labs project previews with screenshots, version details, and direct download links for polished Minecraft Bedrock UI concepts.";
     const shortDescription =
-        description.length > 160 ? `${description.slice(0, 157)}...` : description;
+        description.length > 160
+            ? `${description.slice(0, 157)}...`
+            : description;
     const currentUrl = projectId
         ? `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(projectId)}`
         : `${window.location.origin}${window.location.pathname}`;
@@ -121,25 +150,27 @@ function updateMetaTags(project, projectId) {
     setMetaContent('meta[name="description"]', shortDescription);
     setMetaContent('meta[property="og:title"]', `${title} - Antony Labs`);
     setMetaContent('meta[property="og:description"]', shortDescription);
-    setMetaContent('meta[property="og:image"]', project?.icon || "../images/icons/logo.webp");
+    setMetaContent('meta[property="og:image"]', toAbsoluteUrl(shareImage));
     setMetaContent('meta[property="og:url"]', currentUrl);
     setMetaContent('meta[name="twitter:title"]', `${title} - Antony Labs`);
     setMetaContent('meta[name="twitter:description"]', shortDescription);
-    setMetaContent('meta[name="twitter:image"]', project?.icon || "../images/icons/logo.webp");
+    setMetaContent('meta[name="twitter:image"]', toAbsoluteUrl(shareImage));
 
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
         canonicalLink.setAttribute("href", currentUrl);
     }
 
-    const schemaScript = document.querySelector('script[type="application/ld+json"]');
+    const schemaScript = document.querySelector(
+        'script[type="application/ld+json"]',
+    );
     if (schemaScript) {
         const schema = {
             "@context": "https://schema.org",
             "@type": "CreativeWork",
             name: title,
             description: shortDescription,
-            image: project?.icon || "../images/icons/logo.webp",
+            image: toAbsoluteUrl(shareImage),
             url: currentUrl,
             author: {
                 "@type": "Person",
@@ -152,27 +183,6 @@ function updateMetaTags(project, projectId) {
 
 function setupProject(project, projectId) {
     updateMetaTags(project, projectId);
-
-    // ============================================
-    // DYNAMIC BACKGROUND
-    // ============================================
-    const heroSection = document.getElementById("heroSection");
-    if (heroSection) {
-        if (project.backgroundImage || project.banner) {
-            const bgImage = project.backgroundImage || project.banner;
-            heroSection.style.backgroundImage = `url('${bgImage}')`;
-            heroSection.style.backgroundSize = "cover";
-            heroSection.style.backgroundPosition = "center";
-            heroSection.style.backgroundRepeat = "no-repeat";
-            heroSection.classList.add("dynamic-bg");
-        } else {
-            heroSection.style.backgroundImage =
-                "url('../images/banners/banner-empty.webp')";
-            heroSection.classList.add("dynamic-bg");
-        }
-    } else {
-        console.warn("Elemento #heroSection no encontrado en el DOM");
-    }
 
     // ============================================
     // BADGES
@@ -194,7 +204,7 @@ function setupProject(project, projectId) {
         badgesWrapper.appendChild(
             createBadge(
                 "ri-smartphone-line",
-                project.versionSupport || "1.20+",
+                `v${project.versionSupport || "1.21+"}`,
                 "support",
             ),
         );
@@ -226,6 +236,16 @@ function setupProject(project, projectId) {
                 createBadge("ri-alert-line", "Experimental", "experimental"),
             );
         }
+        if (project.tag) {
+            badgesWrapper.prepend(
+                createBadge("ri-price-tag-3-line", project.tag, "category"),
+            );
+        }
+        if (project.date) {
+            badgesWrapper.appendChild(
+                createBadge("ri-calendar-line", project.date, "release"),
+            );
+        }
 
         detailsContainer.innerHTML = "";
         detailsContainer.appendChild(badgesWrapper);
@@ -239,9 +259,19 @@ function setupProject(project, projectId) {
     if (titleElement) titleElement.textContent = project.title;
     if (descElement) descElement.textContent = project.description;
 
+    const reviewDescription = document.getElementById("reviewDescription");
+    if (reviewDescription) {
+        const screenshotCount = project.screenshots?.length || 0;
+        reviewDescription.textContent = screenshotCount
+            ? `${screenshotCount} screens from ${project.title}, with notes on the interface details shown in each.`
+            : `Screenshots and interface details for ${project.title}.`;
+    }
+
     const overviewDescription = document.getElementById("overviewDescription");
     if (overviewDescription) {
-        overviewDescription.textContent = project.description || "This project combines a refined Bedrock interface with clear structure and modern visual styling.";
+        overviewDescription.textContent =
+            project.description ||
+            "This project combines a refined Bedrock interface with clear structure and modern visual styling.";
     }
 
     const overviewHighlights = document.getElementById("overviewHighlights");
@@ -257,11 +287,17 @@ function setupProject(project, projectId) {
             },
             {
                 icon: "ri-cpu-line",
-                text: project.platform ? `${project.platform} build` : "Bedrock experience",
+                text: project.platform
+                    ? `${project.platform} build`
+                    : "Bedrock experience",
             },
             {
-                icon: project.openSource ? "ri-github-fill" : "ri-community-line",
-                text: project.openSource ? "Open source project" : "Community-focused project",
+                icon: project.openSource
+                    ? "ri-github-fill"
+                    : "ri-community-line",
+                text: project.openSource
+                    ? "Open source project"
+                    : "Community-focused project",
             },
         ];
 
@@ -277,15 +313,18 @@ function setupProject(project, projectId) {
             .join("");
     }
 
-    const icon = document.getElementById("projectIcon");
-    if (icon) {
-        icon.src =
-            project.icon ||
-            "https://via.placeholder.com/150?text=Image+not+found";
-        icon.alt = project.title;
-        icon.onerror = () => {
-            icon.onerror = null;
-            icon.src = "https://via.placeholder.com/150?text=Image+not+found";
+    const cover = document.getElementById("projectCover");
+    if (cover) {
+        const fallbackCover = "../images/covers/cover-notfound.webp";
+        const coverPath = project.cover || "images/covers/cover-notfound.webp";
+        cover.src =
+            coverPath.startsWith("../") || /^https?:\/\//i.test(coverPath)
+                ? coverPath
+                : `../${coverPath.replace(/^\/+/, "")}`;
+        cover.alt = `${project.title} cover`;
+        cover.onerror = () => {
+            cover.onerror = null;
+            cover.src = fallbackCover;
         };
     }
 
@@ -304,7 +343,10 @@ function setupProject(project, projectId) {
                 img.src = screenshot.image || "";
                 img.alt = screenshot.title || project.title || "";
                 img.className = "project-image";
+                img.width = 640;
+                img.height = 360;
                 img.loading = "lazy";
+                img.decoding = "async";
                 const content = document.createElement("div");
                 content.className = "project-card-content";
                 const titleEl = document.createElement("h3");
@@ -338,12 +380,37 @@ function setupProject(project, projectId) {
                 download.url !== "#",
         );
 
+        const downloadDescription = document.getElementById(
+            "downloadDescription",
+        );
+        if (downloadDescription) {
+            const versionLabel = project.version
+                ? ` version ${project.version}`
+                : "";
+            const compatibility = project.versionSupport
+                ? ` Compatible with Minecraft ${project.versionSupport}.`
+                : " Check the project details for compatibility.";
+            downloadDescription.textContent = validDownloads.length
+                ? `Choose a trusted source to get ${project.title}${versionLabel}.${compatibility}`
+                : `There are no download links available for ${project.title} yet.`;
+        }
+
         if (validDownloads.length > 0) {
             const fragmentDownloads = document.createDocumentFragment();
             validDownloads.forEach((download) => {
                 const a = document.createElement("a");
                 a.href = download.url;
-                a.className = "download-btn btn-secondary";
+                a.className = "btn-secondary download-button";
+                const provider = (download.name || "")
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]/g, "");
+                const providerClass = {
+                    linkvertise: "download-linkvertise",
+                    mcpedl: "download-mcpedl",
+                    modbay: "download-modbay",
+                    olcanomods: "download-olcanomods",
+                }[provider];
+                if (providerClass) a.classList.add(providerClass);
                 a.title = "Download with " + (download.name || "File");
                 a.target = "_blank";
                 a.rel = "noopener noreferrer";
@@ -374,6 +441,24 @@ function setupImageModal() {
     if (!modal || !modalImg || !closeBtn) return;
     let currentImages = [];
     let currentIndex = 0;
+    let lastFocusedElement = null;
+
+    const focusableElements = [closeBtn, prevBtn, nextBtn].filter(Boolean);
+
+    const openModal = () => {
+        lastFocusedElement = document.activeElement;
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeBtn.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocusedElement) lastFocusedElement.focus();
+    };
 
     document.addEventListener("click", (e) => {
         if (
@@ -395,8 +480,7 @@ function setupImageModal() {
                 currentIndex = 0;
             }
             updateModal();
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
+            openModal();
         }
     });
 
@@ -438,10 +522,6 @@ function setupImageModal() {
             showPrev();
         };
 
-    const closeModal = () => {
-        modal.classList.remove("active");
-        document.body.style.overflow = "";
-    };
     closeBtn.onclick = closeModal;
     modal.onclick = (e) => {
         if (e.target === modal || e.target.classList.contains("modal-overlay"))
@@ -452,6 +532,18 @@ function setupImageModal() {
         if (e.key === "Escape") closeModal();
         if (e.key === "ArrowRight") showNext();
         if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "Tab" && focusableElements.length > 0) {
+            e.preventDefault();
+            const current = focusableElements.indexOf(document.activeElement);
+            const next = e.shiftKey
+                ? current <= 0
+                    ? focusableElements.length - 1
+                    : current - 1
+                : current === focusableElements.length - 1 || current === -1
+                  ? 0
+                  : current + 1;
+            focusableElements[next].focus();
+        }
     });
 }
 

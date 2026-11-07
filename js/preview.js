@@ -6,7 +6,8 @@ const CONFIG = {
     selectors: {
         projectsGrid: "#projects-grid",
         collabsList: "#collabs-list",
-        tagButtons: ".tag-btn",
+        tagButtons: "button.tag-btn",
+        searchInput: ".search-element",
         nekoTrigger: ".neko-trigger",
         nekoImg: "#neko-img",
         heroContent: "#hero-content",
@@ -30,60 +31,13 @@ const CONFIG = {
     },
 
     // COVER PLACEHOLDER
-    defaultImage: "images/covers/placeholder.webp",
+    defaultImage: "images/covers/cover-notfound.webp",
 };
 
 // ============================================
 // DATA
 // ============================================
 const DATA = {
-    projects: [
-        {
-            cover: "images/covers/cover-better-chat.webp",
-            title: "BetterChat+++ v1.3.0",
-            description:
-                "A revamped system featuring Ore-UI, exciting new features, and a sleek, modern design for Minecraft Bedrock Edition.",
-            link: "pages/project.html?id=better-chat",
-            date: "July 10, 2026",
-            tag: "UI",
-        },
-        {
-            cover: "images/covers/cover-thony-ui.webp",
-            title: "Thony UI v1.3.0",
-            description:
-                "Transform the default Minecraft user interface into a sleek, modern design.",
-            link: "pages/project.html?id=thony-ui",
-            date: "June 7, 2025",
-            tag: "UI",
-        },
-        {
-            cover: "images/covers/cover-music-oreui.webp",
-            title: "Music Ore-UI v1.0.0",
-            description:
-                "Enhance your Minecraft experience with a brand-new screen designed for immersion.",
-            link: "pages/project.html?id=music-ore-ui",
-            date: "March 19, 2025",
-            tag: "UI",
-        },
-        {
-            cover: "images/covers/cover-music-ui.webp",
-            title: "Music UI v2.9.2",
-            description:
-                "Bring your favorite tunes to lifewith a custom music screen, tailored for you.",
-            link: "pages/project.html?id=music-ui",
-            date: "April 15, 2025",
-            tag: "UI",
-        },
-        {
-            cover: "images/covers/cover-notfound.webp",
-            title: "Soon",
-            description: "Soon...",
-            link: "",
-            date: "",
-            tag: "Other",
-        },
-    ],
-
     collaborations: [
         {
             href: "https://github.com/Xelo-Client/",
@@ -95,7 +49,7 @@ const DATA = {
         },
         {
             href: "https://galaxiteprojects.carrd.co/",
-            img: "images/icons/galaxite.jpg",
+            img: "images/icons/galaxite.webp",
             name: "Galaxity (@Galaxybrine_Playz)",
             description: "Creator of BetterChat and other projects.",
             title: "Galaxybrine Collaboration",
@@ -109,6 +63,33 @@ const DATA = {
         }
     ],
 };
+
+// Tarjeta placeholder "Soon"
+const SOON_PROJECT = {
+    title: "Soon",
+    cover: "images/covers/cover-notfound.webp",
+    description: "Soon...",
+    link: "",
+    date: "",
+    tag: "Other",
+};
+
+// Carga la lista de proyectos desde data.json (única fuente de datos)
+async function fetchProjects() {
+    try {
+        const response = await fetch("data/data.json");
+        if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        return Object.entries(data.projects || {}).map(([id, project]) => ({
+            id,
+            ...project,
+        }));
+    } catch (error) {
+        console.warn("Failed to load projects data:", error);
+        return [];
+    }
+}
 
 // ============================================
 // UTILITIES
@@ -172,13 +153,15 @@ const Utils = {
 // Render projects
 const ProjectsRenderer = {
     container: null,
+    projects: [],
 
-    init() {
+    init(projects) {
         this.container = document.querySelector(CONFIG.selectors.projectsGrid);
         if (!this.container) {
             console.error("Projects grid not found");
             return false;
         }
+        this.projects = projects || [];
         this.render();
         return true;
     },
@@ -192,11 +175,15 @@ const ProjectsRenderer = {
 
         const img = Utils.createElement("img", "project-image", {
             src: project.cover || CONFIG.defaultImage,
-            alt: project.title,
+            alt: `${project.title} project cover`,
+            width: "640",
+            height: "360",
             loading: "lazy",
+            decoding: "async",
         });
 
         img.onerror = () => {
+            img.onerror = null;
             img.src = CONFIG.defaultImage;
             img.alt = `${project.title} ${CONFIG.messages.placeholderAlt}`;
         };
@@ -237,9 +224,14 @@ const ProjectsRenderer = {
         // ===== FOOTER =====
         const footer = Utils.createElement("div", "card-footer");
 
-        const hasProjectLink = Boolean(project.link);
+        const projectUrl =
+            project.link ||
+            (project.id
+                ? `pages/project.html?id=${encodeURIComponent(project.id)}`
+                : "");
+        const hasProjectLink = Boolean(projectUrl);
         const link = Utils.createElement("a", "project-link btn-secondary", {
-            href: hasProjectLink ? project.link : "#",
+            href: hasProjectLink ? projectUrl : "#",
             text: hasProjectLink
                 ? project.linkText || CONFIG.messages.viewProject
                 : CONFIG.messages.soon,
@@ -278,10 +270,85 @@ const ProjectsRenderer = {
 
     render() {
         const fragment = document.createDocumentFragment();
-        DATA.projects.forEach((project) => {
+        this.projects.forEach((project) => {
             fragment.appendChild(this.createProjectCard(project));
         });
         this.container.appendChild(fragment);
+    },
+};
+
+const LatestProjectRenderer = {
+    init(projects) {
+        const section = document.querySelector("#latest-release");
+        const container = document.querySelector("#latest-project-feature");
+        if (!section || !container) return;
+
+        const latestProject = (projects || [])
+            .filter((project) => project.date && Number.isFinite(Date.parse(project.date)))
+            .sort((first, second) => Date.parse(second.date) - Date.parse(first.date))[0];
+
+        if (!latestProject) return;
+
+        const projectUrl =
+            latestProject.link ||
+            `pages/project.html?id=${encodeURIComponent(latestProject.id)}`;
+        const article = Utils.createElement("article", "latest-project-feature");
+        const imageLink = Utils.createElement("a", "latest-project-media", {
+            href: projectUrl,
+            "aria-label": `View ${latestProject.title}`,
+        });
+        const image = Utils.createElement("img", "latest-project-image", {
+            src: latestProject.cover || CONFIG.defaultImage,
+            alt: `${latestProject.title} project cover`,
+            width: "1280",
+            height: "720",
+            loading: "eager",
+            decoding: "async",
+            fetchpriority: "high",
+        });
+        image.onerror = () => {
+            image.onerror = null;
+            image.src = CONFIG.defaultImage;
+            image.alt = `${latestProject.title} ${CONFIG.messages.placeholderAlt}`;
+        };
+        imageLink.appendChild(image);
+
+        const content = Utils.createElement("div", "latest-project-content");
+        const meta = Utils.createElement("div", "latest-project-meta");
+        meta.appendChild(
+            Utils.createElement("span", "latest-project-tag", {
+                text: latestProject.tag || "Project",
+            }),
+        );
+        const date = new Date(latestProject.date);
+        meta.appendChild(
+            Utils.createElement("time", "", {
+                datetime: date.toISOString().slice(0, 10),
+                text: latestProject.date,
+            }),
+        );
+
+        const title = Utils.createElement("h3", "latest-project-title", {
+            text: latestProject.title,
+        });
+        const description = Utils.createElement("p", "latest-project-description", {
+            text: latestProject.description || "",
+        });
+        const viewLink = Utils.createElement("a", "btn-primary press-button latest-project-link", {
+            href: projectUrl,
+            title: `View ${latestProject.title}`,
+        });
+        viewLink.appendChild(
+            Utils.createElement("span", "", { text: CONFIG.messages.viewProject }),
+        );
+        viewLink.appendChild(Utils.createElement("i", "ri-arrow-right-line", {
+            "aria-hidden": "true",
+        }));
+
+        content.append(meta, title, description, viewLink);
+        article.append(imageLink, content);
+        container.replaceChildren(article);
+        section.hidden = false;
     },
 };
 
@@ -290,6 +357,7 @@ const TagFilter = {
     buttons: [],
     container: null,
     currentTag: "all",
+    searchQuery: "",
 
     init() {
         this.buttons = document.querySelectorAll(CONFIG.selectors.tagButtons);
@@ -302,9 +370,24 @@ const TagFilter = {
         // Load tag saved
         const savedTag = Utils.loadFromStorage("selectedTag", "all");
         const hasSavedTag = Array.from(this.buttons).some(
-            (button) => button.dataset.tag === savedTag,
+            (button) =>
+                button.dataset.tag === savedTag &&
+                button.getAttribute("aria-disabled") !== "true",
         );
         this.currentTag = hasSavedTag ? savedTag : "all";
+
+        const searchInput = document.querySelector(
+            CONFIG.selectors.searchInput,
+        );
+        if (searchInput) {
+            searchInput.addEventListener(
+                "input",
+                Utils.debounce(() => {
+                    this.searchQuery = searchInput.value.trim().toLowerCase();
+                    this.filter(this.currentTag);
+                }),
+            );
+        }
 
         this.setupEventListeners();
         this.updateActiveButton();
@@ -315,6 +398,7 @@ const TagFilter = {
 
     setupEventListeners() {
         this.buttons.forEach((btn) => {
+            if (btn.getAttribute("aria-disabled") === "true") return;
             btn.setAttribute("aria-controls", "projects-grid");
             btn.addEventListener("click", () => {
                 const tag = btn.dataset.tag;
@@ -343,7 +427,11 @@ const TagFilter = {
         let visibleCount = 0;
 
         cards.forEach((card) => {
-            const match = tag === "all" || card.dataset.tag === tag;
+            const tagMatch = tag === "all" || card.dataset.tag === tag;
+            const text = `${card.querySelector(".project-title")?.textContent || ""} ${card.querySelector(".project-description")?.textContent || ""}`.toLowerCase();
+            const searchMatch =
+                !this.searchQuery || text.includes(this.searchQuery);
+            const match = tagMatch && searchMatch;
             card.style.display = match ? "" : "none";
             if (match) visibleCount++;
         });
@@ -394,6 +482,10 @@ const CollaborationsRenderer = {
         const img = Utils.createElement("img", "", {
             src: collab.img,
             alt: collab.name,
+            loading: "lazy",
+            decoding: "async",
+            width: "60",
+            height: "60",
         });
         link.appendChild(img);
 
@@ -435,6 +527,14 @@ const NekoCursor = {
     setupEventListeners() {
         this.trigger.addEventListener("mouseenter", () => {
             this.image.classList.add("is-visible");
+        });
+
+        this.trigger.addEventListener("focus", () => {
+            this.image.classList.add("is-visible");
+        });
+
+        this.trigger.addEventListener("blur", () => {
+            this.image.classList.remove("is-visible");
         });
 
         const throttledMove = Utils.throttleRAF((e) => {
@@ -504,8 +604,11 @@ const HeroAnimation = {
 // INITIALIZATION
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
-    ProjectsRenderer.init();
-    TagFilter.init();
+    fetchProjects().then((projects) => {
+        LatestProjectRenderer.init(projects);
+        ProjectsRenderer.init([...projects, SOON_PROJECT]);
+        TagFilter.init();
+    });
     CollaborationsRenderer.init();
     NekoCursor.init();
     ScrollAnimations.init();

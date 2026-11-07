@@ -14,6 +14,11 @@
     <link rel="icon" href="../images/icons/favicon.webp" type="image/webp">
 
     <!-- Stylesheets -->
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/secondary.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
@@ -170,12 +175,13 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Header -->
     <header id="header" class="header" role="banner">
         <div class="header-content container">
             <a href="../index.html" class="nav-logo" aria-label="Home">
-                <img src="../images/icons/logo.webp" alt="Antony Labs Logo" />
+                <img src="../images/icons/logo.webp" alt="Antony Labs Logo" width="700" height="320" decoding="async" />
             </a>
 
             <nav class="nav-links-desktop" aria-label="Main navigation">
@@ -207,8 +213,8 @@
 
         <div id="mobileMenu" class="mobile-menu" hidden>
             <a href="../index.html#home" class="mobile-nav-link"><i class="ri-home-line"></i> Home</a>
-            <a href="../legal.html#privacy" class="mobile-nav-link"><i class="ri-shield-check-line"></i> Privacy</a>
-            <a href="../legal.html#terms" class="mobile-nav-link"><i class="ri-file-text-line"></i> Terms</a>
+            <a href="legal.html#privacy" class="mobile-nav-link"><i class="ri-shield-check-line"></i> Privacy</a>
+            <a href="legal.html#terms" class="mobile-nav-link"><i class="ri-file-text-line"></i> Terms</a>
             <a href="../index.html#contact" class="mobile-nav-link"><i class="ri-mail-line"></i> Contact</a>
             <div class="mobile-social">
                 <a href="https://github.com/AntonyPss/Antony-Projects" target="_blank">GitHub</a>
@@ -219,7 +225,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content" tabindex="-1">
 
         <!-- Hero -->
         <section id="home" class="legal-hero">
@@ -294,7 +300,7 @@
         <div class="navigation">
             <section class="image-logo">
                 <a href="../index.html" class="nav-logo">
-                    <img src="../images/icons/logo.webp" alt="Antony Labs Logo" />
+                    <img src="../images/icons/logo.webp" alt="Antony Labs Logo" width="700" height="320" decoding="async" />
                 </a>
                 <p>Crafted texture packs with a unique style for an improved user experience.</p>
                 <div class="social-media-btns">
@@ -317,7 +323,7 @@
                 <h4>Navigation</h4>
                 <nav>
                     <a href="../index.html#home" class="nav-link">Home</a>
-                    <a href="../index.html#about" class="nav-link">About</a>
+                    <a href="../index.html#collaborations" class="nav-link">Collaborations</a>
                     <a href="../index.html#projects" class="nav-link">Projects</a>
                 </nav>
             </section>
