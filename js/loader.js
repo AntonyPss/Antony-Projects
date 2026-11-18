@@ -259,6 +259,22 @@ function setupProject(project, projectId) {
     if (titleElement) titleElement.textContent = project.title;
     if (descElement) descElement.textContent = project.description;
 
+    const heroButtons = document.querySelector("#heroSection .hero-buttons");
+    if (heroButtons) {
+        heroButtons.querySelector(".showcase-button")?.remove();
+        if (project.showcase) {
+            const showcaseLink = document.createElement("a");
+            showcaseLink.href = project.showcase;
+            showcaseLink.className = "btn-secondary showcase-button";
+            showcaseLink.target = "_blank";
+            showcaseLink.rel = "noopener noreferrer";
+            showcaseLink.title = `Watch ${project.title} showcase`;
+            showcaseLink.innerHTML =
+                '<i class="ri-youtube-fill" aria-hidden="true"></i><span>Watch showcase</span>';
+            heroButtons.appendChild(showcaseLink);
+        }
+    }
+
     const reviewDescription = document.getElementById("reviewDescription");
     if (reviewDescription) {
         const screenshotCount = project.screenshots?.length || 0;
